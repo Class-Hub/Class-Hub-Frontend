@@ -3,8 +3,14 @@
 import React, { useEffect } from 'react';
 import TweenMax from 'gsap';
 import '../../styles/SignIn.scss';
+import useLogin from '../../misc/login';
 
 function SignIn() {
+  const { onLogin } = useLogin();
+  const handleLogin = async e => {
+    e.preventDefault();
+    await onLogin(e.target[0].value, e.target[1].value);
+  };
   useEffect(() => {
     var emailLabel = document.querySelector('#loginEmailLabel'),
       email = document.querySelector('#loginEmail'),
@@ -651,7 +657,7 @@ function SignIn() {
   return (
     <>
       <div class="col-lg-6 col-12 d-flex align-items-center justify-content-around">
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="svgContainer">
             <div>
               <svg
@@ -1028,7 +1034,9 @@ function SignIn() {
             </label>
           </div>
           <div className="inputGroup inputGroup3">
-            <button id="login">Log in</button>
+            <button id="login" type="submit">
+              Log in
+            </button>
           </div>
         </form>
       </div>
