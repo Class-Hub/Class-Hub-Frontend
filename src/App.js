@@ -3,20 +3,23 @@ import { Route, Switch } from 'react-router';
 import LandingPage from './pages/LandingPage/Index';
 import Dashboard from './pages/Dashboard/Index';
 import { ProfileProvider } from './context/profile.context';
+import PublicRoute from './components/Routehandler/PublicRoute';
+import PrivateRoute from './components/Routehandler/PrivateRoute';
 
 function App() {
   return (
     <ProfileProvider>
       <Switch>
-        <Route exact path="/">
+        <PublicRoute exact path="/">
           <LandingPage />
-        </Route>
-        <Route exact path="/signIn">
+        </PublicRoute>
+        <PublicRoute path="/signin">
           <LandingPage />
-        </Route>
-        <Route exact path="/dashboard">
+        </PublicRoute>
+        <PrivateRoute path="/dashboard">
           <Dashboard />
-        </Route>
+        </PrivateRoute>
+        <Route>Page not found</Route>
       </Switch>
     </ProfileProvider>
   );

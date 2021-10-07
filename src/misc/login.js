@@ -16,7 +16,7 @@ const useLogin = () => {
       });
       console.log(response.data.token);
       if (response.status === 200) {
-        localStorage.setItem('jwtToken', response.data.token);
+        localStorage.setItem('classHub', response.data.token);
         setMessage('Successful');
         window.location.href = '/dashboard';
       } else {

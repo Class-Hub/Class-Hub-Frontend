@@ -7,10 +7,9 @@ export const ProfileProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('jwt');
+    const token = localStorage.getItem('classHub');
     if (token) {
       const decodedJwt = JSON.parse(atob(token.split('.')[1]));
-      console.log(decodedJwt)
       const userData = {
         userId: decodedJwt.Id,
       };
