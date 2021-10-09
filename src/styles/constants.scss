@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+$primary: #e6e6e6;
+$secondary: #5c7aea;
+$accent1: #3d56b2;
+$accent2: #14279b;
+$font_primary: #000000;
+$font_secondary: #150e56;
+
+.wrapper {
+  height: calc(100vh - 65px);
+  width: calc(100vw - 250px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+}

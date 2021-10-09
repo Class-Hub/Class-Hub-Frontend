@@ -2,7 +2,7 @@
 /* eslint-disable no-useless-escape */
 import React, { useEffect } from 'react';
 import TweenMax from 'gsap';
-import '../../styles/SignIn.scss';
+import '../../styles/Landing Page/SignIn.scss';
 import useLogin from '../../misc/login';
 
 function SignIn() {

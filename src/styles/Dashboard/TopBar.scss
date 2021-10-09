@@ -1,0 +1,36 @@
+@import '../constants.scss';
+.upperContainer {
+  background-color: $secondary;
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .left {
+    display: flex;
+    flex-direction: row;
+    .logo {
+      margin: 10px 20px;
+    }
+    #logoname {
+      font-family: Poppins;
+      color: $font_primary;
+      font-weight: bolder;
+      margin: 10px 0px;
+      font-size: 25px;
+      line-height: 42px;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  .right {
+    img {
+      margin: 10px 20px;
+    }
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 29px;
+  }
+}

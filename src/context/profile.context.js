@@ -13,6 +13,7 @@ export const ProfileProvider = ({ children }) => {
       const userData = {
         userId: decodedJwt.Id,
       };
+
       setProfile(userData);
       setIsLoading(false);
     } else {
