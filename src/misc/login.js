@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -25,6 +26,15 @@ const useLogin = () => {
       setIsLoading(false);
     } catch (err) {
       setMessage(err.message);
+      toast.error('Invalid Credentials', {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       setIsLoading(false);
     }
   };

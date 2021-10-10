@@ -4,9 +4,11 @@ import logo from '../../assets/logo.png';
 import profile from '../../assets/Profile.png';
 import Logout from '../../assets/logout.svg';
 import { useProfile } from '../../context/profile.context';
+import { useUser } from '../../context/User.context';
 
 const TopBar = () => {
   const { setProfile } = useProfile();
+  const { user } = useUser();
   const logout = e => {
     e.preventDefault();
     localStorage.removeItem('classHub');
@@ -26,8 +28,13 @@ const TopBar = () => {
       </div>
 
       <div className="right">
-        <img src={profile} alt="logo" width="40px" height="40px" />
-        Bharat Kumar
+        <img
+          src={user ? user.photo : profile}
+          alt="logo"
+          width="40px"
+          height="40px"
+        />
+        {user ? user.name : ''}
         <button onClick={logout} className="btn">
           <img src={Logout} alt="logout" width="30px" height="30px" />
         </button>
