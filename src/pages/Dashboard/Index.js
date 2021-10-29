@@ -12,10 +12,12 @@ import StudyMaterial from '../../components/Dashboard/StudyMaterial/StudyMateria
 import Doubts from '../../components/Dashboard/Doubts/Doubts';
 import TimeTable from '../../components/Dashboard/TimeTable/TimeTable';
 import { UserProvider } from '../../context/User.context';
+import Recorded from '../../components/Dashboard/Recorded/Recorded';
+import Upload from '../../components/Dashboard/Upload/Upload';
 
 const Dashboard = () => {
   const path =
-    '/(|Profile|LiveClass|Attendence|Assignments|StudyMaterial|Doubts|TimeTable)/';
+    '/(|Profile|LiveClass|RecordedLectures|Upload|Attendence|Assignments|StudyMaterial|Doubts|TimeTable)/';
   return (
     <div>
       <BrowserRouter basename="dashboard">
@@ -30,6 +32,8 @@ const Dashboard = () => {
             <Switch>
               <Route exact path="/" component={Profile} />
               <Route exact path="/liveClass" component={LiveClass} />
+              <Route exact path="/RecordedLectures" component={Recorded} />
+              <Route exact path="/Upload" component={Upload} />
               <Route exact path="/Attendence" component={Attendence} />
               <Route exact path="/Assignments" component={Assignments} />
               <Route exact path="/StudyMaterial" component={StudyMaterial} />

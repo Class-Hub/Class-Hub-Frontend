@@ -11,3 +11,19 @@ $font_secondary: #150e56;
   height: calc(100vh - 65px);
   width: calc(100vw - 250px);
 }
+::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+  }
+  ::-webkit-scrollbar-thumb{
+  background: #14279B;
+  border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover{
+  background: #3D56B2;
+  }
+  ::-webkit-scrollbar-track{
+  background: #E6E6E6;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 0px 0px #F0F0F0;
+  }

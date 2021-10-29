@@ -27,7 +27,6 @@ export const UserProvider = ({ children }) => {
         .then(result => {
           setUser(result.data.user);
           setIsUserLoading(false);
-          console.log(user);
         })
         .catch(err => {
           console.log(err);
