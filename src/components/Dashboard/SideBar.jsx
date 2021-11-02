@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../../styles/Dashboard/SideBar.scss';
 
 const SideBar = () => {
-  const [prev, setprev] = useState(null);
-  useEffect(() => {
-    setprev(document.getElementsByClassName('active'));
-  }, []);
-  const onclick = e => {
-    if (prev.target) {
-      prev.target.className = '';
-    } else {
-      prev[0].className = '';
-    }
-    e.target.className = 'active';
-    setprev(e);
-  };
+  // const [prev, setprev] = useState(null);
+  // useEffect(() => {
+  //   setprev(document.getElementsByClassName('active'));
+  // }, []);
+  const location = useLocation();
+  console.log(location);
+
+  // const onclick = e => {
+  //   if (prev.target) {
+  //     prev.target.className = '';
+  //   } else {
+  //     prev[0].className = '';
+  //   }
+  //   e.target.className = 'active';
+  //   setprev(e);
+  // };
   return (
     <div className="sideContainer">
       <ul>
         <Link onClick={onclick} to="/">
-          <li className="active">
+          <li className={location.pathname === '/' ? 'active' : ''}>
             <svg
               width="40"
               height="40"
@@ -37,7 +40,7 @@ const SideBar = () => {
           </li>
         </Link>
         <Link aria-current="page" onClick={onclick} to="/LiveClass">
-          <li>
+          <li className={location.pathname === '/LiveClass' ? 'active' : ''}>
             <svg
               width="40"
               height="40"
@@ -58,7 +61,11 @@ const SideBar = () => {
           </li>
         </Link>
         <Link aria-current="page" onClick={onclick} to="/RecordedLectures">
-          <li>
+          <li
+            className={
+              location.pathname === '/RecordedLectures' ? 'active' : ''
+            }
+          >
             <svg
               width="40"
               height="40"
@@ -67,7 +74,11 @@ const SideBar = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M12.5 7.42188C11.4956 7.42188 10.5138 7.7197 9.67875 8.27769C8.84365 8.83568 8.19278 9.62878 7.80842 10.5567C7.42407 11.4846 7.32351 12.5056 7.51945 13.4907C7.71539 14.4758 8.19903 15.3806 8.90922 16.0908C9.61941 16.801 10.5242 17.2846 11.5093 17.4806C12.4944 17.6765 13.5154 17.5759 14.4433 17.1916C15.3712 16.8072 16.1643 16.1563 16.7223 15.3213C17.2803 14.4862 17.5781 13.5044 17.5781 12.5C17.5781 11.1532 17.0431 9.86156 16.0908 8.90922C15.1384 7.95689 13.8468 7.42188 12.5 7.42188V7.42188ZM12.5 13.6719C12.2682 13.6719 12.0417 13.6031 11.8489 13.4744C11.6562 13.3456 11.506 13.1626 11.4173 12.9485C11.3286 12.7343 11.3054 12.4987 11.3506 12.2714C11.3959 12.0441 11.5075 11.8352 11.6714 11.6714C11.8352 11.5075 12.0441 11.3959 12.2714 11.3506C12.4987 11.3054 12.7343 11.3286 12.9485 11.4173C13.1626 11.506 13.3456 11.6562 13.4744 11.8489C13.6031 12.0417 13.6719 12.2682 13.6719 12.5C13.6719 12.8108 13.5484 13.1089 13.3286 13.3286C13.1089 13.5484 12.8108 13.6719 12.5 13.6719ZM12.5 0.390625C5.81055 0.390625 0.390625 5.81055 0.390625 12.5C0.390625 19.1895 5.81055 24.6094 12.5 24.6094C19.1895 24.6094 24.6094 19.1895 24.6094 12.5C24.6094 5.81055 19.1895 0.390625 12.5 0.390625ZM12.5 18.75C11.2639 18.75 10.0555 18.3834 9.02769 17.6967C7.99988 17.0099 7.1988 16.0338 6.72575 14.8918C6.25271 13.7497 6.12893 12.4931 6.37009 11.2807C6.61125 10.0683 7.2065 8.95466 8.08058 8.08058C8.95466 7.2065 10.0683 6.61125 11.2807 6.37009C12.4931 6.12893 13.7497 6.25271 14.8918 6.72575C16.0338 7.1988 17.0099 7.99988 17.6967 9.02769C18.3834 10.0555 18.75 11.2639 18.75 12.5C18.75 14.1576 18.0915 15.7473 16.9194 16.9194C15.7473 18.0915 14.1576 18.75 12.5 18.75Z"
+                d="M20 30C25.5228 30 30 25.5228 30 20C30 14.4771 25.5228 10 20 10C14.4771 10 10 14.4771 10 20C10 25.5228 14.4771 30 20 30Z"
+                fill="#14279B"
+              />
+              <path
+                d="M20 3.33331C10.7952 3.33331 3.33331 10.7952 3.33331 20C3.33331 29.2046 10.7952 36.6666 20 36.6666C29.2046 36.6666 36.6666 29.2046 36.6666 20C36.6666 10.7952 29.2046 3.33331 20 3.33331ZM5.83331 20C5.83331 12.1759 12.1759 5.83331 20 5.83331C27.824 5.83331 34.1666 12.1759 34.1666 20C34.1666 27.824 27.824 34.1666 20 34.1666C12.1759 34.1666 5.83331 27.824 5.83331 20Z"
                 fill="#14279B"
               />
             </svg>
@@ -75,7 +86,7 @@ const SideBar = () => {
           </li>
         </Link>
         <Link aria-current="page" onClick={onclick} to="/Upload">
-          <li>
+          <li className={location.pathname === '/Upload' ? 'active' : ''}>
             <svg
               width="40"
               height="40"
@@ -84,32 +95,15 @@ const SideBar = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
-                stroke="#14279B"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M17 8L12 3L7 8"
-                stroke="#14279B"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M12 3V15"
-                stroke="#14279B"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                d="M8.75 5C8.05965 5 7.5 5.55965 7.5 6.25C7.5 6.94035 8.05965 7.5 8.75 7.5H31.25C31.9403 7.5 32.5 6.94035 32.5 6.25C32.5 5.55965 31.9403 5 31.25 5H8.75ZM20.8839 10.3661C20.3957 9.87795 19.6043 9.87795 19.1161 10.3661L10.3661 19.1161C9.87795 19.6043 9.87795 20.3957 10.3661 20.8839C10.8543 21.372 11.6457 21.372 12.1339 20.8839L18.75 14.2678V33.75C18.75 34.4403 19.3096 35 20 35C20.6904 35 21.25 34.4403 21.25 33.75V14.2678L27.866 20.8839C28.3543 21.372 29.1457 21.372 29.634 20.8839C30.122 20.3957 30.122 19.6043 29.634 19.1161L20.8839 10.3661Z"
+                fill="#14279B"
               />
             </svg>
             Upload
           </li>
         </Link>
         <Link aria-current="page" onClick={onclick} to="/Attendence">
-          <li>
+          <li className={location.pathname === '/Attendence' ? 'active' : ''}>
             <svg
               width="40"
               height="40"
@@ -126,7 +120,7 @@ const SideBar = () => {
           </li>
         </Link>
         <Link aria-current="page" onClick={onclick} to="/Assignments">
-          <li>
+          <li className={location.pathname === '/Assignments' ? 'active' : ''}>
             <svg
               width="40"
               height="40"
@@ -143,7 +137,9 @@ const SideBar = () => {
           </li>
         </Link>
         <Link aria-current="page" onClick={onclick} to="/StudyMaterial">
-          <li>
+          <li
+            className={location.pathname === '/StudyMaterial' ? 'active' : ''}
+          >
             <svg
               width="40"
               height="40"
@@ -160,7 +156,7 @@ const SideBar = () => {
           </li>
         </Link>
         <Link aria-current="page" onClick={onclick} to="/Doubts">
-          <li>
+          <li className={location.pathname === '/Doubts' ? 'active' : ''}>
             <svg
               width="40"
               height="40"
@@ -177,7 +173,7 @@ const SideBar = () => {
           </li>
         </Link>
         <Link aria-current="page" onClick={onclick} to="/TimeTable">
-          <li>
+          <li className={location.pathname === '/TimeTable' ? 'active' : ''}>
             <svg
               width="40"
               height="40"

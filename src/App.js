@@ -6,6 +6,7 @@ import { ProfileProvider } from './context/profile.context';
 import PublicRoute from './components/Routehandler/PublicRoute';
 import PrivateRoute from './components/Routehandler/PrivateRoute';
 import { ThemeProvider } from 'styled-components';
+import NotFound from './components/Dashboard/NotFound';
 
 const theme = {
   primary: '#E6E6E6',
@@ -31,7 +32,6 @@ function App() {
             <Dashboard />
           </PrivateRoute>
         </ThemeProvider>
-        <Route>Page not found</Route>
       </Switch>
     </ProfileProvider>
   );

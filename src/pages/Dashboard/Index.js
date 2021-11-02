@@ -14,32 +14,37 @@ import TimeTable from '../../components/Dashboard/TimeTable/TimeTable';
 import { UserProvider } from '../../context/User.context';
 import Recorded from '../../components/Dashboard/Recorded/Recorded';
 import Upload from '../../components/Dashboard/Upload/Upload';
+import Player from '../../components/Dashboard/Recorded/Player';
+import NotFound from '../../components/Dashboard/NotFound';
 
 const Dashboard = () => {
-  const path =
-    '/(|Profile|LiveClass|RecordedLectures|Upload|Attendence|Assignments|StudyMaterial|Doubts|TimeTable)/';
+  // const path =
+  //   '/(|Profile|LiveClass|RecordedLectures||Upload|Attendence|Assignments|StudyMaterial|Doubts|TimeTable)/';
   return (
     <div>
       <BrowserRouter basename="dashboard">
         <UserProvider>
-          <Route exact path={path}>
-            <TopBar />
-          </Route>
+          <TopBar />
           <div className="bottomContainer">
-            <Route exact path={path}>
-              <SideBar />
-            </Route>
+            <SideBar />
             <Switch>
               <Route exact path="/" component={Profile} />
               <Route exact path="/liveClass" component={LiveClass} />
               <Route exact path="/RecordedLectures" component={Recorded} />
+              <Route
+                exact
+                path="/RecordedLectures/:videoId"
+                component={Player}
+              />
               <Route exact path="/Upload" component={Upload} />
               <Route exact path="/Attendence" component={Attendence} />
               <Route exact path="/Assignments" component={Assignments} />
               <Route exact path="/StudyMaterial" component={StudyMaterial} />
               <Route exact path="/Doubts" component={Doubts} />
-              <Route exact path="/TimeTable" component={TimeTable} />
-              <Route>Not Found</Route>
+              <Route exact path="/TimeTable" component={TimeTable} />{' '}
+              <Route>
+                <NotFound />
+              </Route>
             </Switch>
           </div>
         </UserProvider>
