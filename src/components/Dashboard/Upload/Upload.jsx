@@ -90,7 +90,7 @@ const Upload = () => {
         /></div>
         <div className="progress">
           <div
-            className="progress-bar bg-success"
+            className="progress-bar"
             role="progressbar"
             style={{ width: `${state.loaded}%` }}
             aria-valuenow={state.loaded}
@@ -100,7 +100,7 @@ const Upload = () => {
           {state.loaded}% Uploaded
           <button
             type="button"
-            className="btn btn-success btn-block"
+            // className="btn btn-success btn-block"
             onClick={e => fileUploadHandler(e)}
           >
             Upload Video

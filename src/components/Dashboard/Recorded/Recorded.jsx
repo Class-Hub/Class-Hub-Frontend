@@ -2,9 +2,11 @@ import axios from 'axios';
 import '../../../styles/Dashboard/Recorded.scss';
 import React, { useEffect, useState } from 'react';
 import Video from './Video';
+import { Link } from 'react-router-dom';
 
 const Recorded = () => {
   const [videos, setVideos] = useState(null);
+
   useEffect(() => {
     axios
       .get('/videoList')
@@ -19,7 +21,12 @@ const Recorded = () => {
       <h3>Recorded Lectures</h3>
       <hr />
       <div className="allVideo">
-        {videos && videos.map(video => <Video key={video._id} video={video} />)}
+        {videos &&
+          videos.map(video => (
+            <Link to={`RecordedLectures/${video.upload_title}`}>
+              <Video key={video._id} video={video} />
+            </Link>
+          ))}
       </div>
     </div>
   );
