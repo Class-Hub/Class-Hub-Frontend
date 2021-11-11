@@ -1,0 +1,33 @@
+@import '../constants.scss';
+
+.LiveContainer {
+  width: 100%;
+  padding: 20px;
+  height: 100%;
+  .liveclasses {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .tlive {
+      background-color: $primary;
+      width: 18vw;
+      margin: 0.4rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      text-align: center;
+      button {
+        background-color: $accent2;
+        border: none;
+        padding: 0.5rem;
+        border-radius: 5px;
+        color: $primary;
+      }
+      &:hover {
+        box-shadow: 20px 20px 40px #b1b1b1, -20px -20px 40px #ffffffb0;
+        transform: translateZ(10px) scale(1.05);
+        transition: all 0.5s ease-in-out;
+      }
+    }
+  }
+}

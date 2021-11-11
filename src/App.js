@@ -6,7 +6,7 @@ import { ProfileProvider } from './context/profile.context';
 import PublicRoute from './components/Routehandler/PublicRoute';
 import PrivateRoute from './components/Routehandler/PrivateRoute';
 import { ThemeProvider } from 'styled-components';
-import NotFound from './components/Dashboard/NotFound';
+import TheClass from './components/Dashboard/LiveClass/TheClass';
 
 const theme = {
   primary: '#E6E6E6',
