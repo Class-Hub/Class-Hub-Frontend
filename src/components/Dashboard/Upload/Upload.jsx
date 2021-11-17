@@ -79,7 +79,6 @@ const Upload = () => {
       <h4>Upload Video</h4>
       <hr />
       <div id="uploadForm">
-        {/* <label>Upload Your Lecture Here</label> */}
         <div className="inputDiv">
         <input
           type="file"
