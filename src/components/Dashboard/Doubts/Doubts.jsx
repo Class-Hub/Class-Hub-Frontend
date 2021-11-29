@@ -22,39 +22,51 @@ const Doubts = () => {
   };
 
   useEffect(() => {
-    axios.get(`/conversation/getTeachers/${user?._id}`).then(response => {
-      console.log('ujjwal teachers', response);
-      setTeachers(response.data.data);
-    });
-
-    axios
-      .post('/conversation/getAllConversation', {}, config)
-      .then(response => {
-        console.log('ujjwal all id ', response.data.conversations);
-        setAllConversationId(response.data.conversations);
-      });
+    if (!!user) {
+      axios
+        .get(
+          `/conversation/${
+            user?.role === 'admin' ? 'getStudents' : 'getTeachers'
+          }/${user?._id}`,
+          config
+        )
+        .then(response => {
+          setTeachers(response.data.data);
+        });
+      axios
+        .post('/conversation/getAllConversation', {}, config)
+        .then(response => {
+          setAllConversationId(response.data.conversations);
+        });
+    }
   }, [user?._id]);
 
   const openChat = async (receiverId, roomConversationId) => {
     setChatLog([]);
-    await axios.get(`/conversation/getTeachers/${user?._id}`).then(response => {
-      setTeachers(response.data.data);
-    });
-    console.log('ujjwal open chat', conversationId);
-    if (
-      (!!allConversationId.length &&
-        allConversationId?.includes(roomConversationId)) ||
-      roomConversationId === ''
-    ) {
+    axios
+      .get(
+        `/conversation/${
+          user?.role === 'admin' ? 'getStudents' : 'getTeachers'
+        }/${user?._id}`
+      )
+      .then(response => {
+        setTeachers(response.data.data);
+      });
+
+    if (roomConversationId === '') {
       const myData = {
         senderId: user._id,
         receiverId,
       };
       const response = await axios.post('/conversation', myData, config);
       setConversationId(response.data._id);
-      console.log('ujjwal coversationId', response.data);
       const allChat = await axios.get(`/message/${response?.data._id}`, config);
-      console.log('ujjwal chat log', allChat.data);
+      setChatLog(allChat.data);
+    }
+
+    if (allConversationId?.includes(roomConversationId)) {
+      const allChat = await axios.get(`/message/${roomConversationId}`, config);
+      setConversationId(roomConversationId);
       setChatLog(allChat.data);
     }
   };
@@ -69,34 +81,33 @@ const Doubts = () => {
   //   getConvertion();
   // }, [chatLog, conversationId]);
 
+  console.log('ujjwal current cov', conversationId);
   const submitMessage = async e => {
     e.preventDefault();
-    console.log('ujjwal input', msg);
+
     const myData = {
       conversationId,
       sender: user._id,
       text: msg,
     };
     const messageArr = await axios.post('/message', myData, config);
-    console.log('ujjwal onsubmit', messageArr.data);
+
     setMsg('');
     const allChat = await axios.get(`/message/${conversationId}`, config);
-    console.log('ujjwal chat log', allChat.data);
     setChatLog(allChat.data);
   };
 
-  console.log('ujjwal setChatlog', chatLog, teachers);
   return (
     <div className="wrapper">
       <div className="doubtsContainer">
         <ul className="teacherList">
-          {teachers?.map(teacher => {
-            console.log('ujjwal teach', teacher.teacher);
+          {teachers?.map((teacher, index) => {
             return (
               <Link
+                key={index}
                 onClick={() => {
                   setCurrentTeacher(teacher);
-                  openChat(teacher?.teacher?._id, user?._id);
+                  openChat(teacher?.teacher?._id, teacher?.convoId);
                 }}
                 to="/Doubts"
               >
@@ -112,19 +123,19 @@ const Doubts = () => {
           })}
         </ul>
         <div className="theChat">
-          <div className="top">{currentTeacher?.name}</div>
+          <div className="top">{currentTeacher?.teacher.name}</div>
           <div className="mid">
-            {chatLog?.map(log => {
+            {chatLog?.map((log, index) => {
               if (log.sender !== user._id) {
                 return (
-                  <div className="chat">
+                  <div key={index} className="chat">
                     <img src={profile} alt="teachersimage" />
                     <p className="message">{log.text}</p>
                   </div>
                 );
               }
               return (
-                <div className="chat studentMessage">
+                <div key={index} className="chat studentMessage">
                   <img src={profile} alt="teachersimage" />
                   <p className="message">{log.text}</p>
                 </div>

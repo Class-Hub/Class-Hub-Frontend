@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './../../styles/Dashboard/Register.scss';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Register = e => {
   const [register, setRegister] = useState({
@@ -97,14 +98,17 @@ const Register = e => {
 
     if (register.role === 'admin') {
       const response = await axios.post('/teacherRegister', myData, config);
+      toast.success('Teacher Registered');
     } else {
       const response = await axios.post('/register', myData, config);
+      toast.success('Student Registered');
     }
   };
 
   console.log('ujjwal sunjects', subject);
   return (
     <div class="form_wrapper">
+      <ToastContainer />
       <div class="form_container">
         <div class="title_container">
           <h2>Responsive Registration Form</h2>
