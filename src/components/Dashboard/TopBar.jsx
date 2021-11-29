@@ -29,7 +29,7 @@ const TopBar = () => {
 
       <div className="right">
         <img
-          src={user ? user.photo : profile}
+          src={!!user?.photo ? user.photo : profile}
           alt="logo"
           width="40px"
           height="40px"

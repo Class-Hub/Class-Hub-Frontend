@@ -10,8 +10,10 @@ const Upload = () => {
   const [state, setState] = useState({
     selectedVideos: null,
     loaded: 0,
+    subName: '',
   });
 
+  console.log('ujjwal user', user);
   const maxSelectFile = event => {
     let files = event.target.files;
     if (files.length > 1) {
@@ -21,15 +23,15 @@ const Upload = () => {
     } else {
       let err = '';
       for (let i = 0; i < files.length; i++) {
-        if (files[i].size > 524288000) {
-          // 50 MB
+        if (files[i].size > 15242880000) {
+          // 1.5 GB
           err += files[i].name + ', ';
         }
       }
       if (err !== '') {
         // error caught
         event.target.value = null;
-        toast.error(err + ' is/are too large. Please select file size < 50Mb');
+        toast.error(err + ' is/are too large. Please select file size < 1.5Gb');
       }
     }
     return true;
@@ -39,14 +41,23 @@ const Upload = () => {
     const files = event.target.files;
     if (maxSelectFile(event)) {
       setState({
+        ...state,
         selectedVideos: files,
         loaded: 0,
       });
     }
   };
 
-  const fileUploadHandler = event => {
+  const fileUploadHandler = e => {
+    e.preventDefault();
+    console.log('ujjwal vide', state.selectedVideos);
+    if (!state.selectedVideos) {
+      alert('Please Uplaod the Video');
+      return;
+    }
+
     const data = new FormData();
+    console.log('ujjwal subname', state.subName);
     for (let i = 0; i < state.selectedVideos.length; i++) {
       data.append('file', state.selectedVideos[i]);
     }
@@ -56,6 +67,7 @@ const Upload = () => {
         headers: {
           'Content-Type': 'application/json',
           uploader_name: user.name,
+          subName: state.subName,
           Authorization: 'Bearer ' + localStorage.getItem('classHub'),
         },
         onUploadProgress: ProgressEvent => {
@@ -73,20 +85,41 @@ const Upload = () => {
       });
   };
 
+  console.log('ujjwal subName', state.subName);
   return (
     <div className="uploadContainer">
       <ToastContainer />
       <h4>Upload Video</h4>
       <hr />
       <div id="uploadForm">
+        <div>
+          {user?.role === 'admin' &&
+            user?.teachingSubs.map(subject => {
+              return (
+                <>
+                  <input
+                    type="radio"
+                    name="subjects"
+                    value={subject.subName}
+                    onChange={e =>
+                      setState({ ...state, subName: e.target.value })
+                    }
+                  />
+                  {subject.subName}
+                </>
+              );
+            })}
+        </div>
         <div className="inputDiv">
-        <input
-          type="file"
-          name="file"
-          multiple="multiple"
-          accept="video/*"
-          onChange={e => fileChangeHandler(e)}
-        /></div>
+          <input
+            type="file"
+            name="file"
+            multiple="multiple"
+            accept="video/*"
+            onChange={e => fileChangeHandler(e)}
+          />
+        </div>
+
         <div className="progress">
           <div
             className="progress-bar"

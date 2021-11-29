@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
       },
     };
 
-    if (token && user === null) {
+    if (token) {
       await axios
         .get('/student', config)
         .then(result => {
@@ -35,14 +35,14 @@ export const UserProvider = ({ children }) => {
     } else {
       setIsUserLoading(false);
     }
-  }, [user]);
+  }, []);
 
   useEffect(() => {
     loadUser();
   }, [loadUser]);
 
   return (
-    <UserContext.Provider value={{ user, isUserLoading }}>
+    <UserContext.Provider value={{ user, isUserLoading, setUser, loadUser }}>
       {children}
     </UserContext.Provider>
   );

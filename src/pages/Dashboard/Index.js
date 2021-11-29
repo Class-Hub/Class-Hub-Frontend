@@ -17,11 +17,12 @@ import Recorded from '../../components/Dashboard/Recorded/Recorded';
 import Upload from '../../components/Dashboard/Upload/Upload';
 import Player from '../../components/Dashboard/Recorded/Player';
 import NotFound from '../../components/Dashboard/NotFound';
+import Register from '../../components/Dashboard/Register';
 
 const Dashboard = () => {
   const path =
-    '/(|Profile|LiveClass|RecordedLectures|Upload|Attendence|Assignments|StudyMaterial|Doubts|TimeTable)/';
-  
+    '/(|Profile|LiveClass|RecordedLectures|Upload|Attendence|Assignments|StudyMaterial|Doubts|TimeTable|register)/';
+
   return (
     <div>
       <BrowserRouter basename="dashboard">
@@ -45,6 +46,7 @@ const Dashboard = () => {
               <Route exact path="/StudyMaterial" component={StudyMaterial} />
               <Route exact path="/Doubts" component={Doubts} />
               <Route exact path="/TimeTable" component={TimeTable} />
+              <Route exact path="/register" component={Register} />
               <Route>
                 <NotFound />
               </Route>
