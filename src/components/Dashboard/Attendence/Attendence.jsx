@@ -11,7 +11,7 @@ const Attendence = () => {
     loadUser();
   }, []);
 
-  console.log('ujjwal', user);
+  // console.log('ujjwal', user);
 
   const submitAttendance = async subjectId => {
     const token = localStorage.getItem('classHub');

@@ -18,6 +18,7 @@ import Upload from '../../components/Dashboard/Upload/Upload';
 import Player from '../../components/Dashboard/Recorded/Player';
 import NotFound from '../../components/Dashboard/NotFound';
 import Register from '../../components/Dashboard/Register';
+import ClassRoom from '../../components/Dashboard/Assignments/ClassRoom';
 
 const Dashboard = () => {
   const path =
@@ -43,6 +44,7 @@ const Dashboard = () => {
               <Route exact path="/Upload" component={Upload} />
               <Route exact path="/Attendence" component={Attendence} />
               <Route exact path="/Assignments" component={Assignments} />
+              <Route exact path="/Assignments/:classId" component={ClassRoom} />
               <Route exact path="/StudyMaterial" component={StudyMaterial} />
               <Route exact path="/Doubts" component={Doubts} />
               <Route exact path="/TimeTable" component={TimeTable} />

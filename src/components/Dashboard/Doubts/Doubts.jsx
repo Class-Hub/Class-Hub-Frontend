@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+// import io from 'socket.io-client';
 import '../../../styles/Dashboard/Doubts.scss';
 import profile from '../../../assets/Profile.png';
 import axios from 'axios';
 import { useUser } from '../../../context/User.context';
 
+
+// const socket = io.connect('http://localhost:8000');
 const Doubts = () => {
   const location = useLocation();
   const [teachers, setTeachers] = useState();
@@ -20,6 +23,13 @@ const Doubts = () => {
       Authorization: 'Bearer ' + token,
     },
   };
+  // useEffect(() => {
+  //   socket.on('getUsers', data => {
+  //     console.log(data);
+  //   });
+    
+  //   socket.emit("sendMessage")
+  // }, []);
 
   useEffect(() => {
     if (!!user) {
@@ -81,7 +91,7 @@ const Doubts = () => {
   //   getConvertion();
   // }, [chatLog, conversationId]);
 
-  console.log('ujjwal current cov', conversationId);
+  // console.log('ujjwal current cov', conversationId);
   const submitMessage = async e => {
     e.preventDefault();
 
@@ -107,6 +117,7 @@ const Doubts = () => {
                 key={index}
                 onClick={() => {
                   setCurrentTeacher(teacher);
+                  // socket.emit('addUser', user?._id);
                   openChat(teacher?.teacher?._id, teacher?.convoId);
                 }}
                 to="/Doubts"

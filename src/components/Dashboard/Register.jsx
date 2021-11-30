@@ -94,7 +94,7 @@ const Register = e => {
       subName: Object.values(subject),
     };
 
-    console.log('ujjwal myData', myData);
+    // console.log('ujjwal myData', myData);
 
     if (register.role === 'admin') {
       const response = await axios.post('/teacherRegister', myData, config);
@@ -105,7 +105,7 @@ const Register = e => {
     }
   };
 
-  console.log('ujjwal sunjects', subject);
+  // console.log('ujjwal sunjects', subject);
   return (
     <div class="form_wrapper">
       <ToastContainer />

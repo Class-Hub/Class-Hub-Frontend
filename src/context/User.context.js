@@ -25,6 +25,7 @@ export const UserProvider = ({ children }) => {
       await axios
         .get('/student', config)
         .then(result => {
+          // console.log(result.data.user);
           setUser(result.data.user);
           setIsUserLoading(false);
         })

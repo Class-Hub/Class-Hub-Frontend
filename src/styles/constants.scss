@@ -11,19 +11,54 @@ $font_secondary: #150e56;
   height: calc(100vh - 65px);
   width: calc(100vw - 250px);
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 6px;
   height: 6px;
-  }
-  ::-webkit-scrollbar-thumb{
-  background: #14279B;
+}
+::-webkit-scrollbar-thumb {
+  background: #14279b;
   border-radius: 5px;
-  }
-  ::-webkit-scrollbar-thumb:hover{
-  background: #3D56B2;
-  }
-  ::-webkit-scrollbar-track{
-  background: #E6E6E6;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3d56b2;
+}
+::-webkit-scrollbar-track {
+  background: #e6e6e6;
   border-radius: 5px;
-  box-shadow: inset 0px 0px 0px 0px #F0F0F0;
+  box-shadow: inset 0px 0px 0px 0px #f0f0f0;
+}
+
+.modal-Heading {
+  display: flex;
+  justify-content: space-between;
+
+  svg {
+    &:hover {
+      cursor: pointer;
+    }
   }
+}
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  label {
+    margin: 5px;
+  }
+  input {
+    border-radius: 3px;
+    border: 1px solid black;
+  }
+  textarea {
+    border-radius: 3px;
+    border: 1px solid black;
+  }
+}
+.updateorCreate {
+  border: none;
+  background-color: $secondary;
+  padding: 5px;
+  margin-top: 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: $primary;
+}

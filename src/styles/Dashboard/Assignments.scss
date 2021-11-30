@@ -1,0 +1,48 @@
+@import '../constants.scss';
+
+.assignmentsContainer {
+  width: 100%;
+  padding: 20px;
+  height: 100%;
+  h4 {
+    display: flex;
+    justify-content: space-between;
+    svg {
+      cursor: pointer;
+      border-radius: 50%;
+      &:hover {
+        background-color: $primary;
+      }
+    }
+  }
+
+  .allsubjects {
+    // background-color: blue;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .subjectCard {
+      background-color: $secondary;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 300px;
+      a {
+        color: $primary;
+
+        &:hover {
+          color: $font_secondary;
+        }
+      }
+      svg {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+

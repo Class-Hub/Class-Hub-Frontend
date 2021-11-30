@@ -8,7 +8,7 @@ const SideBar = () => {
   //   setprev(document.getElementsByClassName('active'));
   // }, []);
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   // const onclick = e => {
   //   if (prev.target) {

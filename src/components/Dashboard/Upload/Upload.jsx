@@ -13,7 +13,7 @@ const Upload = () => {
     subName: '',
   });
 
-  console.log('ujjwal user', user);
+  // console.log('ujjwal user', user);
   const maxSelectFile = event => {
     let files = event.target.files;
     if (files.length > 1) {
@@ -50,14 +50,14 @@ const Upload = () => {
 
   const fileUploadHandler = e => {
     e.preventDefault();
-    console.log('ujjwal vide', state.selectedVideos);
+    // console.log('ujjwal vide', state.selectedVideos);
     if (!state.selectedVideos) {
       alert('Please Uplaod the Video');
       return;
     }
 
     const data = new FormData();
-    console.log('ujjwal subname', state.subName);
+    // console.log('ujjwal subname', state.subName);
     for (let i = 0; i < state.selectedVideos.length; i++) {
       data.append('file', state.selectedVideos[i]);
     }
@@ -85,7 +85,7 @@ const Upload = () => {
       });
   };
 
-  console.log('ujjwal subName', state.subName);
+  // console.log('ujjwal subName', state.subName);
   return (
     <div className="uploadContainer">
       <ToastContainer />
