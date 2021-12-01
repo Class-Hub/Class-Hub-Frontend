@@ -1,12 +1,11 @@
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { Switch } from 'react-router';
 import LandingPage from './pages/LandingPage/Index';
 import Dashboard from './pages/Dashboard/Index';
 import { ProfileProvider } from './context/profile.context';
 import PublicRoute from './components/Routehandler/PublicRoute';
 import PrivateRoute from './components/Routehandler/PrivateRoute';
 import { ThemeProvider } from 'styled-components';
-import TheClass from './components/Dashboard/LiveClass/TheClass';
 
 const theme = {
   primary: '#E6E6E6',

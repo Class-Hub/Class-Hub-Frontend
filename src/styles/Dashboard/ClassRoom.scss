@@ -1,11 +1,69 @@
 @import '../constants.scss';
 
-.classBanner {
-  background-color: blue;
-  height: 10rem;
-  margin: 20px;
-  border-radius: 10px;
-  padding: 10px;
-  background-image: url('../../assets/backimage.png');
-  background-size: cover;
+.classroombox {
+  padding: 20px;
+
+  .classBanner {
+    background-color: blue;
+    height: 10rem;
+    border-radius: 10px;
+    padding: 10px;
+    background-image: url('../../assets/backimage.png');
+    background-size: cover;
+  }
+
+  .classroomOptions {
+    background-color: $secondary;
+    margin: 20px;
+    border-radius: 30px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-evenly;
+    li {
+      width: 50%;
+      font-size: 1.1rem;
+      text-align: center;
+      border-radius: 20px;
+      padding: 5px;
+      color: $primary;
+      cursor: pointer;
+    }
+    .active {
+      background-color: $accent1;
+    }
+  }
+
+  .studentsBottom {
+    h6 {
+      text-decoration: underline;
+      padding-right: 2rem;
+      text-align: end;
+      cursor: pointer;
+    }
+    .student {
+      padding: 10px;
+      display: flex;
+      border-radius: 10px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      button {
+        border: none;
+        visibility: hidden;
+        background-color: $accent2;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 1rem;
+        color: $primary;
+      }
+      &:hover {
+        background-color: $primary;
+        button {
+          visibility: visible;
+        }
+      }
+    }
+  }
 }

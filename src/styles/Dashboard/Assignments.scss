@@ -46,3 +46,37 @@
   }
 }
 
+.modal-Heading {
+  display: flex;
+  justify-content: space-between;
+
+  svg {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  label {
+    margin: 5px;
+  }
+  input {
+    border-radius: 3px;
+    border: 1px solid black;
+  }
+  textarea {
+    border-radius: 3px;
+    border: 1px solid black;
+  }
+}
+.updateorCreate {
+  border: none;
+  background-color: $secondary;
+  padding: 5px;
+  margin-top: 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: $primary;
+}

@@ -13,7 +13,7 @@ const Assignments = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  // console.log(user._id)
+  console.log(user)
 
   const getClasses = () => {
     axios
@@ -66,22 +66,22 @@ const Assignments = () => {
               <path
                 d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
                 stroke="#14279B"
-                stroke-width="2"
-                stroke-linecap="round"
+                strokeWidth="2"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M12 8V16"
                 stroke="#14279B"
-                stroke-width="2"
-                stroke-linecap="round"
+                strokeWidth="2"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M8 12H16"
                 stroke="#14279B"
-                stroke-width="2"
-                stroke-linecap="round"
+                strokeWidth="2"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
@@ -92,7 +92,7 @@ const Assignments = () => {
         <div className="allsubjects">
           {classrooms &&
             classrooms.map(element => (
-              <Subjectcard element={element} getClasses={getClasses} />
+              <Subjectcard key={element.code} element={element} getClasses={getClasses} />
             ))}
         </div>
       </div>
@@ -131,16 +131,16 @@ const Assignments = () => {
             <path
               d="M18.3745 6.42627L6.3745 18.4263"
               stroke="#393939"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M6.3745 6.42627L18.3745 18.4263"
               stroke="#393939"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </h4>
