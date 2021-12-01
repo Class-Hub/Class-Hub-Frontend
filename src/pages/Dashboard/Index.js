@@ -19,6 +19,7 @@ import Player from '../../components/Dashboard/Recorded/Player';
 import NotFound from '../../components/Dashboard/NotFound';
 import Register from '../../components/Dashboard/Register';
 import ClassRoom from '../../components/Dashboard/Assignments/ClassRoom';
+import ClassWork from '../../components/Dashboard/Assignments/ClassWork';
 
 const Dashboard = () => {
   const path =
@@ -45,6 +46,7 @@ const Dashboard = () => {
               <Route exact path="/Attendence" component={Attendence} />
               <Route exact path="/Assignments" component={Assignments} />
               <Route exact path="/Assignments/:classId" component={ClassRoom} />
+              <Route exact path="/Assignments/:classId/:classWork" component={ClassWork} />
               <Route exact path="/StudyMaterial" component={StudyMaterial} />
               <Route exact path="/Doubts" component={Doubts} />
               <Route exact path="/TimeTable" component={TimeTable} />

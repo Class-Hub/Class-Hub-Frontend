@@ -1,0 +1,58 @@
+@import '../constants.scss';
+
+.workContainer {
+  padding: 20px;
+  .top {
+    display: flex;
+    flex-direction: row;
+    h4 {
+      width: 90%;
+    }
+    svg {
+      margin: 0 5px 0 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .giveAnswer{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+// background-color: burlywood;
+textarea{
+    width: 85%;
+    border: none;
+    background-color: $primary;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+}      button {
+    border: none;
+    background-color: $accent2;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: $primary;
+  }
+  }
+  .answers {
+    display: flex;
+    flex-direction: row;
+    background-color: $primary;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+    .content {
+      margin-left: 5px;
+      h6 {
+        color: $accent1;
+      }
+      p {
+        color: $font_primary;
+      }
+    }
+  }
+}

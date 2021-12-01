@@ -6,14 +6,21 @@ import '../../../styles/Dashboard/ClassRoom.scss';
 import Member from './Member';
 import Modal from 'react-modal';
 import { useUser } from '../../../context/User.context';
+import profile from '../../../assets/Profile.png';
+import moment from 'moment';
 
 const ClassRoom = () => {
   const { user } = useUser();
   const { classId } = useParams();
   const [currClass, setCurrClass] = useState(null);
+  const [currClassWork, setCurrClassWork] = useState(null);
   const [studentsList, setStudentsList] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [emailOfStudent, setEmailOfStudent] = useState('');
+  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState('');
+  const [inputDeadline, setInputDealine] = useState('');
+  const [inputType, setInputType] = useState('long answer');
   const [currentSection, setCurrentSection] = useState(false);
 
   const fetchCurrentClassDetails = useCallback(async () => {
@@ -26,9 +33,21 @@ const ClassRoom = () => {
       })
       .catch(err => console.log(err));
   }, [classId]);
+
+  const fetchCurrentClassWork = useCallback(async () => {
+    await axios
+      .get(`/classwork/class/get/${classId}`)
+      .then(response => {
+        setCurrClassWork(response.data);
+        // console.log(response.data);
+      })
+      .catch(err => console.log(err));
+  }, [classId]);
+
   useEffect(() => {
     fetchCurrentClassDetails();
-  }, [fetchCurrentClassDetails]);
+    fetchCurrentClassWork();
+  }, [fetchCurrentClassDetails, fetchCurrentClassWork]);
 
   const AddStudent = async () => {
     await axios
@@ -37,10 +56,26 @@ const ClassRoom = () => {
         studentEmail: emailOfStudent,
       })
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch(err => console.log(err));
     fetchCurrentClassDetails();
+    setModalIsOpen(false);
+  };
+  const createWork = async () => {
+    await axios
+      .post(`/classwork/create`, {
+        title: title,
+        description: description,
+        classId: classId,
+        type: inputType,
+        duedate: inputDeadline,
+      })
+      .then(response => {
+        // console.log(response.data);
+      })
+      .catch(err => console.log(err));
+    fetchCurrentClassWork();
     setModalIsOpen(false);
   };
 
@@ -124,7 +159,50 @@ const ClassRoom = () => {
         )}
 
         {/* Classwork section */}
-        {!currentSection && <div>bhart</div>}
+        {!currentSection && (
+          <div className="classworkBottom">
+            {user && user.role && user.role === 'admin' && (
+              <h6
+                onClick={() => {
+                  setModalIsOpen(true);
+                }}
+              >
+                Create Work
+              </h6>
+            )}
+
+            {currClassWork &&
+              currClassWork.map(a => {
+                console.log(a)
+                return (
+                  <Link key={a._id} to={`${classId}/${a._id}`}>
+                  <div className="work row" key={a._id}>
+                    <div className="col-1"> <img
+                      src={profile}
+                      alt="student"
+                      width="40px"
+                      height="40px"
+                    /></div>
+                   
+                    <div className="workmid col-9">
+                      <h3>{a.title}</h3>
+                      <p>
+                        Posted {moment(a.createdAt).fromNow()}
+                        {a.createdAt !== a.updatedAt ? (
+                          <span>(updated {moment(a.updatedAt).fromNow()})</span>
+                        ) : null}
+                        by {a.author.name}
+                      </p>
+                    </div>
+
+                    {a.duedate ? (
+                      <p className="col duedate">Due: {moment(a.duedate).fromNow()}</p>
+                    ) : null}
+                  </div></Link>
+                );
+              })}
+          </div>
+        )}
       </div>
       <Modal
         isOpen={modalIsOpen}
@@ -147,7 +225,8 @@ const ClassRoom = () => {
         }}
       >
         <h4 className="modal-Heading">
-          Add Student
+          {currentSection && <>Add Student</>}
+          {!currentSection && <>Create Work</>}
           <svg
             width="25"
             height="25"
@@ -176,20 +255,72 @@ const ClassRoom = () => {
         </h4>
         <hr />
         <div className="modalForm">
-          <label htmlFor="id">Id of the Student</label>
-          <input
-            type="email"
-            value={emailOfStudent}
-            name="id"
-            id="id"
-            onChange={e => {
-              setEmailOfStudent(e.target.value);
-            }}
-          />
+          {currentSection && (
+            <>
+              <label htmlFor="id">Id of the Student</label>{' '}
+              <input
+                type="email"
+                value={emailOfStudent}
+                name="id"
+                id="id"
+                onChange={e => {
+                  setEmailOfStudent(e.target.value);
+                }}
+              />
+            </>
+          )}
+          {!currentSection && (
+            <>
+              <label htmlFor="title">Title</label>
+              <input
+                type="text"
+                value={title}
+                name="title"
+                onChange={e => {
+                  setTitle(e.target.value);
+                }}
+              />
+              <label htmlFor="description">Description</label>
+              <textarea
+                name="description"
+                onChange={e => {
+                  setDescription(e.target.value);
+                }}
+                value={description}
+                cols="30"
+                rows="10"
+              />
+              <label htmlFor="type">Choose a car:</label>
+
+              <select
+                id="type"
+                onChange={e => {
+                  setInputType(e.target.value);
+                }}
+              >
+                <option value="long answer">long answer</option>
+                <option value="short answer">short answer</option>
+              </select>
+              <input
+                type="datetime-local"
+                className="form-control"
+                value={inputDeadline}
+                onChange={({ target: { value } }) => setInputDealine(value)}
+                min={new Date().toJSON().substr(0, 16)}
+              />
+            </>
+          )}
         </div>
-        <button onClick={AddStudent} className="updateorCreate">
-          Add
-        </button>
+        {currentSection && (
+          <button onClick={AddStudent} className="updateorCreate">
+            Add
+          </button>
+        )}
+        {!currentSection && (
+          <button onClick={createWork} className="updateorCreate">
+            Create
+          </button>
+        )}
       </Modal>
     </div>
   );

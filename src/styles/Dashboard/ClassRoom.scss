@@ -31,6 +31,7 @@
       cursor: pointer;
     }
     .active {
+      pointer-events: none;
       background-color: $accent1;
     }
   }
@@ -63,6 +64,31 @@
         button {
           visibility: visible;
         }
+      }
+    }
+  }
+  .classworkBottom {
+    h6 {
+      text-decoration: underline;
+      padding-right: 2rem;
+      text-align: end;
+      cursor: pointer;
+    }
+    .work {
+      padding: 10px 10px 5px 10px;
+      border-radius: 10px;
+      border: 2px solid $primary;
+      display: flex;
+      flex-direction: row;
+      &:hover {
+        background-color: $primary;
+        box-shadow: 6px 4px 11px -5px rgba(56, 56, 56, 0.58);
+        -webkit-box-shadow: 6px 4px 11px -5px rgba(56, 56, 56, 0.58);
+        -moz-box-shadow: 6px 4px 11px -5px rgba(56, 56, 56, 0.58);
+      }
+      .duedate {
+        color: red;
+        font-size: 1rem;
       }
     }
   }
