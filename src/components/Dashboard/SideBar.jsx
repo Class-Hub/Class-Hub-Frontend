@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../../styles/Dashboard/SideBar.scss';
 
@@ -8,7 +8,7 @@ const SideBar = () => {
   //   setprev(document.getElementsByClassName('active'));
   // }, []);
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   // const onclick = e => {
   //   if (prev.target) {
@@ -39,6 +39,25 @@ const SideBar = () => {
             Profile
           </li>
         </Link>
+
+        <Link onClick={onclick} to="/register">
+          <li className={location.pathname === '/register' ? 'active' : ''}>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 20C24.8325 20 28.75 16.0825 28.75 11.25C28.75 6.4175 24.8325 2.5 20 2.5C15.1675 2.5 11.25 6.4175 11.25 11.25C11.25 16.0825 15.1675 20 20 20ZM9.375 22.5C6.9587 22.5 4.99993 24.4587 5 26.8751L5.00001 27.5C5.00004 30.4919 6.9033 33.0217 9.60615 34.7417C12.3238 36.4712 16.0019 37.5 19.9999 37.5C23.9979 37.5 27.676 36.4712 30.3938 34.7417C33.0966 33.0217 35 30.4919 35 27.5V26.875C35 24.4587 33.0413 22.5 30.625 22.5H9.375Z"
+                fill="#14279B"
+              />
+            </svg>
+            Register
+          </li>
+        </Link>
+
         <Link aria-current="page" onClick={onclick} to="/LiveClass">
           <li className={location.pathname === '/LiveClass' ? 'active' : ''}>
             <svg

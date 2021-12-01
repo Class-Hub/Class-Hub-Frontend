@@ -1,0 +1,137 @@
+@import '../constants.scss';
+
+.classWrapper {
+  width: 100vw;
+  height: 100vh;
+  .top {
+    height: 7%;
+    background-color: $primary;
+    text-align: center;
+    padding: 10px;
+  }
+  .middle {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 83%;
+    background-color: #252525;
+    .personContainer{
+      margin: 5px;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: #8f7676;
+      width: 15rem;
+      height: 10rem;
+      position: relative;
+      h6{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+  .bottom {
+    height: 10%;
+    background-color: $primary;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .mic,
+    .cam,
+    .present,
+    .endcall,
+    .classChat {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 5px;
+      width: 45px;
+      height: 45px;
+      background-color: $secondary;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .endcall {
+      background-color: red;
+    }
+  }
+
+  #floatContainer {
+    display: none;
+    position: absolute;
+    bottom: 11%;
+    right: 3%;
+    width: 25%;
+    border-radius: 10px;
+    padding: 5px;
+    height: 80vh;
+    background-color: $primary;
+    .top {
+      display: flex;
+      align-items: center;
+      height: 5%;
+      border-radius: 10px 10px 0 0;
+      justify-content: space-between;
+      button {
+        background-color: none;
+        border: none;
+        border-radius: 50%;
+      }
+    }
+    .mid {
+      height: 85%;
+      border-radius: 10px 10px 0 0;
+      padding: 5px;
+      background-color: $primary;
+      overflow-y: scroll;
+      .message1 {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        align-items: center;
+        min-height: 10vh;
+        border-radius: 5px;
+        padding: 5px;
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 35px;
+          height: 35px;
+        }
+        .current {
+          position: absolute;
+          top: 0;
+          left: 40px;
+
+          h6,
+          p {
+            text-align: start;
+          }
+        }
+      }
+    }
+    .bottom {
+      height: 10%;
+      border-radius: 0 0 10px 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      input {
+        width: 85%;
+        border-radius: 10px;
+        padding: 5px;
+        border: none;
+        box-shadow: 20px 20px 60px #aaaaaa, -20px -20px 60px #aaaaaa;
+      }
+      button {
+        border: none;
+        background-color: transparent;
+      }
+    }
+  }
+}

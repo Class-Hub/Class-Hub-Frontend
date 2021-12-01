@@ -10,12 +10,12 @@ const useLogin = () => {
     setIsLoading(true);
     setMessage(' ');
     try {
-      console.log(email, password);
+      // console.log(email, password);
       const response = await axios.post('/login', {
         email: email,
         password: password,
       });
-      console.log(response.data.token);
+      // console.log(response.data.token);
       if (response.status === 200) {
         localStorage.setItem('classHub', response.data.token);
         setMessage('Successful');

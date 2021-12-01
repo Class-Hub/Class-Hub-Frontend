@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Player = () => {
   const { videoId } = useParams();
-  console.log(videoId);
+  // console.log(videoId);
   return (
     <div className="wrapper">
       <Link to={`/RecordedLectures`}>
@@ -23,14 +23,14 @@ const Player = () => {
             stroke="#14279B"
             stroke-width="2"
             stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           />
           <path
             d="M20 31.6666L8.33333 20L20 8.33331"
             stroke="#14279B"
             stroke-width="2"
             stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           />
         </svg>
         Go Back
