@@ -14,7 +14,7 @@ const Member = ({ a, remove, setStudentsList}) => {
         },
       })
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         setStudentsList(response.data.students);
       })
       .catch(err => console.log(err));
@@ -22,7 +22,7 @@ const Member = ({ a, remove, setStudentsList}) => {
 
   return (
     <div className="student">
-      <img src={profile} alt="student" width="40px" height="40px" />
+      <img src={a.photo || profile} alt="student" width="40px" height="40px" />
       <h5>{a.name}</h5>
       <h6>{a.email}</h6>
       {remove && <button onClick={removeStudent}>Remove</button>}

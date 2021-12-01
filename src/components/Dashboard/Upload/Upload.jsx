@@ -13,7 +13,6 @@ const Upload = () => {
     subName: '',
   });
 
-  // console.log('ujjwal user', user);
   const maxSelectFile = event => {
     let files = event.target.files;
     if (files.length > 1) {
