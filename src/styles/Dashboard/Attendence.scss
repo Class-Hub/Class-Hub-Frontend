@@ -10,14 +10,14 @@
     flex-direction: row;
     flex-wrap: wrap;
     .subjectCard {
-      margin: 10px;
       width: 17vw;
+      margin: 10px;
       padding: 10px;
+      height: auto;
+      border-radius: 15px;
       background-color: $primary;
       color: $accent1;
-      height: auto;
       display: flex;
-      border-radius: 15px;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -41,7 +41,28 @@
         }
       }
     }
+    .subCardsAttendence {
+      background-color: $accent1;
+      margin: 10px;
+      padding: 10px;
+      height: auto;
+      color: $primary;
+      border-radius: 10px;
+      svg {
+        margin: 4px;
+      }
+      &:hover {
+        svg {
+          background-color: $secondary;
+          border-radius: 50%;
+          path {
+            stroke: $primary;
+          }
+        }
+      }
+    }
   }
+
   .subjectsContainer {
     // width: 100%;
     margin-bottom: 20px;

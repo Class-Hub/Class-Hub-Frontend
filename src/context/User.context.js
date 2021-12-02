@@ -15,15 +15,10 @@ export const UserProvider = ({ children }) => {
 
   const loadUser = useCallback(async () => {
     const token = localStorage.getItem('classHub');
-    const config = {
-      headers: {
-        Authorization: 'Bearer ' + token,
-      },
-    };
 
     if (token) {
       await axios
-        .get('/student', config)
+        .get('/student' )
         .then(result => {
           // console.log(result.data.user);
           setUser(result.data.user);

@@ -657,7 +657,7 @@ function SignIn() {
 
   return (
     <>
-      <div class="col-lg-6 col-12 d-flex align-items-center justify-content-around">
+      <div className="col-lg-6 col-12 d-flex align-items-center justify-content-around">
         <form onSubmit={handleLogin}>
           <div className="svgContainer">
             <div>

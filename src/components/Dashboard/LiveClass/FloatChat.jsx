@@ -17,15 +17,15 @@ const FloatChat = ({ close }) => {
             <path
               d="M18.3745 6.42627L6.3745 18.4263"
               stroke="#14279b"
-              stroke-width="2"
-              stroke-linecap="round"
+              strokeWidth="2"
+              strokeLinecap="round"
               strokeLinejoin="round"
             />
             <path
               d="M6.3745 6.42627L18.3745 18.4263"
               stroke="#14279b"
-              stroke-width="2"
-              stroke-linecap="round"
+              strokeWidth="2"
+              strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
@@ -53,15 +53,15 @@ const FloatChat = ({ close }) => {
             <path
               d="M22.9384 2.84363L11.9384 13.8436"
               stroke="#14279B"
-              stroke-width="2"
-              stroke-linecap="round"
+              strokeWidth="2"
+              strokeLinecap="round"
               strokeLinejoin="round"
             />
             <path
               d="M22.9384 2.84363L15.9384 22.8436L11.9384 13.8436L2.93842 9.84363L22.9384 2.84363Z"
               stroke="#14279B"
-              stroke-width="2"
-              stroke-linecap="round"
+              strokeWidth="2"
+              strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
