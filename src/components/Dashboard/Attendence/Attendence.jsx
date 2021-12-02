@@ -65,7 +65,7 @@ const Attendence = () => {
                         <input
                           type="radio"
                           onChange={() => submitAttendance(subject.sub)}
-                          disabled={subject.isActive}
+                          disabled={!subject.isActive}
                           defaultChecked={subject.isMarked}
                         />
                         <span className="checkmark"></span>
