@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import './../../styles/Dashboard/Register.scss';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -111,7 +111,7 @@ const Register = e => {
       <ToastContainer />
       <div className="form_container">
         <div className="title_container">
-          <h2>Responsive Registration Form</h2>
+          <h2>Registration Form</h2>
         </div>
         <div className="row clearfix">
           <div className="">
