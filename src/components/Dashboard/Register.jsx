@@ -92,8 +92,6 @@ const Register = e => {
       subName: Object.values(subject),
     };
 
-    // console.log('ujjwal myData', myData);
-
     if (register.role === 'admin') {
       const response = await axios.post('/teacherRegister', myData, config);
       toast.success('Teacher Registered');
@@ -117,7 +115,6 @@ const Register = e => {
     });
   };
 
-  // console.log('ujjwal sunjects', subject);
   return (
     <div className="form_wrapper">
       <ToastContainer />

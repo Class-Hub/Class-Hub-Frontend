@@ -33,7 +33,7 @@ const Attendence = () => {
       <div className="attendenceContainer">
         <h4>Attendence</h4>
         <hr />
-        This semesters Attendence Summary
+        {user?.role !== 'admin' && <>This semesters Attendence Summary</>}
         {/* for students  */}
         <>
           <div className="subCardContainer">
@@ -54,8 +54,13 @@ const Attendence = () => {
                 );
               })}
           </div>
-          <hr />
-          <h5>Mark Today's Attendence Here</h5>
+
+          {user?.role !== 'admin' && (
+            <>
+              <hr />
+              <h5>Mark Today's Attendence Here</h5>
+            </>
+          )}
           <div className="subCardContainer">
             {user?.role !== 'admin'
               ? user?.attendance?.map(subject => {
