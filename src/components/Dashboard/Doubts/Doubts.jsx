@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-// import io from 'socket.io-client';
+import { io } from 'socket.io-client';
 import '../../../styles/Dashboard/Doubts.scss';
 import profile from '../../../assets/Profile.png';
 import axios from 'axios';
@@ -16,6 +16,7 @@ const Doubts = () => {
   const [msg, setMsg] = useState([]);
   const [currentTeacher, setCurrentTeacher] = useState();
   const { user } = useUser();
+  const socket = useRef();
   const token = localStorage.getItem('classHub');
   const config = {
     headers: {
