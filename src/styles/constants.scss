@@ -1,15 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-$primary: #e6e6e6;
-$secondary: #5c7aea;
-$accent1: #3d56b2;
-$accent2: #14279b;
-$font_primary: #000000;
-$font_secondary: #150e56;
+
+.theme-light {
+  --color-primary: #e6e6e6;
+  --color-secondary: #5c7aea;
+  --color-accent1: #3d56b2;
+  --color-accent2: #14279b;
+  --font-primary: #000000;
+  --font-secondary: #150e56;
+  --back-color:#fff;
+}
+.theme-dark {
+  --color-primary: #1B262C;
+  --color-secondary: #0F4C75;
+  --color-accent1: #3282B8;
+  --color-accent2: #BBE1FA;
+  --font-primary: #fff;
+  --font-secondary: #d8d8d8;
+  --back-color:#083358;
+}
 
 .wrapper {
   height: calc(100vh - 65px);
   width: calc(100vw - 250px);
+  background-color: var(--back-color);
 }
 ::-webkit-scrollbar {
   width: 6px;
@@ -28,3 +42,73 @@ $font_secondary: #150e56;
   box-shadow: inset 0px 0px 0px 0px #f0f0f0;
 }
 
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 40px;
+  width: 40px;
+  left: 0px;
+  bottom: 4px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  box-shadow: 0 0px 15px #2020203d;
+  background: white url('https://i.ibb.co/FxzBYR9/night.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input:checked + .slider {
+  background-color: var(--color-accent2);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(24px);
+  background: white url('https://i.ibb.co/7JfqXxB/sunny.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 5px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

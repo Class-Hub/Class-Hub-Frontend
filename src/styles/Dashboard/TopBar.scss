@@ -1,6 +1,6 @@
 @import '../constants.scss';
 .upperContainer {
-  background-color: $secondary;
+  background-color: var(--color-secondary);
   width: 100vw;
   height: 60px;
   display: flex;
@@ -14,7 +14,7 @@
     }
     #logoname {
       font-family: Poppins;
-      color: $font_primary;
+      color: var(--font-primary);
       font-weight: bolder;
       margin: 10px 0px;
       font-size: 25px;
@@ -28,6 +28,7 @@
       margin: 10px 20px;
     }
     font-family: Montserrat;
+    color:var(--font-primary);
     font-style: normal;
     font-weight: 600;
     font-size: 15px;

@@ -2,7 +2,7 @@
 
 .sideContainer {
   height: calc(100vh - 65px);
-  background-color: $primary;
+  background-color: var(--color-primary);
   display: block;
   width: 250px;
   ul {
@@ -10,7 +10,7 @@
     padding: 0;
     a {
       text-decoration: none;
-      color: $accent2;
+      color: var(--color-accent2);
       font-family: Montserrat;
       font-style: normal;
       font-weight: 600;
@@ -28,22 +28,25 @@
           margin-left: 5px;
           padding: 5px;
         }
+        path {
+          fill: var(--color-accent2);
+        }
       }
       &:hover {
-        color: $primary;
+        color: var(--font-secondary);
         li {
-          background-color: $secondary;
+          background-color: var(--color-secondary);
           path {
-            fill: $primary;
+            fill: var(--font-secondary);
           }
         }
       }
     }
     .active {
-      color: $primary;
-      background-color: $secondary;
+      color: var(--font-secondary);
+      background-color: var(--color-secondary);
       path {
-        fill: $primary;
+        fill: var(--font-secondary);
       }
     }
   }

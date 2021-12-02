@@ -2,6 +2,7 @@
 
 .workContainer {
   padding: 20px;
+  color: var(--font-primary);
   .top {
     display: flex;
     flex-direction: row;
@@ -15,43 +16,45 @@
       }
     }
   }
-  .giveAnswer{
+  .giveAnswer {
     padding: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-// background-color: burlywood;
-textarea{
-    width: 85%;
-    border: none;
-    background-color: $primary;
-    border-radius: 10px;
-    margin: 5px;
-    padding: 5px;
-}      button {
-    border: none;
-    background-color: $accent2;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 1rem;
-    color: $primary;
-  }
+    // background-color: burlywood;
+    textarea {
+      width: 85%;
+      border: none;
+      background-color: var(--color-primary);
+      color: var(--font-primary);
+      border-radius: 10px;
+      margin: 5px;
+      padding: 5px;
+    }
+    button {
+      border: none;
+      background-color: var(--color-accent2);
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: var(--color-primary);
+    }
   }
   .answers {
     display: flex;
     flex-direction: row;
-    background-color: $primary;
+    background-color: var(--color-primary);
     border-radius: 10px;
     padding: 10px;
     margin-top: 5px;
     .content {
       margin-left: 5px;
       h6 {
-        color: $accent1;
+        color: var(--color-accent1);
       }
       p {
-        color: $font_primary;
+        color: var(--font-primary);
       }
     }
   }

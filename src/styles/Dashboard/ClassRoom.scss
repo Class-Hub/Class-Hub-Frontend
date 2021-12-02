@@ -2,7 +2,7 @@
 
 .classroombox {
   padding: 20px;
-
+  color: var(--font-primary);
   .classBanner {
     background-color: blue;
     height: 10rem;
@@ -13,7 +13,7 @@
   }
 
   .classroomOptions {
-    background-color: $secondary;
+    background-color: var(--color-secondary);
     margin: 20px;
     border-radius: 30px;
     padding: 10px;
@@ -27,12 +27,12 @@
       text-align: center;
       border-radius: 20px;
       padding: 5px;
-      color: $primary;
+      color: var(--color-primary);
       cursor: pointer;
     }
     .active {
       pointer-events: none;
-      background-color: $accent1;
+      background-color: var(--color-accent1);
     }
   }
 
@@ -53,14 +53,14 @@
       button {
         border: none;
         visibility: hidden;
-        background-color: $accent2;
+        background-color: var(--color-accent2);
         padding: 5px;
         border-radius: 5px;
         font-size: 1rem;
-        color: $primary;
+        color: var(--color-primary);
       }
       &:hover {
-        background-color: $primary;
+        background-color: var(--color-primary);
         button {
           visibility: visible;
         }
@@ -77,11 +77,11 @@
     .work {
       padding: 10px 10px 5px 10px;
       border-radius: 10px;
-      border: 2px solid $primary;
+      border: 2px solid var(--color-primary);
       display: flex;
       flex-direction: row;
       &:hover {
-        background-color: $primary;
+        background-color: var(--color-primary);
         box-shadow: 6px 4px 11px -5px rgba(56, 56, 56, 0.58);
         -webkit-box-shadow: 6px 4px 11px -5px rgba(56, 56, 56, 0.58);
         -moz-box-shadow: 6px 4px 11px -5px rgba(56, 56, 56, 0.58);

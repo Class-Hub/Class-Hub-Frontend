@@ -1,15 +1,15 @@
 @import '../constants.scss';
 a {
   text-decoration: none;
-  color: $font_secondary;
+  color: var(--font-secondary);
   &:hover {
-    color: $accent2;
+    color: var(--color-accent2);
   }
   .back {
     border-radius: 50%;
     margin: 5px;
     &:hover {
-      background-color: $primary;
+      background-color: var(--color-primary);
       cursor: pointer;
     }
   }
