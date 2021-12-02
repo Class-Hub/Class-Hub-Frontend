@@ -6,7 +6,6 @@ import profile from '../../../assets/Profile.png';
 import axios from 'axios';
 import { useUser } from '../../../context/User.context';
 
-
 // const socket = io.connect('http://localhost:8000');
 const Doubts = () => {
   const location = useLocation();
@@ -27,7 +26,7 @@ const Doubts = () => {
   //   socket.on('getUsers', data => {
   //     console.log(data);
   //   });
-    
+
   //   socket.emit("sendMessage")
   // }, []);
 
@@ -162,16 +161,20 @@ const Doubts = () => {
             </div> */}
           </div>
           <div className="bottom">
-            <form className="">
-              <input
-                type="text"
-                value={msg}
-                onChange={e => setMsg(e.target.value)}
-              />
-              <button type="submit" onClick={submitMessage}>
-                Send
-              </button>
-            </form>
+            <input
+              type="text"
+              value={msg}
+              onKeyPress={e => {
+                if (e.charCode === 13) {
+                  submitMessage(e);
+                }
+              }}
+              onChange={e => {
+                console.log(e);
+                setMsg(e.target.value);
+              }}
+            />
+            <button onClick={submitMessage}>Send</button>
           </div>
         </div>
       </div>

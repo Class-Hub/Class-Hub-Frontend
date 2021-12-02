@@ -143,7 +143,16 @@ const ClassRoom = () => {
                 Add Student
               </h6>
             )}
+            {!studentsList && (
+              <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            )}
+            {studentsList && studentsList.length === 0 && (
+              <h5 className="text-center">No Students in Class</h5>
+            )}
             {studentsList &&
+              studentsList.length > 0 &&
               studentsList.map(a => {
                 return (
                   <Member
@@ -170,35 +179,52 @@ const ClassRoom = () => {
                 Create Work
               </h6>
             )}
+            {!currClassWork && (
+              <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            )}
+            {currClassWork && currClassWork.length === 0 && (
+              <h5 className="text-center">No ClassWork Found</h5>
+            )}
 
             {currClassWork &&
+              currClassWork.length > 0 &&
               currClassWork.map(a => {
-                console.log(a)
+                console.log(a);
                 return (
                   <Link key={a._id} to={`${classId}/${a._id}`}>
-                  <div className="work row" key={a._id}>
-                    <div className="col-1"> <img
-                      src={profile}
-                      alt="student"
-                      width="40px"
-                      height="40px"
-                    /></div>
-                   
-                    <div className="workmid col-9">
-                      <h3>{a.title}</h3>
-                      <p>
-                        Posted {moment(a.createdAt).fromNow()}
-                        {a.createdAt !== a.updatedAt ? (
-                          <span>(updated {moment(a.updatedAt).fromNow()})</span>
-                        ) : null}
-                        by {a.author.name}
-                      </p>
-                    </div>
+                    <div className="work row" key={a._id}>
+                      <div className="col-1">
+                        {' '}
+                        <img
+                          src={profile}
+                          alt="student"
+                          width="40px"
+                          height="40px"
+                        />
+                      </div>
 
-                    {a.duedate ? (
-                      <p className="col duedate">Due: {moment(a.duedate).fromNow()}</p>
-                    ) : null}
-                  </div></Link>
+                      <div className="workmid col-9">
+                        <h3>{a.title}</h3>
+                        <p>
+                          Posted {moment(a.createdAt).fromNow()}
+                          {a.createdAt !== a.updatedAt ? (
+                            <span>
+                              (updated {moment(a.updatedAt).fromNow()})
+                            </span>
+                          ) : null}
+                          by {a.author.name}
+                        </p>
+                      </div>
+
+                      {a.duedate ? (
+                        <p className="col duedate">
+                          Due: {moment(a.duedate).fromNow()}
+                        </p>
+                      ) : null}
+                    </div>
+                  </Link>
                 );
               })}
           </div>

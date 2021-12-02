@@ -21,15 +21,15 @@ const Player = () => {
           <path
             d="M31.6667 20H8.33333"
             stroke="#14279B"
-            stroke-width="2"
-            stroke-linecap="round"
+            strokeWidth="2"
+            strokeLinecap="round"
             strokeLinejoin="round"
           />
           <path
             d="M20 31.6666L8.33333 20L20 8.33331"
             stroke="#14279B"
-            stroke-width="2"
-            stroke-linecap="round"
+            strokeWidth="2"
+            strokeLinecap="round"
             strokeLinejoin="round"
           />
         </svg>

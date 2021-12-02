@@ -62,7 +62,7 @@ const Register = e => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const token = localStorage.getItem('classHub');
+    const token = localStorage.getItem('classNameHub');
     const config = {
       headers: {
         Authorization: 'Bearer ' + token,
@@ -107,18 +107,18 @@ const Register = e => {
 
   // console.log('ujjwal sunjects', subject);
   return (
-    <div class="form_wrapper">
+    <div className="form_wrapper">
       <ToastContainer />
-      <div class="form_container">
-        <div class="title_container">
+      <div className="form_container">
+        <div className="title_container">
           <h2>Responsive Registration Form</h2>
         </div>
-        <div class="row clearfix">
-          <div class="">
+        <div className="row clearfix">
+          <div className="">
             <form>
-              <div class="input_field">
+              <div className="input_field">
                 <span>
-                  <i aria-hidden="true" class="fa fa-envelope"></i>
+                  <i aria-hidden="true" className="fa fa-envelope"></i>
                 </span>
                 <input
                   type="email"
@@ -128,9 +128,9 @@ const Register = e => {
                   required
                 />
               </div>
-              <div class="input_field">
+              <div className="input_field">
                 <span>
-                  <i aria-hidden="true" class="fa fa-lock"></i>
+                  <i aria-hidden="true" className="fa fa-lock"></i>
                 </span>
                 <input
                   type="password"
@@ -140,9 +140,9 @@ const Register = e => {
                   onChange={e => handleChange(e, 'password')}
                 />
               </div>
-              <div class="input_field">
+              <div className="input_field">
                 <span>
-                  <i aria-hidden="true" class="fa fa-lock"></i>
+                  <i aria-hidden="true" className="fa fa-lock"></i>
                 </span>
                 <input
                   type="text"
@@ -153,23 +153,23 @@ const Register = e => {
                 />
               </div>
 
-              <div class="input_field">
+              <div className="input_field">
                 <span>
-                  <i aria-hidden="true" class="fa fa-lock"></i>
+                  <i aria-hidden="true" className="fa fa-lock"></i>
                 </span>
                 <input
                   type="date"
                   name=""
-                  className="form-control"
+                  classNameName="form-control"
                   placeholder="Date of Birth"
                   required
                   onChange={e => handleChange(e, 'dob')}
                 />
               </div>
 
-              <div class="input_field">
+              <div className="input_field">
                 <span>
-                  <i aria-hidden="true" class="fa fa-lock"></i>
+                  <i aria-hidden="true" className="fa fa-lock"></i>
                 </span>
                 <input
                   type="text"
@@ -180,11 +180,11 @@ const Register = e => {
                 />
               </div>
 
-              <div class="row clearfix">
-                <div class="col_half">
-                  <div class="input_field">
+              <div className="row clearfix">
+                <div className="col_half">
+                  <div className="input_field">
                     <span>
-                      <i aria-hidden="true" class="fa fa-user"></i>
+                      <i aria-hidden="true" className="fa fa-user"></i>
                     </span>
                     <input
                       type="text"
@@ -194,10 +194,10 @@ const Register = e => {
                     />
                   </div>
                 </div>
-                <div class="col_half">
-                  <div class="input_field">
+                <div className="col_half">
+                  <div className="input_field">
                     <span>
-                      <i aria-hidden="true" class="fa fa-user"></i>
+                      <i aria-hidden="true" className="fa fa-user"></i>
                     </span>
                     <input
                       type="text"
@@ -210,7 +210,7 @@ const Register = e => {
                 </div>
               </div>
 
-              <div class="input_field select_option">
+              <div className="input_field select_option">
                 <select onChange={e => handleChange(e, 'branch')}>
                   <option hidden> Branch</option>
                   <option value="Computer Science">Computer Science</option>
@@ -218,12 +218,12 @@ const Register = e => {
                     Information Technology
                   </option>
                 </select>
-                <div class="select_arrow"></div>
+                <div className="select_arrow"></div>
               </div>
 
-              <div class="input_field">
+              <div className="input_field">
                 <span>
-                  <i aria-hidden="true" class="fa fa-lock"></i>
+                  <i aria-hidden="true" className="fa fa-lock"></i>
                 </span>
                 <input
                   type="text"
@@ -234,16 +234,16 @@ const Register = e => {
                 />
               </div>
 
-              <div class="input_field select_option">
+              <div className="input_field select_option">
                 <select onChange={e => handleChange(e, 'role')}>
                   <option> Select Your Role</option>
                   <option value="admin">Teacher</option>
                   <option value="">Student</option>
                 </select>
-                <div class="select_arrow"></div>
+                <div className="select_arrow"></div>
               </div>
 
-              <div className="">
+              <div classNameName="">
                 <h6>Subjects</h6>
                 {subjectsArr.map((sub, index) => {
                   return (
@@ -251,7 +251,7 @@ const Register = e => {
                       <input
                         type="checkbox"
                         value={sub.name}
-                        className="me-2"
+                        classNameName="me-2"
                         onChange={e => handleCheckbox(index, e)}
                       />
                       {sub.name}
@@ -260,25 +260,25 @@ const Register = e => {
                 })}
               </div>
 
-              {/* <div class="input_field select_option">
+              {/* <div className="input_field select_option">
                 <select>
                   <option>Select a country</option>
                   <option>Option 1</option>
                   <option>Option 2</option>
                 </select>
-                <div class="select_arrow"></div>
+                <div className="select_arrow"></div>
               </div>
-              <div class="input_field checkbox_option">
+              <div className="input_field checkbox_option">
                 <input type="checkbox" id="cb1" />
                 <label for="cb1">I agree with terms and conditions</label>
               </div>
-              <div class="input_field checkbox_option">
+              <div className="input_field checkbox_option">
                 <input type="checkbox" id="cb2" />
                 <label for="cb2">I want to receive the newsletter</label>
               </div> */}
               <input
                 onClick={handleSubmit}
-                class="button"
+                className="button"
                 type="submit"
                 value="Register"
               />

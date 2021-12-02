@@ -20,6 +20,7 @@ import NotFound from '../../components/Dashboard/NotFound';
 import Register from '../../components/Dashboard/Register';
 import ClassRoom from '../../components/Dashboard/Assignments/ClassRoom';
 import ClassWork from '../../components/Dashboard/Assignments/ClassWork';
+import SubAttendence from '../../components/Dashboard/Attendence/SubAttendence';
 
 const Dashboard = () => {
   const path =
@@ -44,6 +45,7 @@ const Dashboard = () => {
               />
               <Route exact path="/Upload" component={Upload} />
               <Route exact path="/Attendence" component={Attendence} />
+              <Route exact path="/Attendence/:subId" component={SubAttendence} />
               <Route exact path="/Assignments" component={Assignments} />
               <Route exact path="/Assignments/:classId" component={ClassRoom} />
               <Route exact path="/Assignments/:classId/:classWork" component={ClassWork} />

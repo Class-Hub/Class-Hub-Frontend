@@ -8,12 +8,12 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root');
 const Assignments = () => {
   const { user } = useUser();
-  const [classrooms, setClassrooms] = useState([]);
+  const [classrooms, setClassrooms] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  console.log(user)
+  console.log(user);
 
   const getClasses = () => {
     axios
@@ -90,9 +90,20 @@ const Assignments = () => {
 
         <hr />
         <div className="allsubjects">
-          {classrooms &&
+          {!classrooms && (
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          )}
+          {classrooms && classrooms.length === 0 &&
+            <h3>No classRooms Found</h3>}
+          {classrooms && classrooms.length > 0 &&
             classrooms.map(element => (
-              <Subjectcard key={element.code} element={element} getClasses={getClasses} />
+              <Subjectcard
+                key={element.code}
+                element={element}
+                getClasses={getClasses}
+              />
             ))}
         </div>
       </div>
