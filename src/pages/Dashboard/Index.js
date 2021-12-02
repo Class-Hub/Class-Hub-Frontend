@@ -61,7 +61,7 @@ const Dashboard = () => {
                 path="/Assignments/:classId/:classWork"
                 component={ClassWork}
               />
-              <Route exact path="/StudyMaterial" component={StudyMaterial} />
+              {/* <Route exact path="/StudyMaterial" component={StudyMaterial} /> */}
               <Route exact path="/Doubts" component={Doubts} />
               <Route exact path="/TimeTable" component={TimeTable} />
               <Route exact path="/register" component={Register} />

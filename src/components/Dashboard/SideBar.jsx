@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useUser } from '../../context/User.context';
 import '../../styles/Dashboard/SideBar.scss';
 
 const SideBar = () => {
+  const { user } = useUser();
   // const [prev, setprev] = useState(null);
   // useEffect(() => {
   //   setprev(document.getElementsByClassName('active'));
@@ -40,23 +42,25 @@ const SideBar = () => {
           </li>
         </Link>
 
-        <Link onClick={onclick} to="/register">
-          <li className={location.pathname === '/register' ? 'active' : ''}>
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 40 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M20 20C24.8325 20 28.75 16.0825 28.75 11.25C28.75 6.4175 24.8325 2.5 20 2.5C15.1675 2.5 11.25 6.4175 11.25 11.25C11.25 16.0825 15.1675 20 20 20ZM9.375 22.5C6.9587 22.5 4.99993 24.4587 5 26.8751L5.00001 27.5C5.00004 30.4919 6.9033 33.0217 9.60615 34.7417C12.3238 36.4712 16.0019 37.5 19.9999 37.5C23.9979 37.5 27.676 36.4712 30.3938 34.7417C33.0966 33.0217 35 30.4919 35 27.5V26.875C35 24.4587 33.0413 22.5 30.625 22.5H9.375Z"
-                fill="#14279B"
-              />
-            </svg>
-            Register
-          </li>
-        </Link>
+        {user && user.role && user.role === 'admin' && (
+          <Link onClick={onclick} to="/register">
+            <li className={location.pathname === '/register' ? 'active' : ''}>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 20C24.8325 20 28.75 16.0825 28.75 11.25C28.75 6.4175 24.8325 2.5 20 2.5C15.1675 2.5 11.25 6.4175 11.25 11.25C11.25 16.0825 15.1675 20 20 20ZM9.375 22.5C6.9587 22.5 4.99993 24.4587 5 26.8751L5.00001 27.5C5.00004 30.4919 6.9033 33.0217 9.60615 34.7417C12.3238 36.4712 16.0019 37.5 19.9999 37.5C23.9979 37.5 27.676 36.4712 30.3938 34.7417C33.0966 33.0217 35 30.4919 35 27.5V26.875C35 24.4587 33.0413 22.5 30.625 22.5H9.375Z"
+                  fill="#14279B"
+                />
+              </svg>
+              Register
+            </li>
+          </Link>
+        )}
 
         <Link aria-current="page" onClick={onclick} to="/LiveClass">
           <li className={location.pathname === '/LiveClass' ? 'active' : ''}>
@@ -104,23 +108,25 @@ const SideBar = () => {
             Recorded
           </li>
         </Link>
-        <Link aria-current="page" onClick={onclick} to="/Upload">
-          <li className={location.pathname === '/Upload' ? 'active' : ''}>
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 40 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8.75 5C8.05965 5 7.5 5.55965 7.5 6.25C7.5 6.94035 8.05965 7.5 8.75 7.5H31.25C31.9403 7.5 32.5 6.94035 32.5 6.25C32.5 5.55965 31.9403 5 31.25 5H8.75ZM20.8839 10.3661C20.3957 9.87795 19.6043 9.87795 19.1161 10.3661L10.3661 19.1161C9.87795 19.6043 9.87795 20.3957 10.3661 20.8839C10.8543 21.372 11.6457 21.372 12.1339 20.8839L18.75 14.2678V33.75C18.75 34.4403 19.3096 35 20 35C20.6904 35 21.25 34.4403 21.25 33.75V14.2678L27.866 20.8839C28.3543 21.372 29.1457 21.372 29.634 20.8839C30.122 20.3957 30.122 19.6043 29.634 19.1161L20.8839 10.3661Z"
-                fill="#14279B"
-              />
-            </svg>
-            Upload
-          </li>
-        </Link>
+        {user && user.role && user.role === 'admin' && (
+          <Link aria-current="page" onClick={onclick} to="/Upload">
+            <li className={location.pathname === '/Upload' ? 'active' : ''}>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.75 5C8.05965 5 7.5 5.55965 7.5 6.25C7.5 6.94035 8.05965 7.5 8.75 7.5H31.25C31.9403 7.5 32.5 6.94035 32.5 6.25C32.5 5.55965 31.9403 5 31.25 5H8.75ZM20.8839 10.3661C20.3957 9.87795 19.6043 9.87795 19.1161 10.3661L10.3661 19.1161C9.87795 19.6043 9.87795 20.3957 10.3661 20.8839C10.8543 21.372 11.6457 21.372 12.1339 20.8839L18.75 14.2678V33.75C18.75 34.4403 19.3096 35 20 35C20.6904 35 21.25 34.4403 21.25 33.75V14.2678L27.866 20.8839C28.3543 21.372 29.1457 21.372 29.634 20.8839C30.122 20.3957 30.122 19.6043 29.634 19.1161L20.8839 10.3661Z"
+                  fill="#14279B"
+                />
+              </svg>
+              Upload
+            </li>
+          </Link>
+        )}
         <Link aria-current="page" onClick={onclick} to="/Attendence">
           <li className={location.pathname === '/Attendence' ? 'active' : ''}>
             <svg
@@ -155,7 +161,7 @@ const SideBar = () => {
             Assignments
           </li>
         </Link>
-        <Link aria-current="page" onClick={onclick} to="/StudyMaterial">
+        {/* <Link aria-current="page" onClick={onclick} to="/StudyMaterial">
           <li
             className={location.pathname === '/StudyMaterial' ? 'active' : ''}
           >
@@ -173,7 +179,7 @@ const SideBar = () => {
             </svg>
             Study Material
           </li>
-        </Link>
+        </Link> */}
         <Link aria-current="page" onClick={onclick} to="/Doubts">
           <li className={location.pathname === '/Doubts' ? 'active' : ''}>
             <svg
