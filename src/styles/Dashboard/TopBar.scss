@@ -32,5 +32,11 @@
     font-weight: 600;
     font-size: 15px;
     line-height: 29px;
+    span{
+      margin: 5px;
+      padding: 5px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
   }
 }

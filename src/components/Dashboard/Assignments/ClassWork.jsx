@@ -7,6 +7,7 @@ import profile from '../../../assets/Profile.png';
 import axios from 'axios';
 import Modal from 'react-modal';
 import moment from 'moment';
+import { toast } from 'react-toastify';
 
 const ClassWork = () => {
   const { classId, classWork } = useParams();
@@ -27,7 +28,10 @@ const ClassWork = () => {
         console.log(response.data);
         setWorkDetails(response.data);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        toast.error('Error occured', err);
+        console.log(err);
+      });
   }, [classWork]);
 
   useEffect(() => {
@@ -45,9 +49,14 @@ const ClassWork = () => {
       })
       .then(response => {
         console.log(response.data);
+        toast.success('Classwork Updated Successfully');
+        setWorkDetails(response.data.classwork);
       })
-      .catch(err => console.log(err));
-    fetchCurrClassWorkDetails();
+      .catch(err => {
+        toast.error('Error occured', err);
+        console.log(err);
+      });
+    // fetchCurrClassWorkDetails();
     setModalIsOpen(false);
   };
 
@@ -55,9 +64,13 @@ const ClassWork = () => {
     await axios
       .delete(`/classwork/delete/${classWork}`)
       .then(response => {
-        console.log(response.data);
+        // console.log(response.status);
+        if (response.status === 200) {
+          toast.success('Classwork deleted');
+        }
       })
       .catch(err => {
+        toast.error('Error occured', err);
         console.log(err);
       });
     history.push(`/Assignments/${classId}`);
@@ -72,6 +85,7 @@ const ClassWork = () => {
         console.log(response);
       })
       .catch(err => {
+        toast.error('Error occured', err);
         console.log(err);
       });
     console.log(answer);

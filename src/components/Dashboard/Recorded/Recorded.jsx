@@ -34,8 +34,8 @@ const Recorded = () => {
         )}
         {videos &&
           videos.map(video => (
-            <Link to={`RecordedLectures/${video.upload_title}`}>
-              <Video key={video._id} video={video} />
+            <Link key={video._id} to={`RecordedLectures/${video.upload_title}`}>
+              <Video video={video} />
             </Link>
           ))}
       </div>
