@@ -16,8 +16,6 @@ const Attendence = () => {
     }
   }, [loadUser, user]);
 
-  // console.log('ujjwal', user);
-
   const submitAttendance = async subjectId => {
     // const token = localStorage.getItem('classHub');
     // const config = {
@@ -37,52 +35,74 @@ const Attendence = () => {
         <hr />
         This semesters Attendence Summary
         {/* for students  */}
-        {user && user.role && user.role !== 'admin' && (
-          <>
-            <div className="subCardContainer">
-              {user?.role !== 'admin' &&
-                user?.attendance.map(subject => {
-                  const { totalDays, totalPresent, subName } = subject;
+        <>
+          <div className="subCardContainer">
+            {user?.role !== 'admin' &&
+              user?.attendance.map(subject => {
+                const { totalDays, totalPresent, subName } = subject;
 
+                return (
+                  <>
+                    <SubjectCard
+                      percentage={(totalPresent * 100) / totalDays}
+                      totalDays={totalDays}
+                      totalPresent={totalPresent}
+                      subName={subName}
+                    />
+                    {/* <SubjectCard percentage={30} /> */}
+                  </>
+                );
+              })}
+          </div>
+          <hr />
+          <h5>Mark Today's Attendence Here</h5>
+          <div className="subCardContainer">
+            {user?.role !== 'admin'
+              ? user?.attendance?.map(subject => {
                   return (
-                    <>
-                      <SubjectCard
-                        percentage={(totalPresent * 100) / totalDays}
-                        totalDays={totalDays}
-                        totalPresent={totalPresent}
-                        subName={subName}
-                      />
-                      {/* <SubjectCard percentage={30} /> */}
-                    </>
+                    <div key={subject._id} className="subjectsContainer">
+                      <label className="subjects">
+                        <input
+                          type="radio"
+                          onChange={() => submitAttendance(subject.sub)}
+                          disabled={subject.isActive}
+                          defaultChecked={subject.isMarked}
+                        />
+                        <span className="checkmark"></span>
+                        {subject.subName}
+                      </label>
+                    </div>
+                  );
+                })
+              : subjects?.length > 0 &&
+                subjects?.map(el => {
+                  return (
+                    <Link key={el._id} to={`Attendence/${el.sub}`}>
+                      <div className="subCardsAttendence">
+                        {el.subName}
+                        <svg
+                          width="25"
+                          height="25"
+                          viewBox="0 0 25 25"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M9.37451 18.8805L15.3745 12.8805L9.37451 6.88049"
+                            stroke="#14279B"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                    </Link>
                   );
                 })}
-            </div>
-            <hr />
-            <h5>Mark Today's Attendence Here</h5>
-            <div className="subCardContainer">
-              {user?.role !== 'admin'
-                ? user?.attendance?.map(subject => {
-                    return (
-                      <div key={subject._id} className="subjectsContainer">
-                        <label className="subjects">
-                          <input
-                            type="radio"
-                            onChange={() => submitAttendance(subject.sub)}
-                            disabled={!subject.isActive}
-                            defaultChecked={subject.isMarked}
-                          />
-                          <span className="checkmark"></span>
-                          {subject.subName}
-                        </label>
-                      </div>
-                    );
-                  })
-                : null}
-            </div>
-          </>
-        )}
+          </div>
+        </>
         {/* for tachers */}
-        <div className="subCardContainer">
+        {/* <div className="subCardContainer">
           {user &&
             user.role &&
             user.role === 'admin' &&
@@ -112,7 +132,7 @@ const Attendence = () => {
                 </Link>
               );
             })}
-        </div>
+        </div> */}
       </div>
     </div>
   );
