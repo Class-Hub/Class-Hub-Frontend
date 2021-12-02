@@ -4,6 +4,7 @@ import '../../../styles/Dashboard/Assignments.scss';
 import Subjectcard from './Subjectcard';
 import axios from 'axios';
 import Modal from 'react-modal';
+import { toast } from 'react-toastify';
 
 Modal.setAppElement('#root');
 const Assignments = () => {
@@ -13,16 +14,19 @@ const Assignments = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  console.log(user);
+  // console.log(user);
 
   const getClasses = () => {
     axios
       .get(`/class/getAllCLass`)
       .then(response => {
-        console.log(response.data.classes);
+        // console.log(response.data.classes);
         setClassrooms(response.data.classes);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        toast.error('Error occured', err);
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -32,8 +36,8 @@ const Assignments = () => {
   const createClass = async () => {
     // e.preventdefault();
     setModalIsOpen(false);
-    console.log('click');
-    console.log(title, description);
+    // console.log('click');
+    // console.log(title, description);
 
     await axios
       .post(`/class/create`, {
@@ -43,8 +47,14 @@ const Assignments = () => {
       })
       .then(response => {
         console.log(response);
+        if (response.status === 201) {
+          toast.success('Classroom Created Successfully');
+        }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        toast.error('Error occured', err);
+        console.log(err);
+      });
   };
 
   return (
@@ -95,9 +105,11 @@ const Assignments = () => {
               <span className="visually-hidden">Loading...</span>
             </div>
           )}
-          {classrooms && classrooms.length === 0 &&
-            <h3>No classRooms Found</h3>}
-          {classrooms && classrooms.length > 0 &&
+          {classrooms && classrooms.length === 0 && (
+            <h3>No classRooms Found</h3>
+          )}
+          {classrooms &&
+            classrooms.length > 0 &&
             classrooms.map(element => (
               <Subjectcard
                 key={element.code}

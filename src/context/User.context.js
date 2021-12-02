@@ -6,6 +6,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { toast } from 'react-toastify';
 
 const UserContext = createContext();
 
@@ -18,13 +19,14 @@ export const UserProvider = ({ children }) => {
 
     if (token) {
       await axios
-        .get('/student' )
+        .get('/student')
         .then(result => {
           // console.log(result.data.user);
           setUser(result.data.user);
           setIsUserLoading(false);
         })
         .catch(err => {
+          toast.error('Error occured', err);
           console.log(err);
           setIsUserLoading(false);
         });

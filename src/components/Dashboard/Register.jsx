@@ -160,7 +160,7 @@ const Register = e => {
                 <input
                   type="date"
                   name=""
-                  classNameName="form-control"
+                  className="form-control"
                   placeholder="Date of Birth"
                   required
                   onChange={e => handleChange(e, 'dob')}
@@ -243,15 +243,15 @@ const Register = e => {
                 <div className="select_arrow"></div>
               </div>
 
-              <div classNameName="">
+              <div className="">
                 <h6>Subjects</h6>
                 {subjectsArr.map((sub, index) => {
                   return (
-                    <div>
+                    <div key={sub.name}>
                       <input
                         type="checkbox"
                         value={sub.name}
-                        classNameName="me-2"
+                        className="me-2"
                         onChange={e => handleCheckbox(index, e)}
                       />
                       {sub.name}

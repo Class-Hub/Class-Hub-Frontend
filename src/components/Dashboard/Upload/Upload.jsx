@@ -97,6 +97,7 @@ const Upload = () => {
               return (
                 <>
                   <input
+                  key={subject._id}
                     type="radio"
                     name="subjects"
                     value={subject.subName}

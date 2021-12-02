@@ -2,8 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router';
 import profile from '../../../assets/Profile.png';
+import { toast } from 'react-toastify';
 
-const Member = ({ a, remove, setStudentsList}) => {
+const Member = ({ a, remove, setStudentsList }) => {
   const { classId } = useParams();
   const removeStudent = async () => {
     await axios
@@ -15,9 +16,15 @@ const Member = ({ a, remove, setStudentsList}) => {
       })
       .then(response => {
         // console.log(response.data);
-        setStudentsList(response.data.students);
+        if (response.status === 200) {
+          toast.success('Student removed');
+          setStudentsList(response.data.data.students);
+        }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        toast.error('Error occured', err);
+        console.log(err);
+      });
   };
 
   return (

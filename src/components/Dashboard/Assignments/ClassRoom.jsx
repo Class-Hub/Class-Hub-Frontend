@@ -8,6 +8,7 @@ import Modal from 'react-modal';
 import { useUser } from '../../../context/User.context';
 import profile from '../../../assets/Profile.png';
 import moment from 'moment';
+import { toast } from 'react-toastify';
 
 const ClassRoom = () => {
   const { user } = useUser();
@@ -31,7 +32,10 @@ const ClassRoom = () => {
         // console.log(response.data.students);
         setStudentsList(response.data.students);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        toast.error('Error occured', err);
+        console.log(err);
+      });
   }, [classId]);
 
   const fetchCurrentClassWork = useCallback(async () => {
@@ -41,7 +45,10 @@ const ClassRoom = () => {
         setCurrClassWork(response.data);
         // console.log(response.data);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        toast.error('Error occured', err);
+        console.log(err);
+      });
   }, [classId]);
 
   useEffect(() => {
@@ -56,9 +63,15 @@ const ClassRoom = () => {
         studentEmail: emailOfStudent,
       })
       .then(response => {
-        // console.log(response.data);
+        // console.log(response.status);
+        if (response.status === 200) {
+          toast.success('Student Added');
+        }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        toast.error('Error occured', err);
+        console.log(err);
+      });
     fetchCurrentClassDetails();
     setModalIsOpen(false);
   };
@@ -72,9 +85,15 @@ const ClassRoom = () => {
         duedate: inputDeadline,
       })
       .then(response => {
-        // console.log(response.data);
+        // console.log(response.status);
+        if (response.status === 200) {
+          toast.success('Classwork Created');
+        }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        toast.error('Error occured', err);
+        console.log(err);
+      });
     fetchCurrentClassWork();
     setModalIsOpen(false);
   };
@@ -283,7 +302,7 @@ const ClassRoom = () => {
         <div className="modalForm">
           {currentSection && (
             <>
-              <label htmlFor="id">Id of the Student</label>{' '}
+              <label htmlFor="id">Email of the Student</label>{' '}
               <input
                 type="email"
                 value={emailOfStudent}

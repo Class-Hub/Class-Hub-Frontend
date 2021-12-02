@@ -22,12 +22,16 @@ import ClassRoom from '../../components/Dashboard/Assignments/ClassRoom';
 import ClassWork from '../../components/Dashboard/Assignments/ClassWork';
 import SubAttendence from '../../components/Dashboard/Attendence/SubAttendence';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Dashboard = () => {
   const path =
     '/(|Profile|LiveClass|RecordedLectures|Upload|Attendence|Assignments|StudyMaterial|Doubts|TimeTable|register)/';
 
   return (
     <div>
+      <ToastContainer />
       <BrowserRouter basename="dashboard">
         <UserProvider>
           <Route path={path} component={TopBar} />
@@ -45,10 +49,18 @@ const Dashboard = () => {
               />
               <Route exact path="/Upload" component={Upload} />
               <Route exact path="/Attendence" component={Attendence} />
-              <Route exact path="/Attendence/:subId" component={SubAttendence} />
+              <Route
+                exact
+                path="/Attendence/:subId"
+                component={SubAttendence}
+              />
               <Route exact path="/Assignments" component={Assignments} />
               <Route exact path="/Assignments/:classId" component={ClassRoom} />
-              <Route exact path="/Assignments/:classId/:classWork" component={ClassWork} />
+              <Route
+                exact
+                path="/Assignments/:classId/:classWork"
+                component={ClassWork}
+              />
               <Route exact path="/StudyMaterial" component={StudyMaterial} />
               <Route exact path="/Doubts" component={Doubts} />
               <Route exact path="/TimeTable" component={TimeTable} />

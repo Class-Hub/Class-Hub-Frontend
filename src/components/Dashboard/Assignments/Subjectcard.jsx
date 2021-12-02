@@ -2,9 +2,9 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useUser } from '../../../context/User.context';
 import '../../../styles/Dashboard/Assignments.scss';
-
 
 const Subjectcard = ({ element, getClasses }) => {
   const { user } = useUser();
@@ -24,9 +24,15 @@ const Subjectcard = ({ element, getClasses }) => {
       })
       .then(response => {
         // console.log(response);
+        if (response.status === 200) {
+          toast.success('Classroom Updated Successfully');
+        }
         getClasses();
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        toast.error('Error occured', err);
+        console.log(err);
+      });
   };
   return (
     <div className="subjectCard">

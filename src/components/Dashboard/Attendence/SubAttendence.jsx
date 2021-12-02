@@ -49,19 +49,23 @@ const SubAttendence = () => {
         Go Back
       </Link>
       <div className="students">
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Student Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Attendence</th>
-            </tr>
-          </thead>
-          <tbody>
-            {studentsInClass &&
-              studentsInClass.length > 0 &&
-              studentsInClass.map(el => {
+        {!studentsInClass && (
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        )}
+        {studentsInClass && studentsInClass.length > 0 && (
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Attendence</th>
+              </tr>
+            </thead>
+            <tbody>
+              {studentsInClass.map(el => {
                 return (
                   <StudentRow
                     key={el._id}
@@ -71,8 +75,9 @@ const SubAttendence = () => {
                   />
                 );
               })}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );
