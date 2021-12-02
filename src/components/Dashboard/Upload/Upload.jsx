@@ -95,9 +95,8 @@ const Upload = () => {
           {user?.role === 'admin' &&
             user?.teachingSubs.map(subject => {
               return (
-                <>
+                <div key={subject._id}>
                   <input
-                  key={subject._id}
                     type="radio"
                     name="subjects"
                     value={subject.subName}
@@ -106,7 +105,7 @@ const Upload = () => {
                     }
                   />
                   {subject.subName}
-                </>
+                </div>
               );
             })}
         </div>

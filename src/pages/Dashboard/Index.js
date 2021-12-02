@@ -24,6 +24,7 @@ import SubAttendence from '../../components/Dashboard/Attendence/SubAttendence';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AdminRoute from '../../components/Routehandler/AdminRoute';
 
 const Dashboard = () => {
   const path =
@@ -47,7 +48,7 @@ const Dashboard = () => {
                 path="/RecordedLectures/:videoId"
                 component={Player}
               />
-              <Route exact path="/Upload" component={Upload} />
+              <AdminRoute path="/Upload" component={Upload} />
               <Route exact path="/Attendence" component={Attendence} />
               <Route
                 exact
@@ -61,10 +62,10 @@ const Dashboard = () => {
                 path="/Assignments/:classId/:classWork"
                 component={ClassWork}
               />
-              <Route exact path="/StudyMaterial" component={StudyMaterial} />
+              {/* <Route exact path="/StudyMaterial" component={StudyMaterial} /> */}
               <Route exact path="/Doubts" component={Doubts} />
               <Route exact path="/TimeTable" component={TimeTable} />
-              <Route exact path="/register" component={Register} />
+              <AdminRoute exact path="/register" component={Register} />
               <Route>
                 <NotFound />
               </Route>
