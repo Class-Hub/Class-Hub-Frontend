@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import '../../styles/Dashboard/TopBar.scss';
 import logo from '../../assets/logo.png';
 import profile from '../../assets/Profile.png';
@@ -12,6 +12,7 @@ const TopBar = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [currPass, setCurrPass] = useState('');
   const [newPass, setNewPass] = useState('');
+  const [checked, setChecked] = useState(null);
   const { user } = useUser();
   const logout = e => {
     e.preventDefault();
@@ -31,6 +32,33 @@ const TopBar = () => {
       .catch(err => console.log(err));
     setModalIsOpen(false);
   };
+
+  // function to set a given theme/color-scheme
+  const setTheme = useCallback(themeName => {
+    localStorage.setItem('theme', themeName);
+    setChecked(themeName !== 'theme-dark');
+    document.documentElement.className = themeName;
+  }, []);
+
+  // function to toggle between light and dark theme
+  function toggleTheme() {
+    if (localStorage.getItem('theme') === 'theme-dark') {
+      setTheme('theme-light');
+    } else {
+      setTheme('theme-dark');
+    }
+  }
+
+  // Immediately invoked function to set the theme on initial load
+  useEffect(() => {
+    setChecked(localStorage.getItem('theme') === 'theme-light');
+    if (localStorage.getItem('theme') === 'theme-dark') {
+      setTheme('theme-dark');
+    } else {
+      setTheme('theme-light');
+    }
+  }, [setTheme]);
+
   return (
     <div className="upperContainer">
       <div className="left">
@@ -45,6 +73,15 @@ const TopBar = () => {
       </div>
 
       <div className="right">
+        <label id="switch" className="switch">
+          <input
+            type="checkbox"
+            onChange={toggleTheme}
+            id="slider"
+            checked={checked}
+          />
+          <span class="slider round"></span>
+        </label>
         <img
           src={!!user?.photo ? user.photo : profile}
           alt="logo"

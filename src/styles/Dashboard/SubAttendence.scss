@@ -1,5 +1,8 @@
 @import '../constants.scss';
 
-.students{
-    padding: 20px;
+.students {
+  padding: 20px;
+  .table {
+    color: var(--font-primary);
+  }
 }

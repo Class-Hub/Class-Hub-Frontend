@@ -6,11 +6,12 @@
   display: flex;
   flex-direction: row;
   padding: 10px;
+  color: var(--font-primary);
   .teacherList {
     width: 15vw;
     margin: 0;
     border-radius: 5px;
-    background-color: $primary;
+    background-color: var(--color-primary);
     list-style-type: none;
     padding: 5px;
     overflow-y: scroll;
@@ -20,15 +21,15 @@
         margin-top: 5px 0;
         padding: 0.5rem;
         border-radius: 5px;
-        color: $font_secondary;
-        border: 1px solid $accent2;
+        color: var(--font-secondary);
+        border: 1px solid var(--color-accent2);
         img {
           width: 40px;
           margin-right: 5px;
         }
         &:hover {
-          color: $primary;
-          background-color: $accent2;
+          color: var(--color-primary);
+          background-color: var(--color-accent2);
         }
       }
     }
@@ -37,13 +38,13 @@
     margin-left: 10px;
     border-radius: 5px;
     width: 100%;
-    background-color: $primary;
+    background-color: var(--color-primary);
     .top {
       height: 6%;
-      background-color: $accent1;
+      background-color: var(--color-accent1);
       border-radius: 5px 5px 0 0;
       padding: 0.35rem 1.5rem;
-      color: $primary;
+      color: var(--color-primary);
       font-size: 1.2rem;
     }
     .mid {
@@ -62,9 +63,9 @@
         .message{
           padding: 10px;
           margin-left: 10px;
-          background-color: $secondary;
+          background-color: var(--color-secondary);
           color: white;
-          border-left: 10px solid $primary;
+          border-left: 10px solid var(--color-primary);
           border-top: 10px solid transparent;
           border-radius: 5px;
         }
@@ -73,8 +74,8 @@
         margin-left:20% ;
         flex-direction: row-reverse;
         .message{
-          border-left: 0px solid $primary;
-          border-right: 10px solid $primary;
+          border-left: 0px solid var(--color-primary);
+          border-right: 10px solid var(--color-primary);
           border-top: 10px solid transparent;
           margin-right: 10px;
         }
@@ -82,7 +83,7 @@
     }
     .bottom {
       height: 8%;
-      background-color: $accent1;
+      background-color: var(--color-accent1);
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
@@ -92,16 +93,17 @@
         width: 92%;
         border-radius: 4px;
         padding: 0.25rem;
-        background-color: $primary;
+        background-color: var(--color-primary);
+        color: var(--font-primary);
         border: none;
       }
       button {
         width: 6%;
-        background-color: $accent2;
+        background-color: var(--color-accent2);
         padding: 0.4rem;
         border: none;
         border-radius: 5px;
-        color: $primary;
+        color: var(--color-primary);
       }
     }
   }
