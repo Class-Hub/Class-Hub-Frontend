@@ -20,23 +20,21 @@ const Register = e => {
   const subjectsArr = [
     {
       name: 'Discrete Mathematics',
-      type: 'text',
     },
     {
       name: 'Computer Organisation',
-      type: 'text',
     },
     {
       name: 'Digital System Design',
-      type: 'text',
     },
     {
       name: 'Automata and Formal Languages',
-      type: 'text',
     },
     {
       name: 'Software Engineering',
-      type: 'text',
+    },
+    {
+      name: 'Design Algorithm and Analysis',
     },
   ];
 
@@ -94,8 +92,6 @@ const Register = e => {
       subName: Object.values(subject),
     };
 
-    // console.log('ujjwal myData', myData);
-
     if (register.role === 'admin') {
       const response = await axios.post('/teacherRegister', myData, config);
       toast.success('Teacher Registered');
@@ -103,9 +99,22 @@ const Register = e => {
       const response = await axios.post('/register', myData, config);
       toast.success('Student Registered');
     }
+
+    setRegister({
+      ...register,
+      fName: '',
+      lName: '',
+      email: '',
+      password: '',
+      roll: '',
+      batch: '',
+      branch: '',
+      dob: '',
+      role: '',
+      phn: '',
+    });
   };
 
-  // console.log('ujjwal sunjects', subject);
   return (
     <div className="form_wrapper">
       <ToastContainer />
@@ -124,6 +133,7 @@ const Register = e => {
                   type="email"
                   name="email"
                   placeholder="Email"
+                  value={register.email}
                   onChange={e => handleChange(e, 'email')}
                   required
                 />
@@ -137,6 +147,7 @@ const Register = e => {
                   name="password"
                   placeholder="Password"
                   required
+                  value={register.password}
                   onChange={e => handleChange(e, 'password')}
                 />
               </div>
@@ -149,6 +160,7 @@ const Register = e => {
                   name="Roll No"
                   placeholder="Roll Number"
                   required
+                  value={register.roll}
                   onChange={e => handleChange(e, 'roll')}
                 />
               </div>
@@ -163,6 +175,7 @@ const Register = e => {
                   className="form-control"
                   placeholder="Date of Birth"
                   required
+                  value={register.dob}
                   onChange={e => handleChange(e, 'dob')}
                 />
               </div>
@@ -176,6 +189,7 @@ const Register = e => {
                   name=""
                   placeholder="Phone Number"
                   required
+                  value={register.phn}
                   onChange={e => handleChange(e, 'phn')}
                 />
               </div>
@@ -190,6 +204,7 @@ const Register = e => {
                       type="text"
                       name="name"
                       placeholder="First Name"
+                      value={register.fName}
                       onChange={e => handleChange(e, 'fName')}
                     />
                   </div>
@@ -204,6 +219,7 @@ const Register = e => {
                       name="name"
                       placeholder="Last Name"
                       required
+                      value={register.lName}
                       onChange={e => handleChange(e, 'lName')}
                     />
                   </div>
@@ -212,7 +228,7 @@ const Register = e => {
 
               <div className="input_field select_option">
                 <select onChange={e => handleChange(e, 'branch')}>
-                  <option hidden> Branch</option>
+                  <option hidden>Branch</option>
                   <option value="Computer Science">Computer Science</option>
                   <option value="Information Technology">
                     Information Technology
@@ -229,6 +245,7 @@ const Register = e => {
                   type="text"
                   name=""
                   placeholder="Batch"
+                  value={register.batch}
                   onChange={e => handleChange(e, 'batch')}
                   required
                 />
