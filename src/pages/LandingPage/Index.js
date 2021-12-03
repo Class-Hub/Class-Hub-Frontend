@@ -1,30 +1,26 @@
 import React from 'react';
-import { useLocation } from 'react-router';
-import Info from '../../components/landingPage/Info';
 import Navbar from '../../components/landingPage/Navbar';
 import SideImage from '../../components/landingPage/SideImage';
 import SignIn from '../../components/landingPage/SignIn';
 
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const LandingPage = () => {
-  const location = useLocation();
   return (
     <>
       <ToastContainer />
-      <Navbar />
       <div
         className="
                 container-fluid
                 row
-                mt-3
-                mb-2
                 ms-auto
                 me-auto
-            "
+                signIncomponent
+                "
       >
-        {location.pathname === '/signIn' ? <SignIn /> : <Info />}
+        <Navbar />
+        <SignIn />
         <SideImage />
       </div>
     </>
