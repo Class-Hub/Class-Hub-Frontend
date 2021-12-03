@@ -2,9 +2,10 @@
 
 .LiveContainer {
   width: 100%;
-  padding: 20px;
   height: 100%;
-  color:var(--font-secondary);
+  padding: 20px;
+  overflow-y: scroll;
+  color: var(--font-secondary);
   .liveclasses {
     width: 100%;
     display: flex;
@@ -26,7 +27,8 @@
         color: var(--color-primary);
       }
       &:hover {
-        box-shadow: 20px 20px 40px var(--color-primary), -20px -20px 40px var(--color-primary);
+        box-shadow: 20px 20px 40px var(--color-primary),
+          -20px -20px 40px var(--color-primary);
         transform: translateZ(10px) scale(1.05);
         transition: all 0.5s ease-in-out;
       }

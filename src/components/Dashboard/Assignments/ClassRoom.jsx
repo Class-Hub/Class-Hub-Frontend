@@ -100,33 +100,33 @@ const ClassRoom = () => {
 
   return (
     <div className="wrapper">
-      <Link to={`/Assignments`}>
-        <svg
-          width="40"
-          height="40"
-          className="back"
-          viewBox="0 0 40 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M31.6667 20H8.33333"
-            stroke="#14279B"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M20 31.6666L8.33333 20L20 8.33331"
-            stroke="#14279B"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        Go Back
-      </Link>
       <div className="classroombox">
+        <Link to={`/Assignments`}>
+          <svg
+            width="40"
+            height="40"
+            className="back"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M31.6667 20H8.33333"
+              stroke="#14279B"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M20 31.6666L8.33333 20L20 8.33331"
+              stroke="#14279B"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          Go Back
+        </Link>
         <div className="classBanner">
           {currClass && <h5>{currClass.title}</h5>}
           {currClass && <h6>{currClass.code}</h6>}
@@ -215,7 +215,6 @@ const ClassRoom = () => {
                   <Link key={a._id} to={`${classId}/${a._id}`}>
                     <div className="work row" key={a._id}>
                       <div className="col-1">
-                        {' '}
                         <img
                           src={profile}
                           alt="student"

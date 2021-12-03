@@ -116,168 +116,173 @@ const Register = e => {
   };
 
   return (
-    <div className="form_wrapper">
-      <ToastContainer />
-      <div className="form_container">
-        <div className="title_container">
-          <h2>Registration Form</h2>
-        </div>
-        <div className="row clearfix">
-          <div className="">
-            <form>
-              <div className="input_field">
-                <span>
-                  <i aria-hidden="true" className="fa fa-envelope"></i>
-                </span>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={register.email}
-                  onChange={e => handleChange(e, 'email')}
-                  required
-                />
-              </div>
-              <div className="input_field">
-                <span>
-                  <i aria-hidden="true" className="fa fa-lock"></i>
-                </span>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  required
-                  value={register.password}
-                  onChange={e => handleChange(e, 'password')}
-                />
-              </div>
-              <div className="input_field">
-                <span>
-                  <i aria-hidden="true" className="fa fa-lock"></i>
-                </span>
-                <input
-                  type="text"
-                  name="Roll No"
-                  placeholder="Roll Number"
-                  required
-                  value={register.roll}
-                  onChange={e => handleChange(e, 'roll')}
-                />
-              </div>
-
-              <div className="input_field">
-                <span>
-                  <i aria-hidden="true" className="fa fa-lock"></i>
-                </span>
-                <input
-                  type="date"
-                  name=""
-                  className="form-control"
-                  placeholder="Date of Birth"
-                  required
-                  value={register.dob}
-                  onChange={e => handleChange(e, 'dob')}
-                />
-              </div>
-
-              <div className="input_field">
-                <span>
-                  <i aria-hidden="true" className="fa fa-lock"></i>
-                </span>
-                <input
-                  type="text"
-                  name=""
-                  placeholder="Phone Number"
-                  required
-                  value={register.phn}
-                  onChange={e => handleChange(e, 'phn')}
-                />
-              </div>
-
-              <div className="row clearfix">
-                <div className="col_half">
-                  <div className="input_field">
-                    <span>
-                      <i aria-hidden="true" className="fa fa-user"></i>
-                    </span>
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="First Name"
-                      value={register.fName}
-                      onChange={e => handleChange(e, 'fName')}
-                    />
-                  </div>
+    <div className="wrapper" style={{
+      overflowY: 'scroll',
+    }}>
+      <div
+        className="form_wrapper rounded"
+      >
+        <ToastContainer />
+        <div className="form_container">
+          <div className="title_container">
+            <h2>Registration Form</h2>
+          </div>
+          <div className="row clearfix">
+            <div className="">
+              <form>
+                <div className="input_field">
+                  <span>
+                    <i aria-hidden="true" className="fa fa-envelope"></i>
+                  </span>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={register.email}
+                    onChange={e => handleChange(e, 'email')}
+                    required
+                  />
                 </div>
-                <div className="col_half">
-                  <div className="input_field">
-                    <span>
-                      <i aria-hidden="true" className="fa fa-user"></i>
-                    </span>
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Last Name"
-                      required
-                      value={register.lName}
-                      onChange={e => handleChange(e, 'lName')}
-                    />
-                  </div>
+                <div className="input_field">
+                  <span>
+                    <i aria-hidden="true" className="fa fa-lock"></i>
+                  </span>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                    value={register.password}
+                    onChange={e => handleChange(e, 'password')}
+                  />
                 </div>
-              </div>
+                <div className="input_field">
+                  <span>
+                    <i aria-hidden="true" className="fa fa-lock"></i>
+                  </span>
+                  <input
+                    type="text"
+                    name="Roll No"
+                    placeholder="Roll Number"
+                    required
+                    value={register.roll}
+                    onChange={e => handleChange(e, 'roll')}
+                  />
+                </div>
 
-              <div className="input_field select_option">
-                <select onChange={e => handleChange(e, 'branch')}>
-                  <option hidden>Branch</option>
-                  <option value="Computer Science">Computer Science</option>
-                  <option value="Information Technology">
-                    Information Technology
-                  </option>
-                </select>
-                <div className="select_arrow"></div>
-              </div>
+                <div className="input_field">
+                  <span>
+                    <i aria-hidden="true" className="fa fa-lock"></i>
+                  </span>
+                  <input
+                    type="date"
+                    name=""
+                    className="form-control"
+                    placeholder="Date of Birth"
+                    required
+                    value={register.dob}
+                    onChange={e => handleChange(e, 'dob')}
+                  />
+                </div>
 
-              <div className="input_field">
-                <span>
-                  <i aria-hidden="true" className="fa fa-lock"></i>
-                </span>
-                <input
-                  type="text"
-                  name=""
-                  placeholder="Batch"
-                  value={register.batch}
-                  onChange={e => handleChange(e, 'batch')}
-                  required
-                />
-              </div>
+                <div className="input_field">
+                  <span>
+                    <i aria-hidden="true" className="fa fa-lock"></i>
+                  </span>
+                  <input
+                    type="text"
+                    name=""
+                    placeholder="Phone Number"
+                    required
+                    value={register.phn}
+                    onChange={e => handleChange(e, 'phn')}
+                  />
+                </div>
 
-              <div className="input_field select_option">
-                <select onChange={e => handleChange(e, 'role')}>
-                  <option> Select Your Role</option>
-                  <option value="admin">Teacher</option>
-                  <option value="">Student</option>
-                </select>
-                <div className="select_arrow"></div>
-              </div>
-
-              <div className="">
-                <h6>Subjects</h6>
-                {subjectsArr.map((sub, index) => {
-                  return (
-                    <div key={sub.name}>
+                <div className="row clearfix">
+                  <div className="col_half">
+                    <div className="input_field">
+                      <span>
+                        <i aria-hidden="true" className="fa fa-user"></i>
+                      </span>
                       <input
-                        type="checkbox"
-                        value={sub.name}
-                        className="me-2"
-                        onChange={e => handleCheckbox(index, e)}
+                        type="text"
+                        name="name"
+                        placeholder="First Name"
+                        value={register.fName}
+                        onChange={e => handleChange(e, 'fName')}
                       />
-                      {sub.name}
                     </div>
-                  );
-                })}
-              </div>
+                  </div>
+                  <div className="col_half">
+                    <div className="input_field">
+                      <span>
+                        <i aria-hidden="true" className="fa fa-user"></i>
+                      </span>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Last Name"
+                        required
+                        value={register.lName}
+                        onChange={e => handleChange(e, 'lName')}
+                      />
+                    </div>
+                  </div>
+                </div>
 
-              {/* <div className="input_field select_option">
+                <div className="input_field select_option">
+                  <select onChange={e => handleChange(e, 'branch')}>
+                    <option hidden>Branch</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Technology">
+                      Information Technology
+                    </option>
+                  </select>
+                  <div className="select_arrow"></div>
+                </div>
+
+                <div className="input_field">
+                  <span>
+                    <i aria-hidden="true" className="fa fa-lock"></i>
+                  </span>
+                  <input
+                    type="text"
+                    name=""
+                    placeholder="Batch"
+                    value={register.batch}
+                    onChange={e => handleChange(e, 'batch')}
+                    required
+                  />
+                </div>
+
+                <div className="input_field select_option">
+                  <select onChange={e => handleChange(e, 'role')}>
+                    <option> Select Your Role</option>
+                    <option value="admin">Teacher</option>
+                    <option value="">Student</option>
+                  </select>
+                  <div className="select_arrow"></div>
+                </div>
+
+                <div className="">
+                  <h6>Subjects</h6>
+                  {subjectsArr.map((sub, index) => {
+                    return (
+                      <div key={sub.name}>
+                        <input
+                          type="checkbox"
+                          value={sub.name}
+                          className="me-2"
+                          onChange={e => handleCheckbox(index, e)}
+                        />
+                        {sub.name}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* <div className="input_field select_option">
                 <select>
                   <option>Select a country</option>
                   <option>Option 1</option>
@@ -293,13 +298,14 @@ const Register = e => {
                 <input type="checkbox" id="cb2" />
                 <label for="cb2">I want to receive the newsletter</label>
               </div> */}
-              <input
-                onClick={handleSubmit}
-                className="button"
-                type="submit"
-                value="Register"
-              />
-            </form>
+                <input
+                  onClick={handleSubmit}
+                  className="button"
+                  type="submit"
+                  value="Register"
+                />
+              </form>
+            </div>
           </div>
         </div>
       </div>

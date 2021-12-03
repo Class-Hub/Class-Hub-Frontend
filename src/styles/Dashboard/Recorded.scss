@@ -5,12 +5,11 @@
   height: 100%;
   padding: 20px;
   color: var(--font-primary);
+  overflow-y: scroll;
   .allVideo {
     display: flex;
     flex-direction: row;
-    height: 74vh;
-    overflow-y: scroll;
-    padding-bottom: 5px;
+    height: auto;
     flex-wrap: wrap;
     a {
       text-decoration: none;

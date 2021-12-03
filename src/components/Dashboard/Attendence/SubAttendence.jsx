@@ -22,6 +22,7 @@ const SubAttendence = () => {
   }, [fetchSubDetails]);
   return (
     <div className="wrapper">
+      <div className="students">
       <Link to={`/Attendence`}>
         <svg
           width="40"
@@ -48,7 +49,6 @@ const SubAttendence = () => {
         </svg>
         Go Back
       </Link>
-      <div className="students">
         {!studentsInClass && (
           <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
