@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useUser } from '../../../context/User.context';
 import '../../../styles/Dashboard/Attendence.scss';
+import AttendenceCard from './AttendenceCard';
 import SubjectCard from './SubjectCard';
 
 const Attendence = () => {
@@ -64,19 +65,13 @@ const Attendence = () => {
           <div className="subCardContainer">
             {user?.role !== 'admin'
               ? user?.attendance?.map(subject => {
+                  console.log(subject);
                   return (
-                    <div key={subject._id} className="subjectsContainer">
-                      <label className="subjects">
-                        <input
-                          type="radio"
-                          onChange={() => submitAttendance(subject.sub)}
-                          disabled={!subject.isActive}
-                          defaultChecked={subject.isMarked}
-                        />
-                        <span className="checkmark"></span>
-                        {subject.subName}
-                      </label>
-                    </div>
+                    <AttendenceCard
+                      key={subject._id}
+                      subject={subject}
+                      submitAttendance={submitAttendance}
+                    />
                   );
                 })
               : subjects?.length > 0 &&

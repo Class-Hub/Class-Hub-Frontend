@@ -18,9 +18,6 @@ function App() {
           <PublicRoute exact path="/">
             <LandingPage />
           </PublicRoute>
-          {/* <PublicRoute path="/signin">
-            <LandingPage />
-          </PublicRoute> */}
           <PrivateRoute path="/dashboard">
             <Dashboard />
           </PrivateRoute>
