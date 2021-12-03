@@ -1,27 +1,33 @@
 import React from 'react';
-import { Switch } from 'react-router';
+import { Route, Switch } from 'react-router';
+import { createBrowserHistory } from 'history';
 import LandingPage from './pages/LandingPage/Index';
 import Dashboard from './pages/Dashboard/Index';
 import { ProfileProvider } from './context/profile.context';
 import PublicRoute from './components/Routehandler/PublicRoute';
 import PrivateRoute from './components/Routehandler/PrivateRoute';
+import { BrowserRouter } from 'react-router-dom';
+import NotFound from './components/Dashboard/NotFound';
 
-
+export const customHistory = createBrowserHistory(); //This maintains custom history
 function App() {
   return (
-    <ProfileProvider>
-      <Switch>
-        <PublicRoute exact path="/">
-          <LandingPage />
-        </PublicRoute>
-        <PublicRoute path="/signin">
-          <LandingPage />
-        </PublicRoute>
+    <BrowserRouter history={customHistory}>
+      <ProfileProvider>
+        <Switch>
+          <PublicRoute exact path="/">
+            <LandingPage />
+          </PublicRoute>
+          <PublicRoute path="/signin">
+            <LandingPage />
+          </PublicRoute>
           <PrivateRoute path="/dashboard">
             <Dashboard />
           </PrivateRoute>
-      </Switch>
-    </ProfileProvider>
+          <Route component={NotFound}></Route>
+        </Switch>
+      </ProfileProvider>
+    </BrowserRouter>
   );
 }
 
