@@ -15,15 +15,9 @@ const Attendence = () => {
     if (user) {
       setSubjects(user.teachingSubs);
     }
-  }, [loadUser, user]);
+  }, []);
 
   const submitAttendance = async subjectId => {
-    // const token = localStorage.getItem('classHub');
-    // const config = {
-    //   headers: {
-    //     Authorization: 'Bearer ' + token,
-    //   },
-    // };
     const response = await axios.post('/student/mark', { subjectId });
 
     await setUser(response.data.student);
@@ -43,15 +37,13 @@ const Attendence = () => {
                 const { totalDays, totalPresent, subName } = subject;
 
                 return (
-                  <>
-                    <SubjectCard
-                      percentage={(totalPresent * 100) / totalDays}
-                      totalDays={totalDays}
-                      totalPresent={totalPresent}
-                      subName={subName}
-                    />
-                    {/* <SubjectCard percentage={30} /> */}
-                  </>
+                  <SubjectCard
+                    key={subject._id}
+                    percentage={(totalPresent * 100) / totalDays}
+                    totalDays={totalDays}
+                    totalPresent={totalPresent}
+                    subName={subName}
+                  />
                 );
               })}
           </div>

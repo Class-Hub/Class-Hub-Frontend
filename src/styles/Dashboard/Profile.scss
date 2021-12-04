@@ -1,5 +1,9 @@
 @import '../constants.scss';
 .profileWrapper {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  overflow-y: scroll;
   display: flex;
   flex-direction: row;
   color: var(--font-primary);

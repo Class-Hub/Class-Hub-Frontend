@@ -36,7 +36,7 @@ const ClassWork = () => {
 
   useEffect(() => {
     fetchCurrClassWorkDetails();
-  }, [fetchCurrClassWorkDetails, WorkDetails]);
+  }, []);
 
   const updateWork = async () => {
     await axios
@@ -93,6 +93,8 @@ const ClassWork = () => {
 
   return (
     <div className="wrapper">
+
+      <div className="workContainer">
       <Link to={`/Assignments/${classId}`}>
         <svg
           width="40"
@@ -119,8 +121,6 @@ const ClassWork = () => {
         </svg>
         Go Back
       </Link>
-
-      <div className="workContainer">
         {!WorkDetails && (
           <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>

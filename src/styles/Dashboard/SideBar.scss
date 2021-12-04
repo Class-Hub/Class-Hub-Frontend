@@ -1,7 +1,8 @@
 @import '../constants.scss';
 
 .sideContainer {
-  height: calc(100vh - 60px);
+  height: calc(100vh - 3.75rem);
+  overflow-y: scroll;
   background-color: var(--color-primary);
   display: block;
   width: 250px;

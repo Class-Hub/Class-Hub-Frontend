@@ -13,22 +13,27 @@
     flex-wrap: wrap;
     .tlive {
       background-color: var(--color-primary);
-      width: 18vw;
+      width: 20rem;
+      height: 10rem;
+      font-size: 0.9rem;
       margin: 0.4rem;
       padding: 1rem;
       border-radius: 1rem;
       text-align: center;
       button {
+        h4 {
+          font-size: 1.4rem;
+        }
         background-color: var(--color-accent2);
         border: none;
         margin: 0.5rem;
         padding: 0.5rem;
-        border-radius: 5px;
+        border-radius: 0.5rem;
         color: var(--color-primary);
       }
       &:hover {
-        box-shadow: 20px 20px 40px var(--color-primary),
-          -20px -20px 40px var(--color-primary);
+        box-shadow: 5px 5px 10px 5px var(--color-secondary),
+          -5px -5px 10px 5px var(--color-primary);
         transform: translateZ(10px) scale(1.05);
         transition: all 0.5s ease-in-out;
       }
