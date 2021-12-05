@@ -9,6 +9,7 @@ import { useUser } from '../../../context/User.context';
 import profile from '../../../assets/Profile.png';
 import moment from 'moment';
 import { toast } from 'react-toastify';
+import { useMediaQuery } from '../../../misc/custom-hooks';
 
 const ClassRoom = () => {
   const { user } = useUser();
@@ -23,6 +24,7 @@ const ClassRoom = () => {
   const [inputDeadline, setInputDealine] = useState('');
   const [inputType, setInputType] = useState('long answer');
   const [currentSection, setCurrentSection] = useState(false);
+  const isMobile = useMediaQuery('(max-width: 992px)');
 
   const fetchCurrentClassDetails = useCallback(async () => {
     await axios
@@ -214,7 +216,7 @@ const ClassRoom = () => {
                 return (
                   <Link key={a._id} to={`${classId}/${a._id}`}>
                     <div className="work row" key={a._id}>
-                      <div className="col-1">
+                      <div className="col-2 col-sm-1">
                         <img
                           src={profile}
                           alt="student"
@@ -223,7 +225,7 @@ const ClassRoom = () => {
                         />
                       </div>
 
-                      <div className="workmid col-9">
+                      <div className="workmid col-sm-9">
                         <h3>{a.title}</h3>
                         <p>
                           Posted {moment(a.createdAt).fromNow()}
@@ -253,20 +255,37 @@ const ClassRoom = () => {
         onRequestClose={() => {
           setModalIsOpen(false);
         }}
-        style={{
-          overlay: {},
-          content: {
-            width: '50%',
-            height: 'auto',
-            top: '50%',
-            borderRadius: '30px',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-          },
-        }}
+        style={
+          !isMobile
+            ? {
+                overlay: {},
+                content: {
+                  width: '50%',
+                  height: 'auto',
+                  top: '50%',
+                  borderRadius: '10px',
+                  left: '50%',
+                  right: 'auto',
+                  bottom: 'auto',
+                  marginRight: '-50%',
+                  transform: 'translate(-50%, -50%)',
+                },
+              }
+            : {
+                overlay: {},
+                content: {
+                  width: '90%',
+                  height: 'auto',
+                  top: '50%',
+                  borderRadius: '10px',
+                  left: '50%',
+                  right: 'auto',
+                  bottom: 'auto',
+                  marginRight: '-50%',
+                  transform: 'translate(-50%, -50%)',
+                },
+              }
+        }
       >
         <h4 className="modal-Heading">
           {currentSection && <>Add Student</>}

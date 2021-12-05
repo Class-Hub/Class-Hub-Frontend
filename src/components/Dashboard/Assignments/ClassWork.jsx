@@ -8,6 +8,7 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import moment from 'moment';
 import { toast } from 'react-toastify';
+import { useMediaQuery } from '../../../misc/custom-hooks';
 
 const ClassWork = () => {
   const { classId, classWork } = useParams();
@@ -20,6 +21,7 @@ const ClassWork = () => {
   const [inputDeadline, setInputDealine] = useState('');
   const [inputType, setInputType] = useState('');
   const history = useHistory();
+  const isMobile = useMediaQuery('(max-width: 992px)');
 
   const fetchCurrClassWorkDetails = useCallback(async () => {
     await axios
@@ -93,34 +95,33 @@ const ClassWork = () => {
 
   return (
     <div className="wrapper">
-
       <div className="workContainer">
-      <Link to={`/Assignments/${classId}`}>
-        <svg
-          width="40"
-          height="40"
-          className="back"
-          viewBox="0 0 40 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M31.6667 20H8.33333"
-            stroke="#14279B"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M20 31.6666L8.33333 20L20 8.33331"
-            stroke="#14279B"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        Go Back
-      </Link>
+        <Link to={`/Assignments/${classId}`}>
+          <svg
+            width="40"
+            height="40"
+            className="back"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M31.6667 20H8.33333"
+              stroke="#14279B"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M20 31.6666L8.33333 20L20 8.33331"
+              stroke="#14279B"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          Go Back
+        </Link>
         {!WorkDetails && (
           <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
@@ -249,20 +250,37 @@ const ClassWork = () => {
         onRequestClose={() => {
           setModalIsOpen(false);
         }}
-        style={{
-          overlay: {},
-          content: {
-            width: '50%',
-            height: 'auto',
-            top: '50%',
-            borderRadius: '30px',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-          },
-        }}
+        style={
+          !isMobile
+            ? {
+                overlay: {},
+                content: {
+                  width: '50%',
+                  height: 'auto',
+                  top: '50%',
+                  borderRadius: '10px',
+                  left: '50%',
+                  right: 'auto',
+                  bottom: 'auto',
+                  marginRight: '-50%',
+                  transform: 'translate(-50%, -50%)',
+                },
+              }
+            : {
+                overlay: {},
+                content: {
+                  width: '90%',
+                  height: 'auto',
+                  top: '50%',
+                  borderRadius: '10px',
+                  left: '50%',
+                  right: 'auto',
+                  bottom: 'auto',
+                  marginRight: '-50%',
+                  transform: 'translate(-50%, -50%)',
+                },
+              }
+        }
       >
         <h4 className="modal-Heading">
           Update Work

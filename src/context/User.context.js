@@ -14,6 +14,12 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isUserLoading, setIsUserLoading] = useState(true);
 
+  //Placing this side bar state here because of making another context 
+  const [sidebarOpened, setSidebarOpened] = useState(true);
+  const ToggleSideBar = () => {
+    setSidebarOpened(!sidebarOpened);
+  };
+
   const loadUser = useCallback(async () => {
     const token = localStorage.getItem('classHub');
 
@@ -40,7 +46,7 @@ export const UserProvider = ({ children }) => {
   }, [loadUser]);
 
   return (
-    <UserContext.Provider value={{ user, isUserLoading, setUser, loadUser }}>
+    <UserContext.Provider value={{ user, isUserLoading, setUser, loadUser ,sidebarOpened , ToggleSideBar}}>
       {children}
     </UserContext.Provider>
   );

@@ -37,12 +37,12 @@ const Member = ({ a, remove, setStudentsList }) => {
           height="40px"
         />
       </div>
-      <h5 className="col-5">{a.name}</h5>
-      {!remove && <h6 className="col-6">{a.email}</h6>}
+      <h5 className="col-sm-5 col-10">{a.name}</h5>
+      {/* {!remove && <h6 className="col-sm-6 col">{a.email}</h6>} */}
       {remove && (
         <>
-          <h6 className="col-5">{a.email}</h6>
-          <button className="col-1" onClick={removeStudent}>
+          <h6 className="col-sm-4 col-6">{a.email}</h6>
+          <button className="col-sm-2 col-6" onClick={removeStudent}>
             Remove
           </button>
         </>

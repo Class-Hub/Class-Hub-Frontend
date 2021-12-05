@@ -39,7 +39,7 @@
           background-color: #14279b;
         }
         h4 {
-          font-size: 15px;
+          font-size: 1rem;
           margin-top: 5px;
           margin-left: 20px;
           align-self: flex-start;
@@ -48,11 +48,50 @@
           }
         }
         p {
-          margin-left: 20px;
+          margin-left: 1.3rem;
           align-self: flex-start;
           margin-top: 0;
         }
       }
     }
   }
+}
+
+
+
+@media screen and (max-width: 400px) {
+  .recordedWrapper {
+    .allVideo {
+      a {
+        .videoWrapper {
+          // background-color: red;
+          width: 100%;
+          height: auto;
+          &:hover {
+            transform: translateZ(0px);
+          }
+          img {
+            margin: 0;
+        border-radius: 10px;
+            width: 100%;
+          }
+          h4 {
+            font-size: 1rem;
+            margin-top: 5px;
+            margin-left: 20px;
+            align-self: flex-start;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          p {
+            margin-left: 1.3rem;
+            align-self: flex-start;
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+  
 }

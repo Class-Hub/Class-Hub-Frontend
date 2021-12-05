@@ -6,6 +6,17 @@
   background-color: var(--color-primary);
   display: block;
   width: 250px;
+  &.isMobile {
+    position: fixed;
+    top: 3.75rem;
+    left: -100%;
+    z-index: 1000;
+    transition: 850ms;
+  }
+  &.opened {
+    left: 0;
+    transition: 350ms;
+  }
   ul {
     list-style-type: none;
     padding: 0;
@@ -52,3 +63,4 @@
     }
   }
 }
+

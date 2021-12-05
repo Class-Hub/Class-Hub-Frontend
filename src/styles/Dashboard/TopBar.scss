@@ -21,6 +21,13 @@
       line-height: 42px;
       letter-spacing: 0.05em;
     }
+    span {
+      margin: 10px 0px 10px 5px;
+      padding: 5px;
+      border-radius: 50%;
+      // background-color: red;
+      cursor: pointer;
+    }
   }
 
   .right {

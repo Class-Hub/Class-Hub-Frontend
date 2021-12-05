@@ -41,3 +41,9 @@
   border-radius: 5px;
   box-shadow: inset 0px 0px 0px 0px #f0f0f0;
 }
+
+@media screen and (max-width: 992px) {
+  .wrapper {
+    width: 100vw
+  }
+}

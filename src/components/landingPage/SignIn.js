@@ -659,7 +659,7 @@ function SignIn() {
       <div className="col-lg-6 col-12 d-flex align-items-center justify-content-around">
         <form onSubmit={handleLogin}>
           <div className="svgContainer">
-            <div>
+            <div className="svgContainer2">
               <svg
                 className="mySVG"
                 xmlns="http://www.w3.org/2000/svg"

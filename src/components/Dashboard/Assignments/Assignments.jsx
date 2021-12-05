@@ -5,6 +5,7 @@ import Subjectcard from './Subjectcard';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { toast } from 'react-toastify';
+import { useMediaQuery } from '../../../misc/custom-hooks';
 
 Modal.setAppElement('#root');
 const Assignments = () => {
@@ -13,6 +14,7 @@ const Assignments = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const isMobile = useMediaQuery('(max-width: 992px)');
 
   // console.log(user);
 
@@ -34,10 +36,7 @@ const Assignments = () => {
   }, []);
 
   const createClass = async () => {
-    // e.preventdefault();
     setModalIsOpen(false);
-    // console.log('click');
-    // console.log(title, description);
 
     await axios
       .post(`/class/create`, {
@@ -124,20 +123,37 @@ const Assignments = () => {
         onRequestClose={() => {
           setModalIsOpen(false);
         }}
-        style={{
-          overlay: {},
-          content: {
-            width: '50%',
-            height: '55%',
-            top: '50%',
-            borderRadius: '30px',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-          },
-        }}
+        style={
+          !isMobile
+            ? {
+                overlay: {},
+                content: {
+                  width: '50%',
+                  height: 'auto',
+                  top: '50%',
+                  borderRadius: '10px',
+                  left: '50%',
+                  right: 'auto',
+                  bottom: 'auto',
+                  marginRight: '-50%',
+                  transform: 'translate(-50%, -50%)',
+                },
+              }
+            : {
+                overlay: {},
+                content: {
+                  width: '90%',
+                  height: 'auto',
+                  top: '50%',
+                  borderRadius: '10px',
+                  left: '50%',
+                  right: 'auto',
+                  bottom: 'auto',
+                  marginRight: '-50%',
+                  transform: 'translate(-50%, -50%)',
+                },
+              }
+        }
       >
         <h4 className="modal-Heading">
           Create Class
