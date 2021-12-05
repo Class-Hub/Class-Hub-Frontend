@@ -14,6 +14,9 @@
     }
     svg {
       margin: 0 5px 0 5px;
+      path{
+        stroke: var(--color-accent2);
+      }
       &:hover {
         cursor: pointer;
       }
@@ -29,7 +32,7 @@
     textarea {
       width: 85%;
       border: none;
-      background-color: var(--color-primary);
+      background-color: var(--color-secondary);
       color: var(--font-primary);
       border-radius: 10px;
       margin: 5px;
@@ -47,17 +50,21 @@
   .answers {
     display: flex;
     flex-direction: row;
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
+
+    box-shadow: 6px 4px 11px -5px rgba(56, 56, 56, 0.58);
+    -webkit-box-shadow: 6px 4px 11px -5px rgba(56, 56, 56, 0.58);
+    -moz-box-shadow: 6px 4px 11px -5px rgba(56, 56, 56, 0.58);
     border-radius: 10px;
     padding: 10px;
     margin-top: 5px;
     .content {
       margin-left: 5px;
       h6 {
-        color: var(--color-accent1);
+        color: var(--font-primary);
       }
       p {
-        color: var(--font-primary);
+        color: var(--font-secondary);
       }
     }
   }

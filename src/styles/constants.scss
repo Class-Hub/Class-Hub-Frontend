@@ -9,6 +9,7 @@
   --font-primary: #000000;
   --font-secondary: #150e56;
   --back-color:#fff;
+  --box-shad: 10px 10px 24px #bdbdbd, -10px -10px 24px #ffffff;
 }
 .theme-dark {
   --color-primary: #1B262C;
@@ -18,12 +19,14 @@
   --font-primary: #fff;
   --font-secondary: #d8d8d8;
   --back-color:#083358;
+  --box-shad: 10px 10px 24px #151e22, -10px -10px 24px #212e36;
+
 }
 
 .wrapper {
   height: calc(100vh - 3.75rem);
   width: calc(100vw - 250px);
-  background-color: var(--back-color);
+  background-color: var(--color-primary);
 }
 ::-webkit-scrollbar {
   width: 6px;
@@ -37,7 +40,7 @@
   background: #3d56b2;
 }
 ::-webkit-scrollbar-track {
-  background: #e6e6e6;
+  background: var(--color-accent1);
   border-radius: 5px;
   box-shadow: inset 0px 0px 0px 0px #f0f0f0;
 }

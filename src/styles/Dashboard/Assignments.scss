@@ -40,6 +40,10 @@
         }
       }
       svg {
+        margin: 0 5px 0 5px;
+        path{
+          stroke: var(--color-accent2);
+        }
         &:hover {
           cursor: pointer;
         }

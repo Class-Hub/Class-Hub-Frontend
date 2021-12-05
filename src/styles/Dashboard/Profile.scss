@@ -23,6 +23,7 @@
   .userDataContainer {
     margin: 40px;
     ul {
+      box-shadow: var(--box-shad);
       list-style: none;
       width: auto;
       height: auto;
@@ -67,7 +68,7 @@
     }
     .userDataContainer{
       height: auto;
-      margin:  20px;
+      margin:  1.3rem;
       ul{
         li {
         height: auto;
