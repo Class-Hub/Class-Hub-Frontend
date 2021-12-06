@@ -27,7 +27,7 @@ const ClassWork = () => {
     await axios
       .get(`/classwork/get/${classWork}`)
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         setWorkDetails(response.data);
       })
       .catch(err => {
@@ -50,7 +50,7 @@ const ClassWork = () => {
         duedate: inputDeadline,
       })
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         toast.success('Classwork Updated Successfully');
         setWorkDetails(response.data.classwork);
       })
@@ -84,13 +84,13 @@ const ClassWork = () => {
         answer: answer,
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
       })
       .catch(err => {
         toast.error('Error occured', err);
         console.log(err);
       });
-    console.log(answer);
+    // console.log(answer);
   };
 
   return (

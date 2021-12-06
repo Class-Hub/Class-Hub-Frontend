@@ -11,7 +11,7 @@ const Recorded = () => {
     axios
       .get('/videoList')
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         setVideos(response.data);
       })
       .catch(err => console.log(err));

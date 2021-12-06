@@ -57,7 +57,6 @@ const Attendence = () => {
           <div className="subCardContainer">
             {user?.role !== 'admin'
               ? user?.attendance?.map(subject => {
-                  console.log(subject);
                   return (
                     <AttendenceCard
                       key={subject._id}

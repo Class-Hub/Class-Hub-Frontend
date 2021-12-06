@@ -2,7 +2,7 @@
 .profileWrapper {
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 1rem;
   overflow-y: scroll;
   display: flex;
   flex-direction: row;
@@ -21,14 +21,15 @@
     }
   }
   .userDataContainer {
-    margin: 2rem;
+    width: auto;
+    margin: 1rem;
     ul {
       box-shadow: var(--box-shad);
       list-style: none;
       width: auto;
       height: auto;
       background-color: var(--color-primary);
-      border-radius: 15px;
+      border-radius: 1rem;
       margin: 0;
       padding: 0;
       li {

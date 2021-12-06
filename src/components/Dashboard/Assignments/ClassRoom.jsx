@@ -212,7 +212,6 @@ const ClassRoom = () => {
             {currClassWork &&
               currClassWork.length > 0 &&
               currClassWork.map(a => {
-                console.log(a);
                 return (
                   <Link key={a._id} to={`${classId}/${a._id}`}>
                     <div className="work row" key={a._id}>

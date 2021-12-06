@@ -45,7 +45,7 @@ const Assignments = () => {
         owner: user._id,
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         if (response.status === 201) {
           toast.success('Classroom Created Successfully');
         }

@@ -5,11 +5,11 @@ import { toast } from 'react-toastify';
 const AttendenceCard = ({ subject, submitAttendance }) => {
   useEffect(() => {
     if (subject.expDate && Date.now() >= subject.expDate) {
-      console.log(subject.expDate);
+      // console.log(subject.expDate);
       axios
         .post('/student/attendanceDisabled', { subjectId: subject.sub })
         .then(response => {
-          console.log(response);
+          // console.log(response);
         })
         .catch(err => {
           toast.error('Error occured', err);

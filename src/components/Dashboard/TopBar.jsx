@@ -30,7 +30,7 @@ const TopBar = () => {
         newPassword: newPass,
       })
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch(err => console.log(err));
     setModalIsOpen(false);

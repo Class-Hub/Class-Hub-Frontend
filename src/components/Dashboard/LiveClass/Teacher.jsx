@@ -10,7 +10,7 @@ const Teacher = ({ data, batch }) => {
         subjectId: data.sub,
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         if(response.status === 200){
         toast.success('Attendence Sent');
 
