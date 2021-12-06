@@ -20,6 +20,12 @@ const SideBar = () => {
     }
   }, []);
 
+  const onclick = () => {
+    if (isMobile) {
+      ToggleSideBar();
+    }
+  };
+
   return (
     <>
       {sidebarOpened && (

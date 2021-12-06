@@ -142,14 +142,14 @@ const Doubts = () => {
               if (log.sender !== user._id) {
                 return (
                   <div key={index} className="chat">
-                    <img src={profile} alt="teachersimage" />
+                    <img src={log.sender.photo || profile} alt="teachersimage" />
                     <p className="message">{log.text}</p>
                   </div>
                 );
               }
               return (
                 <div key={index} className="chat studentMessage">
-                  <img src={profile} alt="teachersimage" />
+                  <img src={user.photo || profile} alt="teachersimage" />
                   <p className="message">{log.text}</p>
                 </div>
               );

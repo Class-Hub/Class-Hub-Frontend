@@ -23,9 +23,7 @@
       align-items: center;
       justify-content: center;
       &:hover {
-        box-shadow: 5px 5px 10px 5px var(--color-secondary),
-        -5px -5px 10px 5px var(--color-primary);
-
+        box-shadow: var(--box-shad);
         transform: translateZ(20px);
       }
       h4{
@@ -121,6 +119,7 @@
 
       /* When the checkbox is checked, add a blue background */
       input:checked ~ .checkmark {
+        z-index: 12;
         background-color: #61b15a;
       }
 
@@ -147,6 +146,55 @@
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 992px) {
+  .attendenceContainer {
+    .subCardContainer {
+      justify-content: center;
+      .subjectCard {
+        justify-content: center;
+        box-shadow: var(--box-shad);
+
+      }
+    }
+  
+    .subjectsContainer {
+      // width: 100%;
+      margin-bottom: 1.4rem;
+      margin-left: 1.4rem;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      color: var(--font-primary);
+      justify-content: space-between;
+      .subjects {
+        width: 15rem;
+        height: auto;
+        border-radius: 15px;
+          font-size: 1rem;
+    
+        padding: 10px;
+        color: var(--color-primary);
+        background-color: var(--color-accent1);
+        word-wrap: normal;
+  
+        display: block;
+        position: relative;
+        padding-left: 40px;
+        cursor: pointer;
+        font-size: 22px;
+        input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
       }
     }
   }
