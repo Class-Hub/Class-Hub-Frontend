@@ -107,7 +107,6 @@
         left: 0.5vw;
         height: 25px;
         width: 25px;
-        z-index: 1000;
         border-radius: 50%;
         background-color: #eee;
       }
@@ -119,7 +118,7 @@
 
       /* When the checkbox is checked, add a blue background */
       input:checked ~ .checkmark {
-        z-index: 12;
+        // z-index: 2;
         background-color: #61b15a;
       }
 

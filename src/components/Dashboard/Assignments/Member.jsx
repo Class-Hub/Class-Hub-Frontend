@@ -43,8 +43,8 @@ const Member = ({ a, remove, setStudentsList }) => {
       )}
       {remove && (
         <>
-          <h6 className="col-sm-4 col-6 m-1">{a.email}</h6>
-          <button className="col-sm-2 col-6 m-1" onClick={removeStudent}>
+          <h6 className="col-sm-4 col-6 mt-1">{a.email}</h6>
+          <button className="col-sm-2 col-6 mt-1" onClick={removeStudent}>
             Remove
           </button>
         </>
