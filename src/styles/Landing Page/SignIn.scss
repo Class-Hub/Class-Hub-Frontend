@@ -9,6 +9,9 @@ body {
   background-color: #eff3f4;
   -webkit-font-smoothing: antialiased;
 }
+.signIncomponent {
+  height: 100vh;
+}
 form {
   width: 100%;
   max-width: 400px;
@@ -25,7 +28,7 @@ form {
     margin: 0 auto 1em;
     border-radius: 50%;
     pointer-events: none;
-    div {
+    .svgContainer2 {
       position: relative;
       width: 100%;
       height: 0;

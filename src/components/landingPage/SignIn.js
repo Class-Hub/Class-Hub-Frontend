@@ -1,10 +1,9 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-useless-escape */
 import React, { useEffect } from 'react';
-import TweenMax from 'gsap';
-
+import { gsap } from 'gsap';
+import { TweenMax, Power2, Expo, Quad } from 'gsap/all';
 import '../../styles/Landing Page/SignIn.scss';
 import useLogin from '../../misc/login';
+gsap.registerPlugin(TweenMax, Power2, Expo, Quad);
 
 function SignIn() {
   const { onLogin } = useLogin();
@@ -660,7 +659,7 @@ function SignIn() {
       <div className="col-lg-6 col-12 d-flex align-items-center justify-content-around">
         <form onSubmit={handleLogin}>
           <div className="svgContainer">
-            <div>
+            <div className="svgContainer2">
               <svg
                 className="mySVG"
                 xmlns="http://www.w3.org/2000/svg"

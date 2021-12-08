@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import '../../styles/Dashboard/TopBar.scss';
 import logo from '../../assets/logo.png';
 import profile from '../../assets/Profile.png';
@@ -6,13 +6,17 @@ import { useProfile } from '../../context/profile.context';
 import { useUser } from '../../context/User.context';
 import Modal from 'react-modal';
 import axios from 'axios';
+import { useMediaQuery } from '../../misc/custom-hooks';
 
 const TopBar = () => {
   const { setProfile } = useProfile();
+  const { user, sidebarOpened, ToggleSideBar } = useUser();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [currPass, setCurrPass] = useState('');
   const [newPass, setNewPass] = useState('');
-  const { user } = useUser();
+  const [checked, setChecked] = useState(null);
+  const isMobile = useMediaQuery('(max-width: 992px)');
+  const smalldev = useMediaQuery('(max-width: 600px)');
   const logout = e => {
     e.preventDefault();
     localStorage.removeItem('classHub');
@@ -26,14 +30,104 @@ const TopBar = () => {
         newPassword: newPass,
       })
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch(err => console.log(err));
     setModalIsOpen(false);
   };
+
+  // function to set a given theme/color-scheme
+  const setTheme = useCallback(themeName => {
+    localStorage.setItem('theme', themeName);
+    setChecked(themeName !== 'theme-dark');
+    document.documentElement.className = themeName;
+  }, []);
+
+  // function to toggle between light and dark theme
+  function toggleTheme() {
+    if (localStorage.getItem('theme') === 'theme-dark') {
+      setTheme('theme-light');
+    } else {
+      setTheme('theme-dark');
+    }
+  }
+
+  // Immediately invoked function to set the theme on initial load
+  useEffect(() => {
+    console.log(isMobile);
+    if (isMobile) {
+      ToggleSideBar();
+    }
+    setChecked(localStorage.getItem('theme') === 'theme-light');
+    if (localStorage.getItem('theme') === 'theme-dark') {
+      setTheme('theme-dark');
+    } else {
+      setTheme('theme-light');
+    }
+  }, [setTheme]);
+
   return (
     <div className="upperContainer">
       <div className="left">
+        {isMobile && !sidebarOpened && (
+          <span onClick={ToggleSideBar}>
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.37451 12.8805H21.3745"
+                stroke="#E6E6E6"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M3.37451 6.88049H21.3745"
+                stroke="#E6E6E6"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M3.37451 18.8805H21.3745"
+                stroke="#E6E6E6"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+        )}
+        {isMobile && sidebarOpened && (
+          <span onClick={ToggleSideBar}>
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18.3745 6.42627L6.3745 18.4263"
+                stroke="#E6E6E6"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M6.3745 6.42627L18.3745 18.4263"
+                stroke="#E6E6E6"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+        )}
         <img
           src={logo}
           alt="logo"
@@ -41,17 +135,27 @@ const TopBar = () => {
           width="40px"
           height="40px"
         />
-        <p id="logoname">ClassHub</p>
+        {!smalldev && <p id="logoname">ClassHub</p>}
       </div>
 
       <div className="right">
+        <label id="switch" className="switch">
+          <input
+            type="checkbox"
+            onChange={toggleTheme}
+            id="slider"
+            checked={checked}
+          />
+          <span className="slider round"></span>
+        </label>
         <img
           src={!!user?.photo ? user.photo : profile}
           alt="logo"
           width="40px"
           height="40px"
         />
-        {user ? user.name : ''}
+        {smalldev && ''}
+        {!smalldev && user ? user.name : ''}
         {user && !user.role && (
           <span
             data-bs-toggle="tooltip"
@@ -136,20 +240,37 @@ const TopBar = () => {
         onRequestClose={() => {
           setModalIsOpen(false);
         }}
-        style={{
-          overlay: {},
-          content: {
-            width: '45%',
-            height: 'auto',
-            top: '50%',
-            borderRadius: '30px',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-          },
-        }}
+        style={
+          !isMobile
+            ? {
+                overlay: {},
+                content: {
+                  width: '50%',
+                  height: 'auto',
+                  top: '50%',
+                  borderRadius: '10px',
+                  left: '50%',
+                  right: 'auto',
+                  bottom: 'auto',
+                  marginRight: '-50%',
+                  transform: 'translate(-50%, -50%)',
+                },
+              }
+            : {
+                overlay: {},
+                content: {
+                  width: '90%',
+                  height: 'auto',
+                  top: '50%',
+                  borderRadius: '10px',
+                  left: '50%',
+                  right: 'auto',
+                  bottom: 'auto',
+                  marginRight: '-50%',
+                  transform: 'translate(-50%, -50%)',
+                },
+              }
+        }
       >
         <h4 className="modal-Heading">
           Change Password

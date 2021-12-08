@@ -28,11 +28,27 @@ const Member = ({ a, remove, setStudentsList }) => {
   };
 
   return (
-    <div className="student">
-      <img src={a.photo || profile} alt="student" width="40px" height="40px" />
-      <h5>{a.name}</h5>
-      <h6>{a.email}</h6>
-      {remove && <button onClick={removeStudent}>Remove</button>}
+    <div className="student row">
+      <div className="col-1">
+        <img
+          src={a.photo || profile}
+          alt="student"
+          width="40px"
+          height="40px"
+        />
+      </div>
+      <h5 className="col-sm-5 col-10">{a.name}</h5>
+      {!remove && (
+        <h6 className="col-12 col-sm-5 m-1 text-center">{a.email}</h6>
+      )}
+      {remove && (
+        <>
+          <h6 className="col-sm-4 col-6 mt-1">{a.email}</h6>
+          <button className="col-sm-2 col-6 mt-1" onClick={removeStudent}>
+            Remove
+          </button>
+        </>
+      )}
     </div>
   );
 };

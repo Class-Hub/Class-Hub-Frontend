@@ -1,16 +1,28 @@
 @import '../constants.scss';
 
 .sideContainer {
-  height: calc(100vh - 65px);
-  background-color: $primary;
+  height: calc(100vh - 3.75rem);
+  overflow-y: scroll;
+  background-color: var(--color-primary);
   display: block;
   width: 250px;
+  &.isMobile {
+    position: fixed;
+    top: 3.75rem;
+    left: -100%;
+    z-index: 1000;
+    transition: 850ms;
+  }
+  &.opened {
+    left: 0;
+    transition: 350ms;
+  }
   ul {
     list-style-type: none;
     padding: 0;
     a {
       text-decoration: none;
-      color: $accent2;
+      color: var(--color-accent2);
       font-family: Montserrat;
       font-style: normal;
       font-weight: 600;
@@ -28,23 +40,27 @@
           margin-left: 5px;
           padding: 5px;
         }
+        path {
+          fill: var(--color-accent2);
+        }
       }
       &:hover {
-        color: $primary;
+        color: var(--font-secondary);
         li {
-          background-color: $secondary;
+          background-color: var(--color-secondary);
           path {
-            fill: $primary;
+            fill: var(--font-secondary);
           }
         }
       }
     }
     .active {
-      color: $primary;
-      background-color: $secondary;
+      color: var(--font-secondary);
+      background-color: var(--color-secondary);
       path {
-        fill: $primary;
+        fill: var(--font-secondary);
       }
     }
   }
 }
+

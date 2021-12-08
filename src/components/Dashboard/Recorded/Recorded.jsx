@@ -11,33 +11,38 @@ const Recorded = () => {
     axios
       .get('/videoList')
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         setVideos(response.data);
       })
       .catch(err => console.log(err));
   }, []);
   return (
-    <div className="recordedWrapper">
-      <h3>Recorded Lectures</h3>
-      <hr />
-      <div
-        className={
-          !videos
-            ? 'allVideo d-flex align-items-center justify-content-center'
-            : 'allVideo'
-        }
-      >
-        {!videos && (
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        )}
-        {videos &&
-          videos.map(video => (
-            <Link key={video._id} to={`RecordedLectures/${video.upload_title}`}>
-              <Video video={video} />
-            </Link>
-          ))}
+    <div className="wrapper">
+      <div className="recordedWrapper">
+        <h3>Recorded Lectures</h3>
+        <hr />
+        <div
+          className={
+            !videos
+              ? 'allVideo d-flex align-items-center justify-content-center'
+              : 'allVideo'
+          }
+        >
+          {!videos && (
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          )}
+          {videos &&
+            videos.map(video => (
+              <Link
+                key={video._id}
+                to={`RecordedLectures/${video.upload_title}`}
+              >
+                <Video video={video} />
+              </Link>
+            ))}
+        </div>
       </div>
     </div>
   );

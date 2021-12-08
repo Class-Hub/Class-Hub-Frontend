@@ -86,56 +86,58 @@ const Upload = () => {
 
   // console.log('ujjwal subName', state.subName);
   return (
-    <div className="uploadContainer">
-      <ToastContainer />
-      <h4>Upload Video</h4>
-      <hr />
-      <div id="uploadForm">
-        <div>
-          {user?.role === 'admin' &&
-            user?.teachingSubs.map(subject => {
-              return (
-                <div key={subject._id}>
-                  <input
-                    type="radio"
-                    name="subjects"
-                    value={subject.subName}
-                    onChange={e =>
-                      setState({ ...state, subName: e.target.value })
-                    }
-                  />
-                  {subject.subName}
-                </div>
-              );
-            })}
-        </div>
-        <div className="inputDiv">
-          <input
-            type="file"
-            name="file"
-            multiple="multiple"
-            accept="video/*"
-            onChange={e => fileChangeHandler(e)}
-          />
-        </div>
+    <div className="wrapper">
+      <div className="uploadContainer">
+        <ToastContainer />
+        <h4>Upload Video</h4>
+        <hr />
+        <div id="uploadForm">
+          <div>
+            {user?.role === 'admin' &&
+              user?.teachingSubs.map(subject => {
+                return (
+                  <div key={subject._id}>
+                    <input
+                      type="radio"
+                      name="subjects"
+                      value={subject.subName}
+                      onChange={e =>
+                        setState({ ...state, subName: e.target.value })
+                      }
+                    />
+                    {subject.subName}
+                  </div>
+                );
+              })}
+          </div>
+          <div className="inputDiv">
+            <input
+              type="file"
+              name="file"
+              multiple="multiple"
+              accept="video/*"
+              onChange={e => fileChangeHandler(e)}
+            />
+          </div>
 
-        <div className="progress">
-          <div
-            className="progress-bar"
-            role="progressbar"
-            style={{ width: `${state.loaded}%` }}
-            aria-valuenow={state.loaded}
-          ></div>
-        </div>
-        <div className="uploadBottom">
-          {state.loaded}% Uploaded
-          <button
-            type="button"
-            // className="btn btn-success btn-block"
-            onClick={e => fileUploadHandler(e)}
-          >
-            Upload Video
-          </button>
+          <div className="progress">
+            <div
+              className="progress-bar"
+              role="progressbar"
+              style={{ width: `${state.loaded}%` }}
+              aria-valuenow={state.loaded}
+            ></div>
+          </div>
+          <div className="uploadBottom">
+            {state.loaded}% Uploaded
+            <button
+              type="button"
+              // className="btn btn-success btn-block"
+              onClick={e => fileUploadHandler(e)}
+            >
+              Upload Video
+            </button>
+          </div>
         </div>
       </div>
     </div>

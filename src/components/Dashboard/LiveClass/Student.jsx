@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Student = () => {
-  const [classId , setClassId] = useState("abab")
+const Student = ({ data }) => {
   return (
     <div className="tlive">
-      <h4> Digital ELectronics </h4>
-      <h5> Teachers Name </h5>
-      <a href={`http://localhost:3000/Class/${classId}`} target="_blank" rel="noopener noreferrer">
+      <h4> {data.subName} </h4>
+      <a
+        href={`/dashboard/Class/${data.sub}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <button>Join CLass</button>
       </a>
     </div>

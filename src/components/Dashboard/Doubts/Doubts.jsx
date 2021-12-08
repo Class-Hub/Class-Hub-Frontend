@@ -5,6 +5,8 @@ import '../../../styles/Dashboard/Doubts.scss';
 import profile from '../../../assets/Profile.png';
 import axios from 'axios';
 import { useUser } from '../../../context/User.context';
+import getNameInitials from '../../../misc/helpers';
+import { useMediaQuery } from '../../../misc/custom-hooks';
 
 // const socket = io.connect('http://localhost:8000');
 const Doubts = () => {
@@ -16,20 +18,14 @@ const Doubts = () => {
   const [msg, setMsg] = useState([]);
   const [currentTeacher, setCurrentTeacher] = useState();
   const { user } = useUser();
-  const socket = useRef();
+  const showInitials = useMediaQuery('(max-width : 800px)');
+
   const token = localStorage.getItem('classHub');
   const config = {
     headers: {
       Authorization: 'Bearer ' + token,
     },
   };
-  // useEffect(() => {
-  //   socket.on('getUsers', data => {
-  //     console.log(data);
-  //   });
-
-  //   socket.emit("sendMessage")
-  // }, []);
 
   useEffect(() => {
     if (!!user) {
@@ -117,7 +113,6 @@ const Doubts = () => {
                 key={index}
                 onClick={() => {
                   setCurrentTeacher(teacher);
-                  // socket.emit('addUser', user?._id);
                   openChat(teacher?.teacher?._id, teacher?.convoId);
                 }}
                 to="/Doubts"
@@ -126,8 +121,15 @@ const Doubts = () => {
                   className={location.pathname === '/Doubts' ? 'active' : ''}
                   style={{ marginBottom: '1rem' }}
                 >
-                  <img src={profile} alt="Teacher image" />
-                  {teacher?.teacher?.name}
+                  {!showInitials && (
+                    <>
+                      <img src={profile} alt="Teacher image" />
+                      {teacher?.teacher?.name}
+                    </>
+                  )}
+                  {showInitials && teacher?.teacher
+                    ? getNameInitials(teacher?.teacher?.name)
+                    : ''}
                 </li>
               </Link>
             );
@@ -140,26 +142,18 @@ const Doubts = () => {
               if (log.sender !== user._id) {
                 return (
                   <div key={index} className="chat">
-                    <img src={profile} alt="teachersimage" />
+                    <img src={log.sender.photo || profile} alt="teachersimage" />
                     <p className="message">{log.text}</p>
                   </div>
                 );
               }
               return (
                 <div key={index} className="chat studentMessage">
-                  <img src={profile} alt="teachersimage" />
+                  <img src={user.photo || profile} alt="teachersimage" />
                   <p className="message">{log.text}</p>
                 </div>
               );
             })}
-            {/* <div className="chat">
-              <img src={profile} alt="teachersimage" />
-              <p className="message">Reciver</p>
-            </div> */}
-            {/* <div className="chat studentMessage">
-              <img src={profile} alt="teachersimage" />
-              <p className="message">User</p>
-            </div> */}
           </div>
           <div className="bottom">
             <input

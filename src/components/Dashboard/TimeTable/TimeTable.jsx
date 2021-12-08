@@ -6,7 +6,7 @@ const TimeTable = () => {
   return (
     <div className="wrapper">
       <div className="timetable">
-        <img src={timeTable} width="1000px" height="500px" alt="Time Table" />
+        <img src={timeTable} alt="Time Table" />
       </div>
     </div>
   );

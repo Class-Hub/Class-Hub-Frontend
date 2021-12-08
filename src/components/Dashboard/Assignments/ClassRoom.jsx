@@ -9,6 +9,7 @@ import { useUser } from '../../../context/User.context';
 import profile from '../../../assets/Profile.png';
 import moment from 'moment';
 import { toast } from 'react-toastify';
+import { useMediaQuery } from '../../../misc/custom-hooks';
 
 const ClassRoom = () => {
   const { user } = useUser();
@@ -23,6 +24,7 @@ const ClassRoom = () => {
   const [inputDeadline, setInputDealine] = useState('');
   const [inputType, setInputType] = useState('long answer');
   const [currentSection, setCurrentSection] = useState(false);
+  const isMobile = useMediaQuery('(max-width: 992px)');
 
   const fetchCurrentClassDetails = useCallback(async () => {
     await axios
@@ -100,33 +102,33 @@ const ClassRoom = () => {
 
   return (
     <div className="wrapper">
-      <Link to={`/Assignments`}>
-        <svg
-          width="40"
-          height="40"
-          className="back"
-          viewBox="0 0 40 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M31.6667 20H8.33333"
-            stroke="#14279B"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M20 31.6666L8.33333 20L20 8.33331"
-            stroke="#14279B"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        Go Back
-      </Link>
       <div className="classroombox">
+        <Link to={`/Assignments`}>
+          <svg
+            width="40"
+            height="40"
+            className="back"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M31.6667 20H8.33333"
+              stroke="#14279B"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M20 31.6666L8.33333 20L20 8.33331"
+              stroke="#14279B"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          Go Back
+        </Link>
         <div className="classBanner">
           {currClass && <h5>{currClass.title}</h5>}
           {currClass && <h6>{currClass.code}</h6>}
@@ -210,12 +212,10 @@ const ClassRoom = () => {
             {currClassWork &&
               currClassWork.length > 0 &&
               currClassWork.map(a => {
-                console.log(a);
                 return (
                   <Link key={a._id} to={`${classId}/${a._id}`}>
                     <div className="work row" key={a._id}>
-                      <div className="col-1">
-                        {' '}
+                      <div className="col-2 col-sm-1">
                         <img
                           src={profile}
                           alt="student"
@@ -224,7 +224,7 @@ const ClassRoom = () => {
                         />
                       </div>
 
-                      <div className="workmid col-9">
+                      <div className="workmid col-sm-9">
                         <h3>{a.title}</h3>
                         <p>
                           Posted {moment(a.createdAt).fromNow()}
@@ -254,20 +254,37 @@ const ClassRoom = () => {
         onRequestClose={() => {
           setModalIsOpen(false);
         }}
-        style={{
-          overlay: {},
-          content: {
-            width: '50%',
-            height: 'auto',
-            top: '50%',
-            borderRadius: '30px',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-          },
-        }}
+        style={
+          !isMobile
+            ? {
+                overlay: {},
+                content: {
+                  width: '50%',
+                  height: 'auto',
+                  top: '50%',
+                  borderRadius: '10px',
+                  left: '50%',
+                  right: 'auto',
+                  bottom: 'auto',
+                  marginRight: '-50%',
+                  transform: 'translate(-50%, -50%)',
+                },
+              }
+            : {
+                overlay: {},
+                content: {
+                  width: '90%',
+                  height: 'auto',
+                  top: '50%',
+                  borderRadius: '10px',
+                  left: '50%',
+                  right: 'auto',
+                  bottom: 'auto',
+                  marginRight: '-50%',
+                  transform: 'translate(-50%, -50%)',
+                },
+              }
+        }
       >
         <h4 className="modal-Heading">
           {currentSection && <>Add Student</>}

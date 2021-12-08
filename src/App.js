@@ -1,38 +1,30 @@
 import React from 'react';
-import { Switch } from 'react-router';
+import { Route, Switch } from 'react-router';
+import { createBrowserHistory } from 'history';
 import LandingPage from './pages/LandingPage/Index';
 import Dashboard from './pages/Dashboard/Index';
 import { ProfileProvider } from './context/profile.context';
 import PublicRoute from './components/Routehandler/PublicRoute';
 import PrivateRoute from './components/Routehandler/PrivateRoute';
-import { ThemeProvider } from 'styled-components';
+import { BrowserRouter } from 'react-router-dom';
+import NotFound from './components/Dashboard/NotFound';
 
-const theme = {
-  primary: '#E6E6E6',
-  secondary: '#5C7AEA',
-  accent1: '#3D56B2',
-  accent2: '#14279B',
-  font_primary: '#000000',
-  font_secondary: '#150E56',
-};
-
+export const customHistory = createBrowserHistory(); //This maintains custom history
 function App() {
   return (
-    <ProfileProvider>
-      <Switch>
-        <PublicRoute exact path="/">
-          <LandingPage />
-        </PublicRoute>
-        <PublicRoute path="/signin">
-          <LandingPage />
-        </PublicRoute>
-        <ThemeProvider theme={theme}>
+    <BrowserRouter history={customHistory}>
+      <ProfileProvider>
+        <Switch>
+          <PublicRoute exact path="/">
+            <LandingPage />
+          </PublicRoute>
           <PrivateRoute path="/dashboard">
             <Dashboard />
           </PrivateRoute>
-        </ThemeProvider>
-      </Switch>
-    </ProfileProvider>
+          <Route component={NotFound}></Route>
+        </Switch>
+      </ProfileProvider>
+    </BrowserRouter>
   );
 }
 

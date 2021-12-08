@@ -4,25 +4,26 @@
   width: 100%;
   padding: 20px;
   height: 100%;
+  overflow-y: scroll;
   h4 {
     display: flex;
     justify-content: space-between;
+    color: var(--font-primary);
     svg {
       cursor: pointer;
       border-radius: 50%;
       &:hover {
-        background-color: $primary;
+        background-color: var(--color-primary);
       }
     }
   }
 
   .allsubjects {
-    // background-color: blue;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     .subjectCard {
-      background-color: $secondary;
+      background-color: var(--color-secondary);
       margin: 10px;
       padding: 10px;
       border-radius: 10px;
@@ -31,13 +32,17 @@
       justify-content: space-between;
       width: 300px;
       a {
-        color: $primary;
+        color: var(--font-secondary);
 
         &:hover {
-          color: $font_secondary;
+          color: var(--font-primary);
         }
       }
       svg {
+        margin: 0 5px 0 5px;
+        path{
+          stroke: var(--color-accent2);
+        }
         &:hover {
           cursor: pointer;
         }
@@ -46,6 +51,9 @@
   }
 }
 
+.Modal {
+  background-color: var(--color-primary);
+}
 .modal-Heading {
   display: flex;
   justify-content: space-between;
@@ -66,8 +74,8 @@
     margin: 5px;
     padding: 5px;
     border-radius: 3px;
-    background-color: $primary;
-    border: 1px solid $secondary;
+    // background-color: var(--color-primary);
+    border: 1px solid var(--color-secondary);
   }
   select {
     margin: 5px;
@@ -75,18 +83,18 @@
   }
   textarea {
     margin: 5px;
-    background-color: $primary;
+    // background-color: var(--color-primary);
     padding: 5px;
     border-radius: 3px;
-    border: 1px solid $secondary;
+    border: 1px solid var(--color-secondary);
   }
 }
 .updateorCreate {
   border: none;
-  background-color: $secondary;
+  background-color: var(--color-secondary);
   padding: 5px;
   margin-top: 15px;
   border-radius: 5px;
   font-size: 1rem;
-  color: $primary;
+  color: var(--font-primary);
 }
