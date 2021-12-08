@@ -64,6 +64,7 @@ const Dashboard = () => {
               />
               {/* <Route exact path="/StudyMaterial" component={StudyMaterial} /> */}
               <Route exact path="/Doubts" component={Doubts} />
+              <Route exact path="/Doubts/:personId" component={Doubts} />
               <Route exact path="/TimeTable" component={TimeTable} />
               <AdminRoute exact path="/register" component={Register} />
               <Route>

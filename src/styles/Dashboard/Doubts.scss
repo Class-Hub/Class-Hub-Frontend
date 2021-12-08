@@ -7,8 +7,17 @@
   flex-direction: row;
   padding: 10px;
   color: var(--font-primary);
+  span {
+    margin: 5px;
+    svg {
+      path {
+        stroke: var(--color-accent2);
+      }
+    }
+  }
   .teacherList {
     width: 15vw;
+    height: 100%;
     margin: 0;
     border-radius: 5px;
     background-color: var(--color-primary);
@@ -16,6 +25,7 @@
     list-style-type: none;
     padding: 5px;
     overflow-y: scroll;
+
     a {
       text-decoration: none;
       li {
@@ -35,6 +45,24 @@
           background-color: var(--color-accent2);
         }
       }
+      .active {
+        color: var(--color-primary);
+        background-color: var(--color-accent2);
+      }
+    }
+    &.isMobile {
+      position: fixed;
+      width: 40vw;
+      top: 3.75rem;
+      left: -100%;
+      z-index: 1000;
+      box-shadow: none;
+      transition: 850ms;
+    }
+    &.listOpened {
+      left: 0;
+      z-index: 200;
+      transition: 350ms;
     }
   }
   .theChat {
@@ -49,6 +77,14 @@
       padding: 0.35rem 1.5rem;
       color: var(--color-primary);
       font-size: 1.2rem;
+      span {
+        margin: 0;
+        svg {
+          path {
+            stroke: var(--color-primary);
+          }
+        }
+      }
     }
     .mid {
       height: 86%;
@@ -93,7 +129,7 @@
       align-items: center;
       border-radius: 0 0 5px 5px;
       input {
-        width: 92%;
+        width: 80%;
         border-radius: 4px;
         padding: 0.25rem;
         background-color: var(--color-primary);
@@ -101,7 +137,7 @@
         border: none;
       }
       button {
-        width: 6%;
+        width: 15%;
         background-color: var(--color-accent2);
         font-size: 0.8rem;
         padding: 0.3rem;
@@ -110,5 +146,11 @@
         color: var(--color-primary);
       }
     }
+  }
+}
+@media screen and (max-width: 800px) {
+  .doubtsContainer {
+    justify-content: center;
+    //  align-items: center;
   }
 }
