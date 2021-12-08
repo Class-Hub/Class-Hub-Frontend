@@ -1,30 +1,32 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { io } from 'socket.io-client';
 import '../../../styles/Dashboard/Doubts.scss';
 import profile from '../../../assets/Profile.png';
 import axios from 'axios';
 import { useUser } from '../../../context/User.context';
+import { io } from 'socket.io-client';
 import getNameInitials from '../../../misc/helpers';
 import { useMediaQuery } from '../../../misc/custom-hooks';
+import TheChat from './TheChat';
 
-// const socket = io.connect('http://localhost:8000');
 const Doubts = () => {
   const location = useLocation();
-  const [teachers, setTeachers] = useState();
-  const [chatLog, setChatLog] = useState([]);
-  const [conversationId, setConversationId] = useState('');
+  const [teachers, setTeachers] = useState([]);
   const [allConversationId, setAllConversationId] = useState();
-  const [msg, setMsg] = useState([]);
   const [currentTeacher, setCurrentTeacher] = useState();
+  const [chatListOpenend, setChatListOpenend] = useState(true);
+  const [listClass, setListClass] = useState('teacherList');
   const { user } = useUser();
-  const showInitials = useMediaQuery('(max-width : 800px)');
+  const isMobile = useMediaQuery('(max-width : 800px)');
+  const socket = io('https://class-hub-backend.herokuapp.com/');
 
-  const token = localStorage.getItem('classHub');
-  const config = {
-    headers: {
-      Authorization: 'Bearer ' + token,
-    },
+  socket.on('connect', () => {
+    // console.log(socket.id);
+  });
+
+  const ToggleChatList = () => {
+    setChatListOpenend(p => !p);
+    console.log('toggle');
   };
 
   useEffect(() => {
@@ -33,145 +35,92 @@ const Doubts = () => {
         .get(
           `/conversation/${
             user?.role === 'admin' ? 'getStudents' : 'getTeachers'
-          }/${user?._id}`,
-          config
+          }/${user?._id}`
         )
         .then(response => {
+          console.log('teachers', response.data);
           setTeachers(response.data.data);
         });
-      axios
-        .post('/conversation/getAllConversation', {}, config)
-        .then(response => {
-          setAllConversationId(response.data.conversations);
-        });
+      axios.post('/conversation/getAllConversation', {}).then(response => {
+        setAllConversationId(response.data.conversations);
+      });
     }
   }, [user?._id]);
+  console.log('all conversation ids ', allConversationId);
 
-  const openChat = async (receiverId, roomConversationId) => {
-    setChatLog([]);
-    axios
-      .get(
-        `/conversation/${
-          user?.role === 'admin' ? 'getStudents' : 'getTeachers'
-        }/${user?._id}`
-      )
-      .then(response => {
-        setTeachers(response.data.data);
-      });
-
-    if (roomConversationId === '') {
-      const myData = {
-        senderId: user._id,
-        receiverId,
-      };
-      const response = await axios.post('/conversation', myData, config);
-      setConversationId(response.data._id);
-      const allChat = await axios.get(`/message/${response?.data._id}`, config);
-      setChatLog(allChat.data);
+  useEffect(() => {
+    if (isMobile && chatListOpenend) {
+      setListClass('teacherList isMobile listOpened');
+    } else if (isMobile && !chatListOpenend) {
+      setListClass('teacherList isMobile');
+    } else {
+      setListClass('teacherList');
     }
-
-    if (allConversationId?.includes(roomConversationId)) {
-      const allChat = await axios.get(`/message/${roomConversationId}`, config);
-      setConversationId(roomConversationId);
-      setChatLog(allChat.data);
-    }
-  };
-
-  // const getConvertion = async () => {
-  //   const allChat = await axios.get(`/message/${conversationId}`, config);
-  //   console.log('ujjwal chat log', allChat.data);
-  //   setChatLog(allChat.data);
-  // };
-
-  // useEffect(() => {
-  //   getConvertion();
-  // }, [chatLog, conversationId]);
-
-  // console.log('ujjwal current cov', conversationId);
-  const submitMessage = async e => {
-    e.preventDefault();
-
-    const myData = {
-      conversationId,
-      sender: user._id,
-      text: msg,
-    };
-    const messageArr = await axios.post('/message', myData, config);
-
-    setMsg('');
-    const allChat = await axios.get(`/message/${conversationId}`, config);
-    setChatLog(allChat.data);
-  };
+  }, [isMobile, chatListOpenend, setListClass]);
 
   return (
     <div className="wrapper">
       <div className="doubtsContainer">
-        <ul className="teacherList">
+        <ul className={listClass}>
+          {isMobile && (
+            <span onClick={ToggleChatList}>
+              <svg
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18.3745 6.42627L6.3745 18.4263"
+                  stroke="#E6E6E6"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M6.3745 6.42627L18.3745 18.4263"
+                  stroke="#E6E6E6"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          )}
           {teachers?.map((teacher, index) => {
+            console.log('teacher', teacher);
             return (
               <Link
                 key={index}
                 onClick={() => {
                   setCurrentTeacher(teacher);
-                  openChat(teacher?.teacher?._id, teacher?.convoId);
+                  setChatListOpenend(p => !p);
                 }}
-                to="/Doubts"
+                to={`/Doubts/${teacher.teacher._id}`}
               >
                 <li
-                  className={location.pathname === '/Doubts' ? 'active' : ''}
+                  className={
+                    location.pathname === `/Doubts/${teacher.teacher._id}`
+                      ? 'active'
+                      : ''
+                  }
                   style={{ marginBottom: '1rem' }}
                 >
-                  {!showInitials && (
-                    <>
-                      <img src={profile} alt="Teacher image" />
-                      {teacher?.teacher?.name}
-                    </>
-                  )}
-                  {showInitials && teacher?.teacher
-                    ? getNameInitials(teacher?.teacher?.name)
-                    : ''}
+                  <img src={profile} alt="Teacher image" />
+                  {teacher?.teacher?.name}
                 </li>
               </Link>
             );
           })}
         </ul>
-        <div className="theChat">
-          <div className="top">{currentTeacher?.teacher.name}</div>
-          <div className="mid">
-            {chatLog?.map((log, index) => {
-              if (log.sender !== user._id) {
-                return (
-                  <div key={index} className="chat">
-                    <img src={log.sender.photo || profile} alt="teachersimage" />
-                    <p className="message">{log.text}</p>
-                  </div>
-                );
-              }
-              return (
-                <div key={index} className="chat studentMessage">
-                  <img src={user.photo || profile} alt="teachersimage" />
-                  <p className="message">{log.text}</p>
-                </div>
-              );
-            })}
-          </div>
-          <div className="bottom">
-            <input
-              type="text"
-              value={msg}
-              onKeyPress={e => {
-                if (e.charCode === 13) {
-                  submitMessage(e);
-                }
-              }}
-              onChange={e => {
-                console.log(e);
-                setMsg(e.target.value);
-              }}
-            />
-            <button onClick={submitMessage}>Send</button>
-          </div>
-        </div>
+        <TheChat
+          socket={socket}
+          allConversationId={allConversationId}
+          currentTeacher={currentTeacher}
+          isMobile={isMobile}
+          ToggleChatList={ToggleChatList}
+        />
       </div>
     </div>
   );

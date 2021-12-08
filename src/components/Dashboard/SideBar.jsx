@@ -18,7 +18,7 @@ const SideBar = () => {
     } else {
       setBarClass('sideContainer');
     }
-  }, []);
+  }, [isMobile, sidebarOpened, setBarClass]);
 
   const onclick = () => {
     if (isMobile) {
