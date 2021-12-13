@@ -6,7 +6,7 @@ import Teacher from './Teacher';
 
 const LiveClass = () => {
   const { user } = useUser();
-  // console.log(user)
+  
   return (
     <div className="wrapper">
       <div className="LiveContainer">
@@ -19,6 +19,7 @@ const LiveClass = () => {
             })}
           {user && user.role !== 'admin' && user.attendance &&
             user.attendance.map(el => {
+              console.log(JSON.stringify(el , null , ' '))
               return <Student key={el._id} data={el} />;
             })}
         </div>
