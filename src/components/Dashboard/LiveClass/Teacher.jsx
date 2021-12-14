@@ -3,7 +3,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const Teacher = ({ data, batch }) => {
-  console.log(data);
   const takeAttendence = async () => {
     await axios
       .post('/student/dayTotal', {
@@ -23,14 +22,6 @@ const Teacher = ({ data, batch }) => {
 
   const join = () => {
     console.log('joined');
-    // axios
-    //   .post('/liveClass', {})
-    //   .then(response => {
-    //     console.log(response);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
   };
 
   return (
