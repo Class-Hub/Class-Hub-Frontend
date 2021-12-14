@@ -18,7 +18,8 @@ const Doubts = () => {
   const [listClass, setListClass] = useState('teacherList');
   const { user } = useUser();
   const isMobile = useMediaQuery('(max-width : 800px)');
-  const socket = io('https://class-hub-backend.herokuapp.com/');
+  // const socket = io('https://class-hub-backend.herokuapp.com/');
+  const socket = io('http://localhost:8000/');
 
   socket.on('connect', () => {
     // console.log(socket.id);

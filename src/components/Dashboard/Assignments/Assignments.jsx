@@ -54,6 +54,7 @@ const Assignments = () => {
         toast.error('Error occured', err);
         console.log(err);
       });
+    getClasses();
   };
 
   return (

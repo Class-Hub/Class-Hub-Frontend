@@ -85,11 +85,14 @@ const ClassWork = () => {
       })
       .then(response => {
         // console.log(response);
+        toast.success('Answer Submitted');
+        setAnswer('');
       })
       .catch(err => {
         toast.error('Error occured', err);
         console.log(err);
       });
+    fetchCurrClassWorkDetails();
     // console.log(answer);
   };
 
