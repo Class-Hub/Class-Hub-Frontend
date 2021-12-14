@@ -4,19 +4,31 @@ import { toast } from 'react-toastify';
 
 const Student = ({ data }) => {
   const getLink = async () => {
-    let link;
-    await axios
-      .post(`/subject/getLivelink`, { subjectId: data.sub })
-      .then(res => {
-        console.log(res.data.Link);
-        // window.location.assign(res.data.Link);
-        if(res.data.Link){
-          window.open(res.data.Link, '_blank').focus();
-        }else{
-          toast.error(res.data.message);
-        }
-      })
-      .catch(err => console.log(err));
+    try {
+      const res = await axios.get('http://localhost:7000/link');
+      console.log('This is prakhar', res);
+      console.log(res.data.Link);
+      if (res.data.Link) {
+        window.open(res.data.Link, '_blank').focus();
+      } else {
+        toast.error(res.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    // let link;
+    // await axios
+    //   .post(`/subject/getLivelink`, { subjectId: data.sub })
+    //   .then(res => {
+    //     console.log(res.data.Link);
+    //     // window.location.assign(res.data.Link);
+    //     if (res.data.Link) {
+    //       window.open(res.data.Link, '_blank').focus();
+    //     } else {
+    //       toast.error(res.data.message);
+    //     }
+    //   })
+    //   .catch(err => console.log(err));
   };
   return (
     <div className="tlive">
