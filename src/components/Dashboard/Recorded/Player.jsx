@@ -40,7 +40,7 @@ const Player = () => {
           width="85%"
           height="auto"
           controls
-          url={`https://class-hub-backend.herokuapp.com/videos/${videoId}`}
+          url={`http://localhost:8000/videos/${videoId}`}
         />
       </div>
     </div>
