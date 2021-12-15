@@ -3,6 +3,8 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const Teacher = ({ data, batch }) => {
+  console.log(data);
+
   const takeAttendence = async () => {
     await axios
       .post('/student/dayTotal', {
@@ -12,6 +14,22 @@ const Teacher = ({ data, batch }) => {
         // console.log(response);
         if (response.status === 200) {
           toast.success('Attendence Sent');
+        }
+      })
+      .catch(err => {
+        toast.error('Error occured', err);
+        console.log(err);
+      });
+  };
+  const startClass = async () => {
+    await axios
+      .post('/student/classStart', {
+        subjectId: data.sub,
+      })
+      .then(response => {
+        // console.log(response);
+        if (response.status === 200) {
+          toast.success('Class Started');
         }
       })
       .catch(err => {
@@ -29,11 +47,11 @@ const Teacher = ({ data, batch }) => {
       <h4> {data.subName} </h4>
       <h6> Batch : {batch} </h6>
       <a
-        href={`https://class-hub-backend.herokuapp.com/liveClass`}
+        href={`http://localhost:7000/`}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <button onClick={join}>Start CLass</button>
+        <button onClick={startClass}>Start CLass</button>
       </a>
       <button onClick={takeAttendence}>Take Attendence</button>
     </div>
