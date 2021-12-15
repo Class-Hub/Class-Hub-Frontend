@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 const Student = ({ data }) => {
   console.log(data);
   const getLink = async () => {
+    console.log('This is if condition', data.isClassStart);
     if (data.isClassStart) {
       try {
         const res = await axios.get('http://localhost:7000/link');
@@ -36,7 +37,7 @@ const Student = ({ data }) => {
   return (
     <div className="tlive">
       <h4> {data.subName} </h4>
-      <button onClick={getLink} disabled={data.isClassStart}>
+      <button onClick={getLink} disabled={!data.isClassStart}>
         Join CLass
       </button>
     </div>
