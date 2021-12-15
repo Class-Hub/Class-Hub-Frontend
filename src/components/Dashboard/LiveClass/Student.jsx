@@ -3,18 +3,21 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 const Student = ({ data }) => {
+  console.log(data);
   const getLink = async () => {
-    try {
-      const res = await axios.get('http://localhost:7000/link');
-      console.log('This is prakhar', res);
-      console.log(res.data.Link);
-      if (res.data.Link) {
-        window.open(res.data.Link, '_blank').focus();
-      } else {
-        toast.error(res.message);
+    if (data.isClassStart) {
+      try {
+        const res = await axios.get('http://localhost:7000/link');
+        console.log('This is prakhar', res);
+        console.log(res.data.Link);
+        if (res.data.Link) {
+          window.open(res.data.Link, '_blank').focus();
+        } else {
+          toast.error(res.message);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
     // let link;
     // await axios
@@ -33,7 +36,9 @@ const Student = ({ data }) => {
   return (
     <div className="tlive">
       <h4> {data.subName} </h4>
-      <button onClick={getLink}>Join CLass</button>
+      <button onClick={getLink} disabled={data.isClassStart}>
+        Join CLass
+      </button>
     </div>
   );
 };
