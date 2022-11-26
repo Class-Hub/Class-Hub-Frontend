@@ -334,7 +334,7 @@ const ClassWork = () => {
             cols="30"
             rows="10"
           />
-          <label htmlFor="type">Choose a car:</label>
+          <label htmlFor="type">Choose a question type:</label>
 
           <select
             id="type"
@@ -343,6 +343,7 @@ const ClassWork = () => {
               setInputType(e.target.value);
             }}
           >
+            
             <option value="long answer">long answer</option>
             <option value="short answer">short answer</option>
           </select>

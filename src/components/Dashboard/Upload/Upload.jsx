@@ -11,6 +11,7 @@ const Upload = () => {
     selectedVideos: null,
     loaded: 0,
     subName: '',
+    _id:''
   });
 
   const maxSelectFile = event => {
@@ -67,6 +68,7 @@ const Upload = () => {
           'Content-Type': 'application/json',
           uploader_name: user.name,
           subName: state.subName,
+          subject: state._id,
           Authorization: 'Bearer ' + localStorage.getItem('classHub'),
         },
         onUploadProgress: ProgressEvent => {
@@ -84,7 +86,7 @@ const Upload = () => {
       });
   };
 
-  // console.log('ujjwal subName', state.subName);
+  console.log('ujjwal subName', state);
   return (
     <div className="wrapper">
       <div className="uploadContainer">
@@ -102,7 +104,7 @@ const Upload = () => {
                       name="subjects"
                       value={subject.subName}
                       onChange={e =>
-                        setState({ ...state, subName: e.target.value })
+                        setState({ ...state, subName: e.target.value,_id: subject.sub })
                       }
                     />
                     {subject.subName}

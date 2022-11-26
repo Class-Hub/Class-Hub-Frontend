@@ -19,6 +19,18 @@ const Register = e => {
 
   const subjectsArr = [
     {
+      name: 'Microprocessor and Interfacing',
+    },
+    {
+      name: 'Compiler Design',
+    },
+    {
+      name: 'Information Security',
+    },
+    {
+      name: 'Professional Skills',
+    },
+    {
       name: 'Discrete Mathematics',
     },
     {

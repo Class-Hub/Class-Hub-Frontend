@@ -11,9 +11,9 @@ const Video = ({ video }) => {
       <div>
         <img src={video.thumbnail_path} alt={video.uploader_name} />
       </div>
-      <div>
+      <div className='desc'>
         <h4>{video.upload_title}</h4>
-        <p>{video.uploader_name}</p>
+        <span>{video.uspanloader_name}</span>
       </div>
     </div>
   );

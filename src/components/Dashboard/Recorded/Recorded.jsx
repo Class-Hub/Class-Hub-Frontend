@@ -11,7 +11,7 @@ const Recorded = () => {
     axios
       .get('/videoList')
       .then(response => {
-        // console.log(response.data);
+        console.log('Lectures', response.data);
         setVideos(response.data);
       })
       .catch(err => console.log(err));
@@ -33,15 +33,29 @@ const Recorded = () => {
               <span className="visually-hidden">Loading...</span>
             </div>
           )}
-          {videos &&
-            videos.map(video => (
-              <Link
-                key={video._id}
-                to={`RecordedLectures/${video.upload_title}`}
-              >
-                <Video video={video} />
-              </Link>
-            ))}
+
+          <div className="videoList">
+            {videos &&
+              videos.map(video => (
+                <>
+                  <h3>{video.subjectName}</h3>
+                  <div className="videos">
+                    {video.videos.length > 0 ? (
+                      video.videos.map(vi => (
+                        <Link
+                          key={vi._id}
+                          to={`RecordedLectures/${vi.upload_title}`}
+                        >
+                          <Video video={vi} />
+                        </Link>
+                      ))
+                    ) : (
+                      <h3>No Videos Avaliable</h3>
+                    )}
+                  </div>
+                </>
+              ))}
+          </div>
         </div>
       </div>
     </div>

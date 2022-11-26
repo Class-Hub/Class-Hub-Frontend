@@ -8,7 +8,21 @@
   justify-content: center;
   img {
     border: 1px solid var(--color-accent1);
-    width: 80%;
-    height: auto;
+    width: 70%;
+    height: 95%;
   }
 }
+
+.wrapper{
+  width: 100%;
+  padding: 20px;
+  height: 100%;
+  overflow-y: scroll;
+  h4 {
+    display: flex;
+    justify-content: space-between;
+    color: var(--font-primary);
+    }
+}
+
+
