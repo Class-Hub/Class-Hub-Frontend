@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useUser } from '../../context/User.context';
 import { useMediaQuery } from '../../misc/custom-hooks';
 import '../../styles/Dashboard/SideBar.scss';
+import BiotechIcon from '@mui/icons-material/Biotech';
 
 const SideBar = () => {
   const { user, sidebarOpened, ToggleSideBar } = useUser();
@@ -117,6 +118,16 @@ const SideBar = () => {
                   />
                 </svg>
                 Recorded
+              </li>
+            </Link>
+            <Link aria-current="page" onClick={onclick} to="/Vlab">
+              <li
+                className={
+                  location.pathname === '/Vlab' ? 'active' : ''
+                }
+              >
+                <BiotechIcon></BiotechIcon>
+                Virtual Lab
               </li>
             </Link>
             {user && user.role && user.role === 'admin' && (

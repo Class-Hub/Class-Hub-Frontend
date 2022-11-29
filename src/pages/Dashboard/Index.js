@@ -21,6 +21,8 @@ import Register from '../../components/Dashboard/Register';
 import ClassRoom from '../../components/Dashboard/Assignments/ClassRoom';
 import ClassWork from '../../components/Dashboard/Assignments/ClassWork';
 import SubAttendence from '../../components/Dashboard/Attendence/SubAttendence';
+import Vlab from '../../components/Dashboard/Vlab/Vlab'
+import SubjectLab from '../../components/Dashboard/Vlab/SubjectLab'
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,7 +30,7 @@ import AdminRoute from '../../components/Routehandler/AdminRoute';
 
 const Dashboard = () => {
   const path =
-    '/(|Profile|LiveClass|RecordedLectures|Upload|Attendence|Assignments|StudyMaterial|Doubts|TimeTable|register)/';
+    '/(|Profile|LiveClass|RecordedLectures|Upload|Attendence|Assignments|StudyMaterial|Doubts|TimeTable|register|Vlab)/';
 
   return (
     <div>
@@ -55,6 +57,8 @@ const Dashboard = () => {
                 path="/Attendence/:subId"
                 component={SubAttendence}
               />
+              <Route exact path="/Vlab" component={Vlab} />
+              <Route exact path="/Vlab/:subject" component={SubjectLab} />
               <Route exact path="/Assignments" component={Assignments} />
               <Route exact path="/Assignments/:classId" component={ClassRoom} />
               <Route
