@@ -1,16 +1,18 @@
-import axios from 'axios';
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import '../../../styles/Dashboard/SubjectLab.scss';
+// import '../../../styles/Dashboard/TimeTable.scss';
+// import '../../../styles/Dashboard/Attendence.scss';
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import SideBar from './SideBarLab'
-import Aim from "./Aim"
 
-const SubjectLab = () => {
-  const { subject } = useParams();
 
+
+const Aim = () => {
+    // const { subId } = useParams();
+  let subjects = ["Electronics Lab"]
   return (
     <div className="wrapper">
-      <div >
+        <div >
       <Link to={`/Vlab`}>
           <svg
             width="40"
@@ -40,13 +42,16 @@ const SubjectLab = () => {
         <h4>Logic Gates Virtual Lab</h4>
         <hr/>
         <div className='lab-wrapper'>
-        <SideBar />
-        {/* <Aim/> */}
-        
+            <SideBar />
+            <div className='gates-wrapper'>
+            <h4>Aim</h4>
+            <h5>To verify and interpret the logic and truth table for AND, OR, NOT, NAND, NOR, Ex-OR, Ex-NOR gates </h5>
+            </div>
         </div>
       </div>
+      
     </div>
   );
 };
 
-export default SubjectLab;
+export default Aim;

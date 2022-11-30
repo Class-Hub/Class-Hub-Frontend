@@ -1,0 +1,52 @@
+fieldset {
+	border: 0;
+	margin: 2rem 0;
+}
+
+fieldset legend {
+	font-weight: 700;
+}
+
+.answer__item {
+    background-color: #f6f6f6;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 0.75rem 1.25rem;
+	 margin: 0.25rem 0;
+}
+
+/* Hide Radio Buttons and Submit Button */
+.not-radio {
+  display: none;
+}
+
+/* Any correct answer on any answered question, highlight in light green */
+:valid .answer__item--is-correct { background-color: rgba(61, 181, 64, 0.6) }
+
+/* Show any extra explanatory text */
+.answer__reveal-text { display: none; }
+:valid .answer__reveal-text { display: block }
+
+/* Any chosen answer, highlight in red */
+:checked + .answer__item { color: #ffffff; background-color: #c70000 }
+
+/* Any correctly chosen answer, highlight in bright green */
+:checked + .answer__item--is-correct { background-color: #3db540; }
+
+/* Show the icon for the selected answer */
+:checked + .answer__item .answer__icon { display: inline-block }
+
+
+/* prevent chosing another answer once chosen */
+:valid { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none }
+:valid + .answer__item { pointer-events: none }
+
+/* keep track of score */
+form { counter-reset: quiz-score;max-width: 600px !important; }
+:checked + .answer__item--is-correct { counter-increment: quiz-score }
+.score:after { content: counter(quiz-score) "/" attr(data-question-count) }
+
+/* show score once quiz has been completed */
+// .message { display: none; }
+form:valid .message { display: block }

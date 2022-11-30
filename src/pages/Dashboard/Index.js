@@ -23,6 +23,12 @@ import ClassWork from '../../components/Dashboard/Assignments/ClassWork';
 import SubAttendence from '../../components/Dashboard/Attendence/SubAttendence';
 import Vlab from '../../components/Dashboard/Vlab/Vlab'
 import SubjectLab from '../../components/Dashboard/Vlab/SubjectLab'
+import Theory from '../../components/Dashboard/Vlab/Theory'
+import Simulation from '../../components/Dashboard/Vlab/Simulation'
+import Aim from '../../components/Dashboard/Vlab/Aim'
+import PostTest from '../../components/Dashboard/Vlab/PostTest'
+import PreTest from '../../components/Dashboard/Vlab/PreTest'
+
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -59,6 +65,11 @@ const Dashboard = () => {
               />
               <Route exact path="/Vlab" component={Vlab} />
               <Route exact path="/Vlab/:subject" component={SubjectLab} />
+              <Route exact path="/Vlab/:subject/theory" component={Theory} />
+              <Route exact path="/Vlab/:subject/simulation" component={Simulation} />
+              <Route exact path="/Vlab/:subject/aim" component={Aim} />
+              <Route exact path="/Vlab/:subject/pretest" component={PreTest} />
+              <Route exact path="/Vlab/:subject/posttest" component={PostTest} />
               <Route exact path="/Assignments" component={Assignments} />
               <Route exact path="/Assignments/:classId" component={ClassRoom} />
               <Route
