@@ -28,6 +28,8 @@ import Simulation from '../../components/Dashboard/Vlab/Simulation'
 import Aim from '../../components/Dashboard/Vlab/Aim'
 import PostTest from '../../components/Dashboard/Vlab/PostTest'
 import PreTest from '../../components/Dashboard/Vlab/PreTest'
+import DisplayTT from '../../components/Dashboard/DisplayTT/DisplayTT'
+import FormTT from '../../components/Dashboard/FormTT/FormTT'
 
 
 import { ToastContainer } from 'react-toastify';
@@ -36,7 +38,7 @@ import AdminRoute from '../../components/Routehandler/AdminRoute';
 
 const Dashboard = () => {
   const path =
-    '/(|Profile|LiveClass|RecordedLectures|Upload|Attendence|Assignments|StudyMaterial|Doubts|TimeTable|register|Vlab)/';
+    '/(|Profile|LiveClass|RecordedLectures|Upload|Attendence|Assignments|StudyMaterial|Doubts|TimeTable|register|Vlab|DisplayTT|makeTT)/';
 
   return (
     <div>
@@ -63,6 +65,7 @@ const Dashboard = () => {
                 path="/Attendence/:subId"
                 component={SubAttendence}
               />
+              <Route exact path="/DisplayTT" component={DisplayTT} />
               <Route exact path="/Vlab" component={Vlab} />
               <Route exact path="/Vlab/:subject" component={SubjectLab} />
               <Route exact path="/Vlab/:subject/theory" component={Theory} />
@@ -82,6 +85,7 @@ const Dashboard = () => {
               <Route exact path="/Doubts/:personId" component={Doubts} />
               <Route exact path="/TimeTable" component={TimeTable} />
               <AdminRoute exact path="/register" component={Register} />
+              <AdminRoute exact path="/makeTT" component={FormTT} />
               <Route>
                 <NotFound />
               </Route>

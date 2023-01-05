@@ -4,6 +4,7 @@ import { useUser } from '../../context/User.context';
 import { useMediaQuery } from '../../misc/custom-hooks';
 import '../../styles/Dashboard/SideBar.scss';
 import BiotechIcon from '@mui/icons-material/Biotech';
+import BackupTableIcon from '@mui/icons-material/BackupTable';
 
 const SideBar = () => {
   const { user, sidebarOpened, ToggleSideBar } = useUser();
@@ -72,6 +73,16 @@ const SideBar = () => {
               </Link>
             )}
 
+            {user && user.role && user.role === 'admin' && (
+              <Link onClick={onclick} to="/makeTT">
+                  <li className={location.pathname === '/makeTT' ? 'active' : ''}>
+                    <BackupTableIcon></BackupTableIcon>
+                    Form Time Table
+                  </li>
+                  
+              </Link>
+            )}
+
             <Link aria-current="page" onClick={onclick} to="/LiveClass">
               <li
                 className={location.pathname === '/LiveClass' ? 'active' : ''}
@@ -121,11 +132,7 @@ const SideBar = () => {
               </li>
             </Link>
             <Link aria-current="page" onClick={onclick} to="/Vlab">
-              <li
-                className={
-                  location.pathname === '/Vlab' ? 'active' : ''
-                }
-              >
+              <li className={location.pathname === '/Vlab' ? 'active' : ''}>
                 <BiotechIcon></BiotechIcon>
                 Virtual Lab
               </li>
