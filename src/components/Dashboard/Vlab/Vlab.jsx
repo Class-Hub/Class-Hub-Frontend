@@ -3,22 +3,43 @@ import React from 'react';
 import '../../../styles/Dashboard/Attendence.scss';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import axios from "axios";
+import { toast,ToastContainer } from 'react-toastify';
 
 
 const Vlab = () => {
-  let subjects = ["Electronics Lab"]
+
+  const [vlabsubs,setVlabSubs] = useState([]);
+  const [subjects,setSubjects] = useState([]);
+
+  useEffect(async () => {
+    await axios
+        .get('/teacher/vlab')
+        .then(response => {
+            console.log(response)
+            setVlabSubs(response.data.data)
+            setSubjects(response.data.subjects)
+        })
+        .catch(err => {
+          toast.error('Error occured', err);
+          console.log(err);
+        });
+  },[])
+
+  // let subjects = ["Electronics Lab"]
   return (
     <div className="wrapper">
       <div className="attendenceContainer">
       <h4>Virtual Lab</h4>
       <hr/>
       <div className="subCardContainer">
-            {subjects?.length > 0 &&
-                subjects?.map(el => {
+            {vlabsubs?.length > 0 &&
+                vlabsubs?.map((el,index) => {
+                  console.log(el)
                   return (
-                    <Link key={el} to={`Vlab/${el}`}>
+                      <Link to={{pathname: `Vlab/${index}`, state: {data: el}}}>
                       <div className="subCardsAttendence">
-                        {el}
+                        {el.subject}
                         <svg
                           width="25"
                           height="25"

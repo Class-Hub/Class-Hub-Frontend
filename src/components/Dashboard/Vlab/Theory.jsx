@@ -8,7 +8,7 @@ import '../../../styles/Dashboard/Theory.scss'
 
 
 
-const Theory = () => {
+const Theory = (props) => {
     // const { subId } = useParams();
   let subjects = ["Electronics Lab"]
   return (

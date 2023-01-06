@@ -7,42 +7,49 @@ import ModeStandbyIcon from '@mui/icons-material/ModeStandby';
 import QuizIcon from '@mui/icons-material/Quiz';
 import SpeedIcon from '@mui/icons-material/Speed';
 
-const SideBar = () => {
-  const location = useLocation();
+const SideBar = (props) => {
+  const locations = useLocation();
   const [barClass, setBarClass] = useState('sideContainer');
   const { subject } = useParams();
+  console.log(props.location);
 
   return (
     <>
       
         <div className={barClass}>
           <ul>
-            <Link onClick={onclick} to="/Vlab/:subject/aim">
-              <li className={location.pathname === '/Vlab/:subject/aim' ? 'active' : ''}>
+          {/* <Link onClick={onclick} to={{pathname: "/Vlab/:subject/aim",state: {data: props}}}>
+              <li className={locations.pathname === '/Vlab/:subject/aim' ? 'active' : ''}>
+              <ModeStandbyIcon></ModeStandbyIcon>
+                Aim
+              </li>
+            </Link> */}
+            <Link  to={{pathname: `${ locations.pathname}/aim`,state: {data: props}}}>
+              <li className={locations.pathname === `${ locations.pathname}/aim` ? 'active' : ''}>
               <ModeStandbyIcon></ModeStandbyIcon>
                 Aim
               </li>
             </Link>
-            <Link onClick={onclick} to="/Vlab/:subject/theory">
-              <li className={location.pathname === '/Vlab/:subject/theory' ? 'active' : ''}>
+            <Link to={{pathname: `${ locations.pathname}/theory`,state: {data: props}}}>
+              <li className={locations.pathname === '/Vlab/:subject/theory' ? 'active' : ''}>
               <AutoStoriesIcon></AutoStoriesIcon>
                 Theory
               </li>
             </Link>
-            <Link onClick={onclick} to="/Vlab/:subject/pretest">
-              <li className={location.pathname === '/Vlab/:subject/pretest' ? 'active' : ''}>
+            <Link  to={{pathname: `${ locations.pathname}/pretest`,state: {data: props}}}>
+              <li className={locations.pathname === '/Vlab/:subject/pretest' ? 'active' : ''}>
               <QuizIcon ></QuizIcon>
                 Pre Test
               </li>
             </Link>
-            <Link onClick={onclick} to="/Vlab/:subject/simulation">
-              <li className={location.pathname === '/Vlab/:subject/simulation' ? 'active' : ''}>
+            <Link  to={{pathname: `${ locations.pathname}/simulation`,state: {data: props}}}>
+              <li className={locations.pathname === '/Vlab/:subject/simulation' ? 'active' : ''}>
                 <CalculateIcon></CalculateIcon>
                 Simulation
               </li>
             </Link>
-            <Link onClick={onclick} to="/Vlab/:subject/posttest">
-              <li className={location.pathname === '/Vlab/:subject/posttest' ? 'active' : ''}>
+            <Link  to={{pathname: `${ locations.pathname}/posttest`,state: {data: props}}}>
+              <li className={locations.pathname === '/Vlab/:subject/posttest' ? 'active' : ''}>
                 <SpeedIcon></SpeedIcon>
                 Post Test
               </li>

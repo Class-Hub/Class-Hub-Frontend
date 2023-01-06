@@ -30,6 +30,8 @@ import PostTest from '../../components/Dashboard/Vlab/PostTest'
 import PreTest from '../../components/Dashboard/Vlab/PreTest'
 import DisplayTT from '../../components/Dashboard/DisplayTT/DisplayTT'
 import FormTT from '../../components/Dashboard/FormTT/FormTT'
+import LabTitle from '../../components/Dashboard/Vlab/LabTitles'
+import SideBarLab from '../../components/Dashboard/Vlab/SideBarLab'
 
 
 import { ToastContainer } from 'react-toastify';
@@ -40,6 +42,7 @@ const Dashboard = () => {
   const path =
     '/(|Profile|LiveClass|RecordedLectures|Upload|Attendence|Assignments|StudyMaterial|Doubts|TimeTable|register|Vlab|DisplayTT|makeTT)/';
 
+
   return (
     <div>
       <ToastContainer />
@@ -48,6 +51,7 @@ const Dashboard = () => {
           <Route path={path} component={TopBar} />
           <div className="bottomContainer">
             <Route path={path} component={SideBar} />
+
             <Switch>
               <Route exact path="/" component={Profile} />
               <Route exact path="/liveClass" component={LiveClass} />
@@ -67,12 +71,13 @@ const Dashboard = () => {
               />
               <Route exact path="/DisplayTT" component={DisplayTT} />
               <Route exact path="/Vlab" component={Vlab} />
-              <Route exact path="/Vlab/:subject" component={SubjectLab} />
-              <Route exact path="/Vlab/:subject/theory" component={Theory} />
-              <Route exact path="/Vlab/:subject/simulation" component={Simulation} />
-              <Route exact path="/Vlab/:subject/aim" component={Aim} />
-              <Route exact path="/Vlab/:subject/pretest" component={PreTest} />
-              <Route exact path="/Vlab/:subject/posttest" component={PostTest} />
+              <Route exact path="/Vlab/:subject" component={LabTitle} />
+              <Route exact path="/Vlab/:subject/:id" component={SubjectLab} />
+              <Route exact path="/Vlab/:subject/:id/theory" component={Theory} />
+              <Route exact path="/Vlab/:subject/:id/simulation" component={Simulation} />
+              <Route exact path="/Vlab/:subject/:id/aim" component={Aim} />
+              <Route exact path="/Vlab/:subject/:id/pretest" component={PreTest} />
+              <Route exact path="/Vlab/:subject/:id/posttest" component={PostTest} />
               <Route exact path="/Assignments" component={Assignments} />
               <Route exact path="/Assignments/:classId" component={ClassRoom} />
               <Route

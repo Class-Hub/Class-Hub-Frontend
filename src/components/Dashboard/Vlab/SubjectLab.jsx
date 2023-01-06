@@ -5,8 +5,9 @@ import '../../../styles/Dashboard/SubjectLab.scss';
 import SideBar from './SideBarLab'
 import Aim from "./Aim"
 
-const SubjectLab = () => {
+const SubjectLab = (props) => {
   const { subject } = useParams();
+  console.log(props);
 
   return (
     <div className="wrapper">
@@ -37,10 +38,10 @@ const SubjectLab = () => {
           </svg>
           Go Back
         </Link>
-        <h4>Logic Gates Virtual Lab</h4>
+        <h4>{props.location.state.data.title} Virtual Lab</h4>
         <hr/>
         <div className='lab-wrapper'>
-        <SideBar />
+        <SideBar props={props.location.state.data} location={props.location.pathname}/>
         {/* <Aim/> */}
         
         </div>

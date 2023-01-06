@@ -7,9 +7,10 @@ import SideBar from './SideBarLab'
 
 
 
-const Aim = () => {
+const Aim = (props) => {
     // const { subId } = useParams();
   let subjects = ["Electronics Lab"]
+  console.log(props);
   return (
     <div className="wrapper">
         <div >
@@ -42,10 +43,10 @@ const Aim = () => {
         <h4>Logic Gates Virtual Lab</h4>
         <hr/>
         <div className='lab-wrapper'>
-            <SideBar />
+            <SideBar/>
             <div className='gates-wrapper'>
             <h4>Aim</h4>
-            <h5>To verify and interpret the logic and truth table for AND, OR, NOT, NAND, NOR, Ex-OR, Ex-NOR gates </h5>
+            <h5>{props.location.state.data.props.aim}</h5>
             </div>
         </div>
       </div>

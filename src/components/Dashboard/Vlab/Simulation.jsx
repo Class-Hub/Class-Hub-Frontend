@@ -4,7 +4,11 @@ import { Link, useParams } from 'react-router-dom';
 import '../../../styles/Dashboard/SubjectLab.scss';
 import SideBar from './SideBarLab'
 
-const SubjectLab = () => {
+function Iframe(props) {
+  return (<div dangerouslySetInnerHTML={ {__html:  props.iframe?props.iframe:""}} />);
+}
+
+const SubjectLab = (props) => {
   const { subject } = useParams();
 
   return (
@@ -42,41 +46,7 @@ const SubjectLab = () => {
 
         <div className="gates-wrapper sim">
         <h4>Simulation</h4>
-          <div class="gate not">
-            <div class="name">not</div>
-            <input class="i2" type="checkbox" />
-            <div class="out"></div>
-          </div>
-          <div class="gate and">
-            <input class="i1" type="checkbox" />
-            <div class="name">and</div>
-            <input class="i2" type="checkbox" />
-            <div class="out"></div>
-          </div>
-          <div class="gate or">
-            <input class="i1" type="checkbox" />
-            <div class="name">or</div>
-            <input class="i2" type="checkbox" />
-            <div class="out"></div>
-          </div>
-          <div class="gate nand">
-            <input class="i1" type="checkbox" />
-            <div class="name">nand</div>
-            <input class="i2" type="checkbox" />
-            <div class="out"></div>
-          </div>
-          <div class="gate nor">
-            <input class="i1" type="checkbox" />
-            <div class="name">nor</div>
-            <input class="i2" type="checkbox" />
-            <div class="out"></div>
-          </div>
-          <div class="gate xor">
-            <input class="i1" type="checkbox" />
-            <div class="name">xor</div>
-            <input class="i2" type="checkbox" />
-            <div class="out"></div>
-          </div>
+        <Iframe iframe={props.location.state.data.props.simulation} />,
         </div>
         
         </div>
